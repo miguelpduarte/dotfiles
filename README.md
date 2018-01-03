@@ -4,9 +4,11 @@ The dotfiles I am currently using in Linux
 ## Currently using:
 - i3wm
 - i3blocks
-- wal
+- pywal
 - i3lock
+- vim
+- gnome-terminal (works for me and I see no need to switch - Used terminator before but i3 gives me tiling anyway so it's ok like this)
 
-## Plan to use:
+## Plan to use/customize:
 - Dunst
 - Polybar
