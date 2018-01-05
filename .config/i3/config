@@ -256,6 +256,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Touchpad controls
 #toggle touchpad
+##Does not work for me
 bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggletouchpad.sh
 
 # Media player controls (Requires playerctl)
@@ -270,6 +271,9 @@ bindsym $mod+Ctrl+l exec ~/.config/i3/scripts/screenblurlock.sh
 
 #Shortcuts
 bindsym XF86Calculator exec gnome-calculator
+bindsym Print exec gnome-screenshot -i
+#Can't get the next line to work, works fine in terminal... Have tried with --release but it didn't work
+#bindsym Ctrl+Alt+Print exec gnome-screenshot -ca
 
 #Shutdown options menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
@@ -288,8 +292,7 @@ mode "$mode_system" {
 bindsym $mod+Pause mode "$mode_system"
 
 #Keybinds for i3blocks key indicators
-## The & is to run the process in background, was capturing the keystroke and doing weird things
-###Does not work... :/
+#These make the window flicker a bit and lose focus or whatnot, need to find a better way...
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
