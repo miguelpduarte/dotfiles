@@ -100,13 +100,13 @@ bindsym $mod+a focus parent
 
 #Workspaces
 set $workspace1 "1: General"
-set $workspace2 "2: LCOM"
-set $workspace3 "3: FEUP-Other"
-set $workspace4 "4: Fun "
+set $workspace2 "2: FEUP-Lab "
+set $workspace3 "3: FEUP-Other "
+set $workspace4 "4: Fun&"
 set $workspace5 "5: Loonix"
 set $workspace6 "6: Mail "
 set $workspace7 "7: D&D "
-set $workspace8 "8: Projects"
+set $workspace8 "8: Projs "
 set $workspace9 "9"
 set $workspace10 "10"
 
