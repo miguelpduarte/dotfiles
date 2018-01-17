@@ -121,13 +121,13 @@ if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.s
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
-# Add local 'pip' to PATH:
+# Add local 'pip' to PATH: (Needed for user-only installs)
 #PATH="${PATH}:${HOME}/.local/bin/"
 
-# Import colorscheme from 'wal'
+# Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(wal -r &)
+(cat ~/.cache/wal/sequences &)
 
 
 #To fix vim and less, etc to not freeze with ctrl-s ctrl-q in terminals:
