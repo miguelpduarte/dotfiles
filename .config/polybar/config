@@ -26,6 +26,8 @@ width = 100%
 height = 27
 offset-x = 0
 offset-y = 0
+#Put the bar at the bottom of the screen
+bottom = true
 
 ;background = ${xrdb:color9}
 background = ${colors.background}
@@ -48,7 +50,7 @@ font-0 = fixed:pixelsize=10
 font-1 = unifont:fontformat=truetype:size=6:heavy;-2
 font-2 = siji:pixelsize=10
 
-modules-left = bspwm i3 xwindow
+modules-left = i3 xwindow
 modules-center = 
 modules-right = xbacklight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
 
@@ -96,46 +98,35 @@ label-mounted = %mountpoint%: %percentage_free%%
 label-unmounted = %mountpoint%: not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+strip-wsnumbers = false
 
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
 
 label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-padding = 2 
 
 label-urgent = %index%!
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
 
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
