@@ -32,7 +32,7 @@ floating_modifier $mod
 # start a terminal
 #old: i3-sensible-terminal
 #should really change $TERMINAL to gnome-terminal lol
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill

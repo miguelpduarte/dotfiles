@@ -133,3 +133,8 @@ fi
 #To fix vim and less, etc to not freeze with ctrl-s ctrl-q in terminals:
 #see: https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
 stty -ixon
+
+#Exporting $TERMINAL variable
+#Not sure if this is working, don't think so...
+#If it is not, try sudo update-alternatives --config x-terminal-emulator
+export TERMINAL=/usr/bin/gnome-terminal
