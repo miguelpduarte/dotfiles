@@ -17,3 +17,4 @@ The dotfiles I am currently using in Linux
 ## Requirements:
 - Pavucontrol (for audio display with i3blocks)
 - playerctl (for audio keys control)
+- scrot for screenshots in the blur lock screen (Forgot about that)
