@@ -15,6 +15,7 @@ foreground-alt = #55
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+warning = #db9500
 
 [global/wm]
 margin-top = 5
@@ -296,7 +297,7 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
-;
+;
 type = internal/battery
 ;These might change, check the batteries and adapters:
 ;$ ls -1 /sys/class/power_supply/
@@ -304,17 +305,19 @@ battery = BAT0
 adapter = AC0
 full-at = 98
 
-format-charging =  <animation-charging> <label-charging>
+format-charging =  <label-charging> <animation-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = Dis: <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging> <ramp-capacity>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = "F: "
+;format-full = <label-full>
+;label-full = %percentage%
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
+ramp-capacity-0 = 
 ramp-capacity-0-foreground = ${colors.alert}
 ramp-capacity-1 = 
 ramp-capacity-1-foreground = ${colors.warning}
