@@ -305,6 +305,5 @@ bindsym $mod+Pause mode "$mode_system"
 exec --no-startup-id compton -f
 exec --no-startup-id geary
 exec --no-startup-id spotify
-#autolocking screen after timeout
-## the -corners option specifies that putting the mouse in the top left corner disables the lock (useful for watching movies) and putting it in the top right corner fires the lock
-exec_always --no-startup-id xautolock -time 9 -corners -+00 -notify 5 -notifier "notify-send 'Locking the screen...'" -locker "~/.config/i3/scripts/screenblurlock.sh"
+#autolocking screen after timeout with a script (for modularity and toggling with polybar button)
+exec_always --no-startup-id ~/.config/i3/scripts/screen_timeout_lock.sh
