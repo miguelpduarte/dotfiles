@@ -25,7 +25,7 @@ sudo cp /etc/hostname $HOME/backup-folder/
 sudo fdisk -l > fdisk.bak
 
 #MBR backup
-sudo dd if=$HOME/backup-folder/MBR.bak of=/dev/sda bs=512 count=1
+#sudo dd if=$HOME/backup-folder/MBR.bak of=/dev/sda bs=512 count=1
 
 #Hosts file because of spotify or other custom rules set later
 sudo cp /etc/hosts $HOME/backup-folder/

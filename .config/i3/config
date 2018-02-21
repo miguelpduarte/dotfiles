@@ -41,8 +41,9 @@ bindsym $mod+Shift+q kill
 # Not setting the colors since they should be set by wal
 # Useful ideas
 # -modi combi,window -show combi -combi-modi drun,run
-# -show calc -modi "calc:qalc +u8 -nocurrencies"
-bindsym $mod+d exec "rofi -modi drun,window,keys -show drun -lines 7 -eh 2 -width 100 -padding 300 -opacity '85' -font 'System San Francisco Display 16'"
+# -show calc -modi "calc:qalc +u8 -nocurrencies
+# -width 100 and -fulscreen is redundant so -width 100 was removed
+bindsym $mod+d exec "rofi -modi drun,window,keys -show drun -lines 7 -eh 2 -fullscreen -padding 300 -opacity '85' -font 'System San Francisco Display 16'"
 
 # old rofi run suggestion
 # bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
