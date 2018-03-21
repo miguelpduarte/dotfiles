@@ -139,6 +139,14 @@ stty -ixon
 #If it is not, try sudo update-alternatives --config x-terminal-emulator
 export TERMINAL=/usr/bin/gnome-terminal
 
+##Adding NVM stuff
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+#To make sure there are no apps trying to reinstall old versions of node
+alias nodejs='node'
+
+#Adding yarn global to path
+export PATH="$PATH:$(yarn global bin)"
