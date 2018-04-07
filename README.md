@@ -16,9 +16,10 @@ The dotfiles I am currently using in Linux
 - Dunst
 
 ## Requirements:
-- Pavucontrol (for audio display with i3blocks)
-- playerctl (for audio keys control and listing current song in polybar)
-- scrot for screenshots in the blur lock screen (Forgot about that)
+- `Pavucontrol` (for audio display with i3blocks)
+- `playerctl` (for audio keys control and listing current song in polybar)
+- `scrot` for screenshots in the blur lock screen (Forgot about that)
+- `light` for managing screen backlight (xbacklight stopped working for me)
 
 ### Some notes:
 - If you are using Ubuntu or any \*buntu versions, you might need to install some software "manually" (compile from source) because the repositories might be a bit out of date (IIRC, did that with rofi and pywal at least).
