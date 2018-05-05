@@ -130,7 +130,6 @@ fi
 # ( ) # Hide shell job control messages.
 (cat ~/.cache/wal/sequences &)
 
-
 #To fix vim and less, etc to not freeze with ctrl-s ctrl-q in terminals:
 #see: https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
 stty -ixon
@@ -141,13 +140,14 @@ stty -ixon
 export TERMINAL=/usr/bin/gnome-terminal
 
 ##Adding NVM stuff
+#Fixed performance, see https://github.com/creationix/nvm/issues/539#issuecomment-245791291
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
+alias node='unalias node ; unalias npm ; nvm use default ; node $@'
+alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
 
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #To make sure there are no apps trying to reinstall old versions of node
 alias nodejs='node'
-
-#Adding yarn global to path
-export PATH="$PATH:$(yarn global bin)"
