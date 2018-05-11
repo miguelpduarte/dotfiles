@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+## Init non default ubuntu bashrc stuff
+
 #For powerline (powerline-status)
 (powerline-daemon -q &)
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
