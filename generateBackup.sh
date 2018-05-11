@@ -8,18 +8,18 @@ mkdir $HOME/backup-folder
 sudo cp -R /etc/NetworkManager/system-connections $HOME/backup-folder/
 
 #Copying the passwd file (user configurations, not restoring automatically for now due to possible conflicts, just copied for safekeeping)
-sudo cp /etc/passwd $HOME/backup-folder/
+#sudo cp /etc/passwd $HOME/backup-folder/
 
 #Same for groups file
-sudo cp /etc/group $HOME/backup-folder/
+#sudo cp /etc/group $HOME/backup-folder/
 
 #Same for fstab, just for safekeeping
 sudo cp /etc/fstab $HOME/backup-folder/
 
 #Same as others above
-sudo cp /etc/shadow $HOME/backup-folder/
-sudo cp /etc/sudoers $HOME/backup-folder/
-sudo cp /etc/hostname $HOME/backup-folder/
+#sudo cp /etc/shadow $HOME/backup-folder/
+#sudo cp /etc/sudoers $HOME/backup-folder/
+#sudo cp /etc/hostname $HOME/backup-folder/
 
 #Partition table backup
 sudo fdisk -l > fdisk.bak
