@@ -120,8 +120,8 @@ fi
 
 #For powerline (powerline-status)
 (powerline-daemon -q &)
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+if [ -f ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
 # Add local 'pip' to PATH: (Needed for user-only installs)

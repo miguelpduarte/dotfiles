@@ -12,7 +12,7 @@ set tabstop=8
 set noexpandtab
 
 "powerline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 "To always show powerline hehe
 set laststatus=2
 " Use 256 colours
