@@ -296,7 +296,7 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
@@ -330,8 +330,8 @@ type = internal/battery
 ;These might change, check the batteries and adapters:
 ;$ ls -1 /sys/class/power_supply/
 battery = BAT0
-adapter = AC0
-full-at = 98
+adapter = AC
+full-at = 95
 
 format-charging =  <label-charging> <animation-charging>
 format-charging-underline = #ffb52a
@@ -372,8 +372,8 @@ format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
