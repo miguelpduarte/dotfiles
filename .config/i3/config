@@ -295,7 +295,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+AltGr mode "$mode_system"
+bindsym $mod+End mode "$mode_system"
 
 #Now scrapped since they are no longer needed
 #Keybinds for i3blocks key indicators

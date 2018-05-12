@@ -60,6 +60,7 @@ modules-left = i3
 modules-center = 
 modules-right = volume spotify-song screen_autolock xkeyboard battery temperature date
 
+tray-detached = false
 tray-position = right
 tray-padding = 2
 ;tray-transparent = true
