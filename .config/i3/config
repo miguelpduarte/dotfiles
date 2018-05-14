@@ -277,7 +277,7 @@ bindsym $mod+Ctrl+l exec ~/.config/i3/scripts/screenblurlock.sh
 
 #Shortcuts
 bindsym XF86Calculator exec gnome-calculator
-bindsym Print exec gnome-screenshot -i
+bindsym Print exec --no-startup-id gnome-screenshot -i
 #Can't get the next line to work, works fine in terminal... Have tried with --release but it didn't work
 #bindsym Ctrl+Alt+Print exec gnome-screenshot -ca
 
