@@ -58,7 +58,7 @@ font-3 = "FontAwesome:pixelsize=10;0"
 ; Removed xwindow from left since I already have bar at the top
 ; Removed memory and cpu from right because I did not use them
 modules-left = i3
-modules-center = 
+modules-center =
 modules-right = volume spotify-song screen_autolock xkeyboard battery temperature date
 
 tray-detached = false
@@ -335,14 +335,17 @@ battery = BAT0
 adapter = AC
 full-at = 95
 
-format-charging =  <label-charging> <animation-charging>
+action-start = %{A1:notify-send "$(acpi -b)" -t 2500:}
+action-end = %{A}
+
+format-charging = %{A1:notify-send "$(acpi -b)" -t 2500:} <label-charging> <animation-charging>%{A}
 format-charging-underline = #ffb52a
 
-format-discharging = <label-discharging> <ramp-capacity>
+format-discharging = %{A1:notify-send "$(acpi -b)" -t 2500:}<label-discharging> <ramp-capacity>%{A}
 format-discharging-underline = ${self.format-charging-underline}
 
-;format-full = <label-full>
-;label-full = %percentage%
+format-full = %{A1:notify-send "$(acpi -b)" -t 2500:}<label-full>%{A}
+label-full = %percentage%
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
