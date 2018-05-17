@@ -138,6 +138,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 #Windows in default workspaces assignment
 assign [class="[sS]potify"] $workspace4
 assign [class="Geary"] $workspace6
+assign [class="Thunderbird"] $workspace6
 assign [class="Slack"] $workspace1
 
 
@@ -305,7 +306,7 @@ bindsym $mod+End mode "$mode_system"
 
 #Startup programs
 exec_always --no-startup-id compton -f
-exec --no-startup-id geary
+exec --no-startup-id thunderbird
 exec --no-startup-id spotify
 #Starting polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
