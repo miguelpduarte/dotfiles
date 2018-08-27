@@ -306,6 +306,7 @@ bindsym $mod+End mode "$mode_system"
 
 #Startup programs
 exec_always --no-startup-id compton -f
+exec_always --no-startup-id fusuma
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
 #Starting polybar
