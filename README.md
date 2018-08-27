@@ -11,6 +11,7 @@ The dotfiles I am currently using in Linux
 - powerline (for status line in shell and in vim) - need to find an alternative since the time it takes on shell startup is veeeeery long
 - Polybar
 - yadm for dotfile management (simple and uses git directly so no overhead to learn new commands, highly recommend it!)
+- fusuma for mapping commands to touchpad gestures - very simple to use and configure, recommend it a lot!
 
 ## Plan to use/customize:
 - Dunst
