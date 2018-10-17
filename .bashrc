@@ -156,7 +156,17 @@ alias nodejs='node'
 
 export PATH="/usr/local/sicstus4.4.1/bin/:$PATH"
 
+# Custom commands
+# Opening files in sicstus (Sadly causes loss of shell prefix printing)
 plog() { (echo "consult('$1')."; cat) | sicstus; }
 
+# For merging of pdfs
+# pdfunite is also an option, but this is more efficient and results in smaller files overall
 
-
+# Superb shrinks the size of pdfs by a lot but might not work as expected
+# merge_pdf should be the default option and should work most often
+# prepress is supposedly improved for low resolution pdfs
+# (See https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf)
+merge_pdf_superb() { gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=$@ ; }
+merge_pdf() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$@ ; }
+merge_pdf_prepress() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=$@ ; }
