@@ -304,7 +304,8 @@ bindsym $mod+End mode "$mode_system"
 
 #Startup programs
 exec_always --no-startup-id compton -f
-exec_always --no-startup-id fusuma
+# To ensure that no multiple instances of fusuma are started, was previously an issue
+exec_always --no-startup-id sh -c "pkill fusuma; fusuma -d"
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
 #Starting polybar
