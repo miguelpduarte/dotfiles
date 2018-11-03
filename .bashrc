@@ -154,7 +154,9 @@ alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
 #To make sure there are no apps trying to reinstall old versions of node
 alias nodejs='node'
 
+# Adding standalone executables to path
 export PATH="/usr/local/sicstus4.4.1/bin/:$PATH"
+export PATH="/home/miguel/Software/postman/Postman/:$PATH"
 
 # Custom commands
 # Opening files in sicstus (Sadly causes loss of shell prefix printing)
