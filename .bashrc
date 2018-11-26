@@ -172,3 +172,9 @@ plog() { (echo "consult('$1')."; cat) | sicstus; }
 merge_pdf_superb() { gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=$@ ; }
 merge_pdf() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$@ ; }
 merge_pdf_prepress() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=$@ ; }
+
+# Using awk to get a specific column of a CSV (or similar) file
+# Usage: get_csv_col <file> <colnr>
+# Outputs to stdout by default, can be piped of course
+# Suspended for now due to nested variables not working i think
+get_csv_col() { awk -F "\"*,\"*" "{print \$$2}" $1 ; }
