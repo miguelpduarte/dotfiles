@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # First kill polybar
 #killall -q polybar
 
