@@ -7,17 +7,21 @@ The dotfiles I am currently using in Linux
 - [pywal](https://github.com/dylanaraps/pywal)
 - [i3lock](https://github.com/i3/i3lock) (thinking of trying i3lock-color for further customization)
 - vim
+- [rofi](https://github.com/davatorium/rofi) (because default dmenu launcher is not very cool :P)
 - gnome-terminal (works for me and I see no need to switch - Used terminator before but i3 gives me tiling anyway so it's ok like this)
 - [powerline](https://github.com/powerline/powerline) (for status line in shell and in vim) - need to find an alternative since the time it takes on shell startup is veeeeery long
-- [Polybar](https://github.com/jaagr/polybar)
+- [polybar](https://github.com/jaagr/polybar) (awesome bar!)
 - [yadm](https://thelocehiliosan.github.io/yadm/) for dotfile management (simple and uses git directly so no overhead to learn new commands, highly recommend it!)
 - [fusuma](https://github.com/iberianpig/fusuma) for mapping commands to touchpad gestures - very simple to use and configure, recommend it a lot!
-
-## Plan to use/customize:
 - [Dunst](https://github.com/dunst-project/dunst)
 
-## Requirements:
-- `Pavucontrol` (for audio display with i3blocks)
+## Plan to use/customize/do:
+- Cool custom screenshotting shortcuts
+- Change volume bar to % with a shortcut for changing 1% at a time too
+- Notification muting in taskbar (simillar to the current coffee mug/bed for locking)
+
+## 'Random' Requirements:
+- `pavucontrol` (for audio display with i3blocks)
 - `playerctl` (for audio keys control and listing current song in polybar)
 - `scrot` for screenshots in the blur lock screen
 - `imagemagick` for blurring the screenshot
