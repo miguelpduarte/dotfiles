@@ -157,6 +157,11 @@ alias nodejs='node'
 # Adding standalone executables to path
 export PATH="/usr/local/sicstus4.4.1/bin/:$PATH"
 export PATH="/home/miguel/Software/postman/Postman/:$PATH"
+export PATH="/home/miguel/Software/clojure/joker/:$PATH"
+export PATH="/home/miguel/Software/Go/go/bin/:$PATH"
+
+# Exporting GOPATH
+export GOPATH="/home/miguel/Coding/Go/"
 
 # Custom commands
 # Opening files in sicstus (Sadly causes loss of shell prefix printing)
