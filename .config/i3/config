@@ -272,7 +272,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Lock Screen
-bindsym $mod+Ctrl+l exec ~/.config/i3/scripts/screenblurlock.sh
+# If changing this variable, also change in screen_timeout_lock script (at least for now)
+set $lockerscript "~/.config/i3/scripts/screen_lock_blur.sh"
+bindsym $mod+Ctrl+l exec $lockerscript
 
 #Shortcuts
 bindsym XF86Calculator exec gnome-calculator

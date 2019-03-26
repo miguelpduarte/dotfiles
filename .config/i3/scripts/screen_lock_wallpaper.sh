@@ -1,17 +1,13 @@
 #!/usr/bin/env sh
 
-#overlay="$HOME/.config/i3/res/overlay.png"
-tmpimg="/tmp/lockpic.png"
+#overlay="$HOME/.config/i3/imgs/overlay.png"
+# tmpimg="/tmp/lockpic.png" # Copied from the other script
 
-#take a screenshot and save that to "$tmpimg"
-scrot "$tmpimg"
+# Sourcing pywal variables to get the current wallpaper
+. $HOME/.cache/wal/colors.sh
 
-#add a gaussian blur and save that, overwriting the first picture
-#convert "$tmpimg" -gaussian-blur 0x5 "$tmpimg"
-
-#idea from https://www.reddit.com/r/unixporn/comments/69008j/i3gaps_1984/
-#create a pixelized effect by scaling the image down and then up
-convert "$tmpimg" -scale 10% -scale 1000% "$tmpimg"
+tmpimg="$wallpaper"
+# tmpimg="changeme" # (Arranjar um wallpaper simples fixe, png)
 
 #Apply an icon in the middle of the screen
 #convert "$tmpimg" "$icon" -gravity center -composite -matte "$tmpimg"
@@ -23,7 +19,8 @@ convert "$tmpimg" -scale 10% -scale 1000% "$tmpimg"
 killall -SIGUSR1 dunst
 
 # Suspending xautolock - we don't want to try to lock multiple times...
-pkill xautolock
+# If it's not running (coffee mode) this exits with error but it's ok
+xautolock -disable
 
 # start i3lock with the overlayed + blurred picture at "$tmpimg"
 # not forking in order to pause dunst notifications before locking and unpausing after locking (if forking, then both would run and everything would be the same)
@@ -33,5 +30,5 @@ i3lock -i "$tmpimg" --nofork
 # Unpausing dunst notifications
 killall -SIGUSR2 dunst
 
-# Resuming xautolock (does not deal with being in "coffee mode" after unlocking, but oh well, better to "over lock" than to "under lock")
-(~/.config/i3/scripts/screen_timeout_lock.sh &)
+# Resuming xautolock (like above, if not running exits with error but it's ok)
+xautolock -enable
