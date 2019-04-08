@@ -183,3 +183,6 @@ merge_pdf_prepress() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/
 # Outputs to stdout by default, can be piped of course
 # Suspended for now due to nested variables not working i think
 get_csv_col() { awk -F "\"*,\"*" "{print \$$2}" $1 ; }
+
+# clipboard alias
+alias clipboard='xsel -b'
