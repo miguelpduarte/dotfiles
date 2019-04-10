@@ -1,0 +1,122 @@
+{
+    "segments": {
+		"left": [
+			{
+				"function": "powerline.segments.common.env.virtualenv",
+				"priority": 30
+			},
+			{
+				"function": "powerline.segments.common.env.user",
+				"priority": null
+			},
+			{
+				"function": "powerline.segments.shell.last_pipe_status",
+				"priority": 10
+			},
+			{
+				"function": "powerline.segments.shell.jobnum",
+				"priority": 40
+			},
+			{
+				"function": "powerline.segments.shell.mode"
+			}
+		],
+
+		"right": [],
+
+		"above": [
+			{
+				"left": [
+					{
+						"function": "powerline.segments.common.vcs.stash",
+						"priority": 40
+					},
+					{
+						"function": "powerline.segments.common.vcs.branch",
+						"priority": 20,
+						"args": {
+							"status_colors": true,
+							"ignore_statuses": []
+						}
+					},
+					{
+						"function": "powerline.segments.common.net.hostname",
+						"priority": 10
+					},
+					{
+						"function": "powerline.segments.shell.cwd",
+						"priority": 10,
+						"args": {
+							"dir_shorten_length": 3,
+							"dir_limit_depth": 3,
+							"use_path_separator": false
+						}
+					}
+				],
+				"right": [
+					{
+						"type": "string",
+						"highlight_groups": ["background"],
+						"draw_soft_divider": false,
+						"draw_hard_divider": false,
+						"width": "auto"
+					}
+				]
+			},
+			{
+				"left": [
+					{
+						"function": "powerline.segments.common.players.spotify",
+						"name": "music_spotify",
+						"priority": 50,
+						"args": {
+							"format": "{state_symbol} {artist} - {title} ({total})",
+							"state_symbols": {
+								"play": "",
+								"pause": "",
+								"stop": "",
+								"fallback": ""
+							}
+						}
+					},
+					{
+						"function": "powerline.segments.common.wthr.weather",
+						"priority": 50,
+						"args": {
+							"unit": "C",
+							"location_query": "porto, portugal"
+						},
+						"display": false
+					}
+				],
+				"right": [
+					{
+						"type": "string",
+						"highlight_groups": ["background"],
+						"draw_soft_divider": false,
+						"draw_hard_divider": false,
+						"width": "auto"
+					},
+					{
+						"function": "powerline.segments.common.bat.battery",
+						"priority": 40,
+						"name": "battery",
+						"args": {
+							"online": "",
+							"offline": ""
+						}
+					},
+					{
+                        "function": "powerline.segments.common.time.date",
+						"name": "time",
+						"priority": 30,
+                        "args": {
+                            "format": "%H:%M:%S",
+                            "istime": true
+                        }
+                    }
+				]
+			}
+		]
+    }
+}
