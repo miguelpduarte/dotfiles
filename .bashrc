@@ -186,3 +186,13 @@ get_csv_col() { awk -F "\"*,\"*" "{print \$$2}" $1 ; }
 
 # clipboard alias
 alias clipboard='xsel -b'
+
+alias rui='git pull --ff-only'
+alias rui-rb='git pull --rebase'
+alias miguel='git push'
+
+# https://github.com/nvbn/thefuck
+eval $(thefuck --alias)
+
+# exporting the directory for some useful scripts
+export PATH="/home/miguel/utils/:$PATH"

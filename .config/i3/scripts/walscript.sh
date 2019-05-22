@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# First kill polybar
+# Polybar reload no longer necessary as pywal does it
 #killall -q polybar
 
 walldir="$HOME/Pictures/Wallpapers/alltogethernow"
@@ -15,5 +15,5 @@ ls $walldir | sort -R | tail -$N | while read wallpaper; do
 	break;
 done
 
-# Rerun polybar
-#($HOME/.config/polybar/launch.sh &) &> .err.log
+# Rerun polybar # No longer necessary
+# ($HOME/.config/polybar/launch.sh &) &> .err.log
