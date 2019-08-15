@@ -34,10 +34,48 @@ get_csv_col() { awk -F "\"*,\"*" "{print \$$2}" $1 ; }
 
 weather() { curl "wttr.in${1:+/$1}" ; }
 
-### Other
+# Productivity/Speed-ups
 
-# clipboard alias
+# Creates a directory and instantly switches to it. Only works for one directory (as it only makes sense for one :upside_down:)
+mkcd() { mkdir $1; cd $1; }
+
+# Opening a file directly in vim using fasd
+alias v='f -e vim'
+
+### Other/Random utils
+
+# So I don't have to remember which clipboard manager I'm using now!
 alias clipboard='xsel -b'
 
 # Opening files in sicstus (Sadly causes loss of shell prefix printing)
-plog() { (echo "consult('$1')."; cat) | sicstus; }
+plog() { (echo "consult('$1')."; cat) | sicstus ; }
+
+
+# "format": "{state_symbol} {artist} - {title} ({total})",
+# "play": "",
+# "pause": "",
+# "stop": "",
+# "fallback": ""
+
+# Displays current spotify state if running
+whats_playing() {
+    if ! pgrep -x spotify>/dev/null; then return 0; fi
+
+    local PAUSED_SEP="" PLAYING_SEP=""
+
+    case "$(playerctl status)" in
+        Paused)
+	   SEPARATOR="$PAUSED_SEP"
+    	;;
+        Playing)
+	   SEPARATOR="$PLAYING_SEP"
+    	;;
+        *)
+	    echo "Unknown player state: $(playerctl status)"
+	    return 1
+    	;;
+    esac
+    
+    # ($() of $())"
+    echo "$SEPARATOR $(playerctl metadata artist) - $(playerctl metadata title)" 
+}
