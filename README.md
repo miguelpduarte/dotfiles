@@ -21,7 +21,7 @@ The dotfiles I am currently using in Linux
 
 ## 'Random' Requirements:
 - `pavucontrol` (for audio display with i3blocks) (I think this was dropped in the switch to polybar but not yet sure)
-- [`playerctl`](https://github.com/acrisci/playerctl) for audio keys control and listing current song in polybar - If using ubuntu needs to be built from source as the version is very outdated (new commands are cool too)
+- [`playerctl`](https://github.com/acrisci/playerctl) for audio keys control and listing current song in polybar - If using ubuntu needs to be built from source (or installed from the provided built package) as the version in `apt` is very outdated (new commands are cool too)
 - `scrot` for screenshots in the blur lock screen
 - `imagemagick` for blurring the screenshot
 - `light` for managing screen backlight (xbacklight stopped working for me)
