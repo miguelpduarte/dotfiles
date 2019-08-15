@@ -116,5 +116,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Sourcing custom config
-. ~/.shell-rcs/index.sh
+# Sourcing custom config (split for increased modularity. Should not edit this file anymore now)
+. "$HOME/.shell-rcs/index.sh"
