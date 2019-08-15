@@ -30,6 +30,9 @@ merge_pdf_prepress() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/
 # Suspended for now due to nested variables not working i think
 get_csv_col() { awk -F "\"*,\"*" "{print \$$2}" $1 ; }
 
+### Funny
+
+weather() { curl "wttr.in${1:+/$1}" ; }
 
 ### Other
 

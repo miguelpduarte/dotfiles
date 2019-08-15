@@ -10,4 +10,5 @@ alias nodejs='node'
 # Sourcing other config files
 
 . "$HOME/.shell-rcs/installs.sh"
+. "$HOME/.shell-rcs/prettify.sh"
 . "$HOME/.shell-rcs/aliases.sh"
