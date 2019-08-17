@@ -4,6 +4,9 @@
 alias rui='git pull --ff-only'
 alias rui-rb='git pull --rebase'
 alias miguel='git push'
+# oh-my-stolenzsh
+alias gst='git status'
+# You just lost the
 alias game='git commit --amend'
 alias gamer='game --reuse-message=HEAD'
 
