@@ -18,3 +18,10 @@ eval $(thefuck --alias)
 # fasd: https://github.com/clvv/fasd
 eval "$(fasd --init auto)"
 
+# Adding bash completion for hub (https://github.com/github/hub)
+hub_completion_path='/home/miguel/Software/github hub/hub-linux-amd64-2.12.3/etc/hub.bash_completion.sh'
+if [ -f "$hub_completion_path" ]; then
+    . "$hub_completion_path"
+fi
+unset hub_completion_path
+
