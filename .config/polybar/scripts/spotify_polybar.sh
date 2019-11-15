@@ -5,7 +5,7 @@ if ! pgrep -x spotify > /dev/null; then
 	echo ""; exit
 fi
 
-STATUS=$(playerctl status)
+STATUS=$(playerctl -p spotify status)
 PAUSED_SEP=""
 PLAYING_SEP=""
 
@@ -19,4 +19,4 @@ else
 	echo "Unknown player state";
 fi
 
-echo "$SEPARATOR $(playerctl metadata artist) - $(playerctl metadata title)"
+echo "$SEPARATOR $(playerctl -p spotify metadata artist) - $(playerctl -p spotify metadata title)"
