@@ -48,6 +48,8 @@ mkcd() { mkdir $1; cd $1; }
 
 # Opening a file directly in vim using fasd
 alias v='f -e vim'
+# Adding completion for above alias
+_fasd_bash_hook_cmd_complete v
 
 ### Other/Random utils
 
