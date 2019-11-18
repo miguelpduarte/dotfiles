@@ -67,24 +67,4 @@ plog() { (echo "consult('$1')."; cat) | sicstus ; }
 # "fallback": ""
 
 # Displays current spotify state if running
-whats_playing() {
-    if ! pgrep -x spotify>/dev/null; then return 0; fi
-
-    local PAUSED_SEP="" PLAYING_SEP=""
-
-    case "$(playerctl status)" in
-        Paused)
-	   SEPARATOR="$PAUSED_SEP"
-    	;;
-        Playing)
-	   SEPARATOR="$PLAYING_SEP"
-    	;;
-        *)
-	    echo "Unknown player state: $(playerctl status)"
-	    return 1
-    	;;
-    esac
-    
-    # ($() of $())"
-    echo "$SEPARATOR $(playerctl metadata artist) - $(playerctl metadata title)" 
-}
+alias whats_playing='/home/miguel/.config/polybar/scripts/spotify_polybar.sh'
