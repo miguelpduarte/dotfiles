@@ -3,7 +3,6 @@
 # Adding standalone executables to path
 export PATH="/usr/local/sicstus4.4.1/bin/:$PATH"
 export PATH="/home/miguel/Software/postman/Postman/:$PATH"
-export PATH="/home/miguel/Software/clojure/joker/:$PATH"
 
 # https://asdf-vm.com
 . $HOME/.asdf/asdf.sh
