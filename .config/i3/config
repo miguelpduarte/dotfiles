@@ -98,6 +98,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 #Workspaces
+set $workspace0 "0: External"
 set $workspace1 "1: General"
 set $workspace2 "2: FEUP-Lab "
 set $workspace3 "3: FEUP-Other "
@@ -110,6 +111,7 @@ set $workspace9 "9"
 set $workspace10 "10"
 
 # switch to workspace
+bindsym $mod+backslash workspace $workspace0
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -122,6 +124,7 @@ bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
+bindsym $mod+Shift+backslash move container to workspace $workspace0
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3

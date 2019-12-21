@@ -14,6 +14,11 @@ alias gamer='game --reuse-message=HEAD'
 alias branches-merged='git branch --merged'
 alias branches-not-merged='git branch --no-merged'
 
+### i3wm
+# Usage: i3-move-workspace-to-output <left|down|up|right>
+alias i3-move-workspace-to-output='i3-msg move workspace to output'
+# Usage: i3-focus-output <left|down|up|right>
+alias i3-focus-output='i3-msg focus output'
 
 ### PDF and docs
 
