@@ -136,8 +136,10 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-#Windows in default workspaces assignment
-assign [class="[sS]potify"] $workspace4
+## Windows in default workspaces assignment
+# This does not work, see https://wiki.archlinux.org/index.php/I3#Default_workspace_for_Spotify
+# assign [class="[sS]potify"] $workspace4
+for_window [class="Spotify"] move to workspace $workspace4
 assign [class="Geary"] $workspace6
 assign [class="Thunderbird"] $workspace6
 assign [class="Slack"] $workspace1
