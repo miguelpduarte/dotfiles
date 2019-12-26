@@ -95,9 +95,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
-#Workspaces
+## Workspaces
 set $workspace0 "0: External"
 set $workspace1 "1: General"
 set $workspace2 "2: FEUP-Lab "
@@ -178,8 +178,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#Wallpaper setting with wal
-#exec_always feh -rz --bg-fill ~/Pictures/Wallpapers 
+## Wallpaper setting with wal
 exec --no-startup-id ~/.config/i3/scripts/walscript.sh
 bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/walscript.sh
 
@@ -214,26 +213,21 @@ client.urgent 			$urgent-border	 		$urgent-bg-color   $text-color 		#00ff00
 
 client.background		$bg-color
 
-#Configs from "chaning from gnome to i3" suggestions:
-# custom settings
-exec --no-startup-id gnome-session         # GNOME session
-exec --no-startup-id gnome-settings-daemon # GNOME desktop settings
-#End of those suggestions
 
 #Mousepad natural scrolling fix and buttons activation
 #exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 TapButton3=1
 #Now editing /usr/share/X11/xorg.conf.d/40-libinput.conf for the same effects
 
-#Keybindings for system keys (All here)
+## Keybindings for system keys (All here)
 
 # Pulse Audio controls
 # Mine used 1 after volume, other might use 0
 # After laptop switch now using 0 lul
-#increase sound volume
+# increase sound volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
-#decrease sound volume
+# decrease sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
-#mute sound
+# mute sound
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
 
 # Screen brightness controls
@@ -257,18 +251,20 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Lock Screen
+## Lock Screen
 # If changing this variable, also change in screen_timeout_lock script (at least for now)
 set $lockerscript "~/.config/i3/scripts/screen_lock_blur.sh"
 bindsym $mod+Ctrl+l exec $lockerscript
 
-#Shortcuts
-bindsym XF86Calculator exec gnome-calculator
-bindsym Print exec --no-startup-id gnome-screenshot -i
-#Can't get the next line to work, works fine in terminal... Have tried with --release but it didn't work
-#bindsym Ctrl+Alt+Print exec gnome-screenshot -ca
+## Shortcuts
+# Shortcut no longer present in new laptop
+# bindsym XF86Calculator exec gnome-calculator
+# Switched to xfce
+# bindsym Print exec --no-startup-id gnome-screenshot -i
+bindsym Print exec --no-startup-id xfce4-screenshooter
+bindsym Alt+Print exec --no-startup-id 'xfce4-screenshooter -cr'
 
-#Shutdown options menu
+# Shutdown options menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/.config/i3/scripts/screenblurlock.sh, mode "default"
@@ -284,13 +280,18 @@ mode "$mode_system" {
 }
 bindsym $mod+End mode "$mode_system"
 
-#Startup programs
+## Startup programs (Should consider using ~/.config/autostart/ probably)
 exec_always --no-startup-id picom -bf
 # To ensure that no multiple instances of fusuma are started, was previously an issue
 exec_always --no-startup-id sh -c "pkill fusuma; fusuma -d"
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
-#Starting polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-#autolocking screen after timeout with a script (for modularity and toggling with polybar button)
+# autolocking screen after timeout with a script (for modularity and toggling with polybar button)
 exec_always --no-startup-id ~/.config/i3/scripts/screen_timeout_lock.sh
+
+## DE Session stuff
+# exec --no-startup-id gnome-session         # GNOME session
+# exec --no-startup-id gnome-settings-daemon # GNOME desktop settings
+# Moved from gnome to xfce
+exec --no-startup-id xfce4-session
