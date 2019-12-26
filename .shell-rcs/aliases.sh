@@ -20,6 +20,9 @@ alias i3-move-workspace-to-output='i3-msg move workspace to output'
 # Usage: i3-focus-output <left|down|up|right>
 alias i3-focus-output='i3-msg focus output'
 
+### Arch-stuff (btw I kinda use Arch)
+alias apt-autoremove='yay -Qdtq | yay -Rs -'
+
 ### PDF and docs
 
 # For merging pdfs
