@@ -30,7 +30,8 @@ font pango:Ubuntu 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -280,18 +281,22 @@ mode "$mode_system" {
 }
 bindsym $mod+End mode "$mode_system"
 
-## Startup programs (Should consider using ~/.config/autostart/ probably)
+## Startup programs (Started moving things to ~/.config/autostart/)
 exec_always --no-startup-id picom -bf
-# To ensure that no multiple instances of fusuma are started, was previously an issue
-exec_always --no-startup-id sh -c "pkill fusuma; fusuma -d"
-exec --no-startup-id thunderbird
-exec --no-startup-id spotify
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 # autolocking screen after timeout with a script (for modularity and toggling with polybar button)
 exec_always --no-startup-id ~/.config/i3/scripts/screen_timeout_lock.sh
+
+# TODO: Move to autostart
+# To ensure that no multiple instances of fusuma are started, was previously an issue
+exec_always --no-startup-id sh -c "pkill fusuma; fusuma -d"
+
+# XDG Autostart (https://wiki.archlinux.org/index.php/XDG_Autostart) programs via their desktop entries using dex (https://github.com/jceb/dex)
+exec dex -a -e i3
 
 ## DE Session stuff
 # exec --no-startup-id gnome-session         # GNOME session
 # exec --no-startup-id gnome-settings-daemon # GNOME desktop settings
 # Moved from gnome to xfce
-exec --no-startup-id xfce4-session
+# exec --no-startup-id xfce4-session
+# Moved to no DE <3 (XDG Autostart via dex was very helpful)

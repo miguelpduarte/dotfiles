@@ -4,7 +4,7 @@
 tmpimg="/tmp/lockpic.png"
 
 #take a screenshot and save that to "$tmpimg"
-scrot "$tmpimg"
+scrot -o "$tmpimg"
 
 #add a gaussian blur and save that, overwriting the first picture
 #convert "$tmpimg" -gaussian-blur 0x5 "$tmpimg"

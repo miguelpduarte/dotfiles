@@ -61,8 +61,11 @@ _fasd_bash_hook_cmd_complete v
 
 ### Other/Random utils
 
-# So I don't have to remember which clipboard manager I'm using now!
+# So I don't have to remember which clipboard cli tool I'm using now!
 alias clipboard='xsel -b'
+
+# Cli calculator!
+alias calc='bc -lq'
 
 # Opening files in sicstus (Sadly causes loss of shell prefix printing)
 plog() { (echo "consult('$1')."; cat) | sicstus ; }
