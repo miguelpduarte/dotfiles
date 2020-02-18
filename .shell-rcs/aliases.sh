@@ -42,8 +42,13 @@ merge_pdf_prepress() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/
 # Using awk to get a specific column of a CSV (or similar) file
 # Usage: get_csv_col <file> <colnr>
 # Outputs to stdout by default, can be piped of course
-# Suspended for now due to nested variables not working i think
-get_csv_col() { awk -F "\"*,\"*" "{print \$$2}" $1 ; }
+get_csv_col() { awk -F, "{print \$$2}" $1 ; }
+
+# Using paste to join output by newlines
+# So, for an input of lines of emails, this will result in a comma-separated list of emails
+# Usage: join_lines_by <separator>
+# Ex: cat emails.txt | join_lines_by ,
+join_lines_by() { paste -sd $1 ; }
 
 ### Funny
 
