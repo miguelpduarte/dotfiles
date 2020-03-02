@@ -21,6 +21,7 @@ function __my_prompt_command() {
     local bold_green='\[\033[01;32m\]'
     local bold_blue='\[\033[01;34m\]'
     local bold_purple='\[\033[01;35m\]'
+    local bold_cyan='\[\033[01;36m\]'
     local no_color='\[\033[00m\]'
     
     # TODO make this (spacing between commands) not as bad (newline before each prompt) - investigate sneaky trap option
@@ -28,6 +29,11 @@ function __my_prompt_command() {
     
     # Working directory
     PS1+="$bold_green\w$no_color"
+
+    # Python virtualenv
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+	PS1+=" ${bold_cyan}py(${no_color}$(basename $VIRTUAL_ENV)${bold_cyan})$no_color"
+    fi
 
     # Displaying the current branch if in a git repository
     local branch="$(get_git_branch)"

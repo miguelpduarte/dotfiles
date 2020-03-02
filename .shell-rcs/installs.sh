@@ -30,3 +30,11 @@ if [ -f "$hub_completion_path" ]; then
 fi
 unset hub_completion_path
 
+
+# Performance API (PAPI)
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+
+# virtualenv stuff so I don't have to remember this
+alias venv_create='python -m venv venv'
+# Assumes that you are in the directory of the virtual environment'
+alias venv_activate='source venv/bin/activate'
