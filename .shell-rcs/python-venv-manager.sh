@@ -8,7 +8,7 @@ venv_create() {
     local name="${1:?No name for the environment given.}"
     shift
 
-    python -m venv "$VIRTUAL_ENV_DIR/$name" $*
+    python -m venv "$VIRTUAL_ENV_DIR/$name" "$@"
     return "$?"
 }
 
@@ -16,7 +16,9 @@ venv_activate() {
     local name="${1:?No virtual environment given.}"
     shift
 
+    # shellcheck source=/dev/null
     source "$VIRTUAL_ENV_DIR/$name/bin/activate"
+    return "$?"
 }
 
 # Just so I don't forget it
@@ -32,7 +34,7 @@ venv_destroy() {
 	deactivate
     fi
 
-    rm -rf "$VIRTUAL_ENV_DIR/$name"
+    rm -rf "${VIRTUAL_ENV_DIR:?}/$name"
 }
 
 _venv_names() {
@@ -40,7 +42,25 @@ _venv_names() {
 	return
     fi
 
-    COMPREPLY=($(compgen -W "$(ls "$VIRTUAL_ENV_DIR")" -- "${COMP_WORDS[1]}"))
+    local IFS=$'\n'
+    mapfile -t suggestions < <(compgen -W "$(ls "$VIRTUAL_ENV_DIR")" -- "${COMP_WORDS[1]}")
+
+    for i in "${!suggestions[@]}"; do
+	if [[ "${suggestions[i]}" = *" "* ]]; then
+	    suggestions[$i]="'${suggestions[i]}'"
+	fi
+    done
+
+    COMPREPLY=("${suggestions[@]}")
+
+#    if [ "${#suggestions[@]}" == "1" ] && [[ "${suggestions[0]}" = *" "* ]]; then
+#	# If the suggestion is only 1 and it has spaces, then add '' around it
+#	COMPREPLY=("'${suggestions[0]}'")
+#    else
+#    fi
+
+    # COMPREPLY=($(compgen -W "$(ls "$VIRTUAL_ENV_DIR")" -- "${COMP_WORDS[1]}"))
+
 }
 
 complete -F _venv_names venv_activate
