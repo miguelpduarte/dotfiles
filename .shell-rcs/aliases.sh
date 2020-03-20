@@ -9,6 +9,8 @@ alias gst='git status'
 # You just lost the
 alias game='git commit --amend'
 alias gamer='game --reuse-message=HEAD'
+# Git log short version
+alias glog-s='git log --oneline --decorate'
 # For tracking merged or not merged branches. Aliases kinda unnecessary, but just good reminders to use these useful commands
 # NOTE: Does not play well with GitHub's squash-and-merge, try to squash with interactive rebase first and then merge (without squashing!) using GitHub (or not!)
 alias branches-merged='git branch --merged'
