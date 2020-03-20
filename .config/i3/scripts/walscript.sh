@@ -1,19 +1,13 @@
 #!/usr/bin/env sh
 
+# Directory where the wallpapers are stored
+WALLDIR="$HOME/Pictures/Wallpapers/alltogethernow"
+
 # Polybar reload no longer necessary as pywal does it
-#killall -q polybar
+# killall -q polybar
 
-walldir="$HOME/Pictures/Wallpapers/alltogethernow"
-
-# Run the wal script using a random wallpaper
-#Lists the sources in the wallpaper directory then picks a random one
-#If it can read the wallpaper then it passes the wallpaper to wal so it does its job (just to prevent from passing in a bad path to wal)
-ls $walldir | sort -R | tail -$N | while read wallpaper; do
-	wal -i "$walldir/$wallpaper" --vte;
-	export WALLIMG="$walldir/$wallpaper";
-	echo "meme $WALLIMG";
-	break;
-done
+# Now this is enough since my pywal is no longer broken (not thanks to ubuntu lmao)
+wal -i "$WALLDIR" --vte
 
 # Rerun polybar # No longer necessary
 # ($HOME/.config/polybar/launch.sh &) &> .err.log

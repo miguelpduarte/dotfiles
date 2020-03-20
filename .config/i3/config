@@ -253,8 +253,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 ## Lock Screen
-# If changing this variable, also change in screen_timeout_lock script (at least for now)
-set $lockerscript "~/.config/i3/scripts/screen_lock_blur.sh"
+# i3 config file does not support using environment variables so scripts/configs.sh cannot be used, sadly
+# as such, using a symlink! Why try to complicate a solved problem??
+set $lockerscript "~/.config/i3/scripts/screen_locker.sh"
 bindsym $mod+Ctrl+l exec $lockerscript
 
 ## Shortcuts
@@ -268,7 +269,7 @@ bindsym Alt+Print exec --no-startup-id 'xfce4-screenshooter -cr'
 # Shutdown options menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.config/i3/scripts/screenblurlock.sh, mode "default"
+    bindsym l exec --no-startup-id $lockerscript, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
