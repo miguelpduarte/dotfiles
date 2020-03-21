@@ -24,6 +24,6 @@ convert "$tmpimg" -scale 10% -scale 1000% "$tmpimg"
 # start i3lock with the overlayed + blurred picture at "$tmpimg"
 # not forking in order to pause dunst notifications before locking and unpausing after locking (if forking, then both would run and everything would be the same)
 # Idea from https://faq.i3wm.org/question/5654/how-can-i-disable-notifications-when-the-screen-locks-and-enable-them-again-when-unlocking/index.html
-i3lock -i "$tmpimg" --nofork
+i3lock -ei "$tmpimg" --nofork
 
 "$HOME/.config/i3/scripts/post_lock.sh"

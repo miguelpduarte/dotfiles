@@ -5,19 +5,23 @@
 . "$HOME/.cache/wal/colors.sh"
 
 tmpimg="/tmp/wallpaper_lock"
-# icon="$HOME/.config/i3/imgs/icon.png"
+# icon="$HOME/.config/i3/images/lock-icon_white_small.png"
 # overlay="$HOME/.config/i3/imgs/overlay.png"
 
 # Ensure image fills screen
 # (Should probably do this to every image before even using them as wallpaper, this feels hacky - however, it's easier to do at the moment, I will do that in the future...)
 
 resolution="$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')"
+width="${resolution%x*}"
+height="${resolution#*x}"
 
-echo "$resolution"
-
+# I should vary between $background and $color1 depending on the image. Going to use background for now and if there is an image that should use color1 I can just pre-process it and then this will no longer have any effect :)
 convert "$wallpaper" -resize "$resolution" -background "$background" -compose Copy \
     -gravity center -extent "$resolution" \
     "$tmpimg"
+
+# Add a translucid black circle to the center for having the time and date
+convert "$tmpimg" -gravity center -fill '#000000cf' -draw "translate $((width/2)),$((height/2)) circle 0,0 125,0" "$tmpimg"
 
 # Apply an icon in the middle of the screen
 # convert "$tmpimg" "$icon" -gravity center -composite -matte "$tmpimg"
@@ -30,6 +34,15 @@ convert "$wallpaper" -resize "$resolution" -background "$background" -compose Co
 # start i3lock with the overlayed + blurred picture at "$tmpimg"
 # not forking in order to pause dunst notifications before locking and unpausing after locking (if forking, then both would run and everything would be the same)
 # Idea from https://faq.i3wm.org/question/5654/how-can-i-disable-notifications-when-the-screen-locks-and-enable-them-again-when-unlocking/index.html
-i3lock -i "$tmpimg" --nofork
+i3lock -ei "$tmpimg" \
+    --insidecolor='ffffff00' --ringcolor='ffffffff' --line-uses-inside \
+    --insidevercolor='0000ff00' --insidewrongcolor='ff000000' \
+    --keyhlcolor="${color1/#/}ff" \
+    --radius=125 --veriftext='' --wrongtext='' \
+    --clock --timecolor='ffffffff' --datecolor='ffffffff' \
+    --nofork
+
+    #--indpos="x+w/10:y+h-h/10" \
+    #--timepos="x+w/2:y+h/2" --datepos="tx:ty+20" \
 
 "$HOME/.config/i3/scripts/post_lock.sh"
