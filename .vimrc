@@ -15,6 +15,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+" ii, ai, aI
+Plug 'michaeljsmith/vim-indent-object'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -27,7 +30,17 @@ set relativenumber
 
 " Disables compatibility mode, necessary to have cool features
 set nocp
+syntax enable
 filetype plugin on
+
+" From https://github.com/changemewtf/no_plugins aka the
+" youtube talk "How to Do 90% of What Plugins Do (With Just Vim)")
+" Finding files
+" Search down into subfolders
+" (provides tab completion for all file related tasks)
+set path+=**
+set wildmenu
+
 
 " Tab configuration (test how this works with vim-sensible)
 set softtabstop=4
