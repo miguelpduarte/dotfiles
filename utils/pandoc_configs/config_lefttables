@@ -1,0 +1,18 @@
+---
+documentclass: article
+numbersections: false
+header-includes: |
+    \usepackage[utf8]{inputenc}
+    \usepackage[
+        top    = 2cm,
+        bottom = 2cm,
+        left   = 1.5cm,
+        right  = 1.5cm]{geometry}
+    \usepackage{float}
+    \floatplacement{figure}{H}
+    \usepackage{longtable}
+    \setlength{\LTleft}{2em}
+
+    \usepackage{xcolor}
+---
+

@@ -1,0 +1,14 @@
+---
+documentclass: article
+numbersections: false
+header-includes: |
+    \usepackage[utf8]{inputenc}
+    \usepackage[
+        top    = 2.25cm,
+        bottom = 2.25cm,
+        left   = 2.25cm,
+        right  = 2.25cm]{geometry}
+    \usepackage{float}
+    \floatplacement{figure}{H}
+---
+
