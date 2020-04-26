@@ -13,11 +13,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
 " ii, ai, aI
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'elixir-editors/vim-elixir'
+" Elixir IDE-like stuff
+Plug 'slashmili/alchemist.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -33,14 +37,36 @@ set nocp
 syntax enable
 filetype plugin on
 
+""" Language-specific settings
+" Auto format elixir files on save
+autocmd BufWritePost *.exs silent :!mix format %
+autocmd BufWritePost *.ex silent :!mix format %
+
 " From https://github.com/changemewtf/no_plugins aka the
-" youtube talk "How to Do 90% of What Plugins Do (With Just Vim)")
+" youtube talk "How to Do 90% of What Plugins Do (With Just Vim)"
 " Finding files
 " Search down into subfolders
 " (provides tab completion for all file related tasks)
 set path+=**
 set wildmenu
 
+" Easier split navigation
+" (From https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally)
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+set splitbelow
+set splitright
+
+" Improving netrw
+" Start in tree list mode (not yet sure if this is best since the pointer does not
+" start in the current file/dir, but it's interesting
+" to look at the structure at least)
+" let g:netrw_liststyle=3
+" Toggleable with I, in case it's necessary
+let g:netrw_banner = 0
+let g:netrw_winsize = '30'
 
 " Tab configuration (test how this works with vim-sensible)
 set softtabstop=4
