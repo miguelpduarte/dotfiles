@@ -59,6 +59,13 @@ nnoremap <C-L> <C-W><C-L>
 set splitbelow
 set splitright
 
+" Folding!
+" From https://youtube.com/watch?v=oqYQ7leDs0E
+set foldmethod=indent
+" set foldlevelstart=99 " Commented until I learn folds
+" Toggle fold at current position
+nnoremap <s-tab> za
+
 " Improving netrw
 " Start in tree list mode (not yet sure if this is best since the pointer does not
 " start in the current file/dir, but it's interesting
