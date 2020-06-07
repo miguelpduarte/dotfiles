@@ -14,7 +14,7 @@ Scrolls the file by ensuring that the line that the cursor is at is moved to the
 
 ## Motions
 
-* `it` - in tag, extremly helpful for messing with HTML (for example `cit`)
+* `it` - in tag, extremely helpful for messing with HTML (for example `cit`)
 * `ii`/`ai` - inner indentation/around indentation. Useful for visually selecting code, messing with indentation, etc. (From 'michaeljsmith/vim-indent-object')
 * `aI` - (also from vim-indent-object) 
 
@@ -47,16 +47,28 @@ Already used some, but always good to keep in mind (check ["Let Vim Do The Typin
 It is possible to navigate between matches with the arrow keys or `^n`/`^p`
 
 * `^r` - insert text from a register (extremely useful to replace the typical `"pp` or similar spam)
-* `^a` - inser text from register `.`, what was just inserted
+* `^a` - insert text from register `.`, what was just inserted
 * `^x` - enter "insert completion" mode:
     * `^]` - tag (ctags stuff and such)
     * `^p` - previous context
     * `^n` - next context
     * `^f` - filenames
     * `^l` - line
-    * `^o` - omnicompletion
+    * `^o` - omni completion
+
+## Spellchecking
+
+(See 'help spell' for more)
+
+* To enable spell checking: `:set spell`
+* Go to next bad word: `]s`
+* Go to previous bad word: `[s`
+* To add the word under cursor as a good word: `zg`
+* To add the word under cursor as a bad word: `zw`
+* Undo version of both the commands above: `zug`/`zuw`
+* Find suggestions for bad words: `z=`
+* When in insert mode and the cursor is after a badly spelled word, you can use `^x` to find suggestions
 
 ## Other / To sort
 
-To enable spell checking: `:set spell`
 
