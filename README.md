@@ -15,9 +15,9 @@ The dotfiles I am currently using in Linux
 
 ## Plan to use/customize/do:
 - Cool custom screenshotting shortcuts
-- Volume change keybing modifier key to change 1% at a time
-- Notification muting in taskbar (simillar to the current coffee mug/bed for locking)
-- `xrandr` keybind shortcuts (keep using `arandr` like a n00b)
+- Volume change keybind modifier key to change 1% at a time
+- Notification muting in taskbar (similar to the current coffee mug/bed for locking)
+- `xrandr` keybind shortcuts (I keep using `arandr` like a n00b)
 
 ## 'Random' Requirements:
 - `pavucontrol` (for audio display with i3blocks) (I think this was dropped in the switch to polybar but not yet sure)
@@ -28,7 +28,7 @@ The dotfiles I am currently using in Linux
 
 ## No longer used/dropped:
 - i3blocks (config is still here but now moved to Polybar - commented out or deleted references in i3 config file though)
-- [powerline](https://github.com/powerline/powerline) (bash and vim status line): Felt too slow and configuration mechanism was clunky. Once it failed on me randomly (after an update, probably) I just moved to plain bash `PS1`. Not yet uninstalled since did not configure vim statusline replacement yet.
+- [powerline](https://github.com/powerline/powerline) (bash and vim status line): Felt too slow and configuration mechanism was clunky. Once it failed on me randomly (after an update, probably) I just moved to plain bash `PS1`.
 
 
 ### Some notes:
