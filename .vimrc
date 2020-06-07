@@ -60,7 +60,7 @@ set splitbelow
 set splitright
 
 " Folding!
-" From https://youtube.com/watch?v=oqYQ7leDs0E
+" From https://youtube.com/watch?v=oqYQ7IeDs0E
 set foldmethod=indent
 " set foldlevelstart=99 " Commented until I learn folds
 " Toggle fold at current position

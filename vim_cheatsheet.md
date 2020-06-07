@@ -69,6 +69,22 @@ It is possible to navigate between matches with the arrow keys or `^n`/`^p`
 * Find suggestions for bad words: `z=`
 * When in insert mode and the cursor is after a badly spelled word, you can use `^x` to find suggestions
 
+## Folding
+
+Requires `set foldmethod=indent` in `.vimrc`. See https://youtube.com/watch?v=oqYQ7IeDs0E
+
+* _Reveal_ all folds: `zR`
+* _Minimize_ all folds: `zM`
+* _Reveal_ one level: `zr`
+* _Minimize_ one level: `zm`
+* _Open_ current fold: `zo`
+* _Open_ current fold **recursively**: `zO`
+* _Close_ current fold: `zc`
+* _Close_ current fold **recursively**: `zC`
+* Toggle fold at current position: `za` (I have bound it to <s-tab> as per the video's recommendations and it works pretty well)
+* View cursor line ("open just enough folds to make cursor line visible"): `zv`
+* Toggle `'foldenable'`: `zi`
+
 ## Other / To sort
 
 
