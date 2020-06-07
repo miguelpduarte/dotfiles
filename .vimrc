@@ -74,7 +74,9 @@ set complete=.,w,b,u,t,i,kspell
 " See https://vi.stackexchange.com/questions/6950
 augroup enableSpellByDefault
     autocmd!
-    autocmd FileType latex,tex,markdown,md setlocal spell
+    " Enabling spellchecking by default on latex, markdown and git message
+    " files
+    autocmd FileType latex,tex,markdown,md,gitcommit setlocal spell
     autocmd BufRead,BufNewFile *.md,*.tex setlocal spell
 augroup END
 
