@@ -66,6 +66,18 @@ set foldmethod=indent
 " Toggle fold at current position
 nnoremap <s-tab> za
 
+" Completion options
+" See "help 'complete'"
+set complete=.,w,b,u,t,i,kspell
+
+" Turning on spelling for some file types
+" See https://vi.stackexchange.com/questions/6950
+augroup enableSpellByDefault
+    autocmd!
+    autocmd FileType latex,tex,markdown,md setlocal spell
+    autocmd BufRead,BufNewFile *.md,*.tex setlocal spell
+augroup END
+
 " Improving netrw
 " Start in tree list mode (not yet sure if this is best since the pointer does not
 " start in the current file/dir, but it's interesting
