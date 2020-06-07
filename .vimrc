@@ -39,8 +39,11 @@ filetype plugin on
 
 """ Language-specific settings
 " Auto format elixir files on save
-autocmd BufWritePost *.exs silent :!mix format %
-autocmd BufWritePost *.ex silent :!mix format %
+augroup elixirFormatOnSave
+    autocmd!
+    autocmd BufWritePost *.exs silent :!mix format %
+    autocmd BufWritePost *.ex silent :!mix format %
+augroup END
 
 " From https://github.com/changemewtf/no_plugins aka the
 " youtube talk "How to Do 90% of What Plugins Do (With Just Vim)"
