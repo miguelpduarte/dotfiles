@@ -37,3 +37,26 @@ Can be used in visual selections, with movements, etc
 
 * `gcc` - Toggle comments
 * `gcgc` - Remove sequential line comments (something like this)
+
+## Completion
+
+Already used some, but always good to keep in mind (check ["Let Vim Do The Typing" as well](https://www.youtube.com/watch?v=3TX3kV3TICU))
+
+**Note:** These are insert mode shortcuts
+
+It is possible to navigate between matches with the arrow keys or `^n`/`^p`
+
+* `^r` - insert text from a register (extremely useful to replace the typical `"pp` or similar spam)
+* `^a` - inser text from register `.`, what was just inserted
+* `^x` - enter "insert completion" mode:
+    * `^]` - tag (ctags stuff and such)
+    * `^p` - previous context
+    * `^n` - next context
+    * `^f` - filenames
+    * `^l` - line
+    * `^o` - omnicompletion
+
+## Other / To sort
+
+To enable spell checking: `:set spell`
+
