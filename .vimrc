@@ -79,8 +79,8 @@ augroup enableSpellByDefault
     autocmd!
     " Enabling spellchecking by default on latex, markdown and git message
     " files
-    autocmd FileType latex,tex,markdown,md,gitcommit setlocal spell
-    autocmd BufRead,BufNewFile *.md,*.tex setlocal spell
+    autocmd FileType latex,tex,markdown,md,gitcommit,text setlocal spell
+    autocmd BufRead,BufNewFile *.md,*.tex,*.txt setlocal spell
 augroup END
 
 " Improving netrw
