@@ -23,14 +23,6 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
-# Adding bash completion for hub (https://github.com/github/hub)
-hub_completion_path='/home/miguel/Software/github hub/hub-linux-amd64-2.12.3/etc/hub.bash_completion.sh'
-if [ -f "$hub_completion_path" ]; then
-    . "$hub_completion_path"
-fi
-unset hub_completion_path
-
-
 # Performance API (PAPI)
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
