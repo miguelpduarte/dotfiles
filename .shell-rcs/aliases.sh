@@ -56,15 +56,22 @@ join_lines_by() { paste -sd $1 ; }
 
 weather() { curl "wttr.in${1:+/$1}" ; }
 
-# Productivity/Speed-ups
+### Productivity/Speed-ups
 
 # Creates a directory and instantly switches to it. Only works for one directory (as it only makes sense for one :upside_down:)
-mkcd() { mkdir $1; cd $1; }
+mkcd() { mkdir "$1"; cd "$1"; }
 
 # Opening a file directly in vim using fasd
 alias v='f -e vim'
 # Adding completion for above alias
 _fasd_bash_hook_cmd_complete v
+
+# Opens a new terminal window with the same env (as such will be in the same directory, same py venv, etc)
+alias split_term='(gnome-terminal &)'
+
+# Cleaning up docker (volumes, dangling images and containers, etc)
+# Might need sudo if not in docker group
+alias docker-cleanup='docker system prune -a --volumes'
 
 ### Other/Random utils
 
