@@ -9,10 +9,10 @@ STATUS=$(playerctl -p spotify status)
 PAUSED_SEP=""
 PLAYING_SEP=""
 
-if [ $STATUS = "Paused" ]
+if [ "$STATUS" = "Paused" ]
 then
 	SEPARATOR=$PAUSED_SEP
-elif [ $STATUS = "Playing" ]
+elif [ "$STATUS" = "Playing" ]
 then
 	SEPARATOR=$PLAYING_SEP
 else
