@@ -59,7 +59,7 @@ font-3 = "FontAwesome:pixelsize=10;0"
 ; Removed memory and cpu from right because I did not use them
 modules-left = i3
 modules-center =
-modules-right = volume spotify-song screen_autolock xkeyboard battery temperature date
+modules-right = volume spotify-song screen_autolock dunst_mute xkeyboard battery temperature date
 
 tray-detached = false
 tray-position = right
@@ -105,6 +105,23 @@ label = %output%
 
 ; Clicking with left button toggles the autolock state
 click-left = exec $HOME/.config/polybar/scripts/toggle_autolock.sh
+
+[module/dunst_mute]
+type = custom/script
+
+exec = $HOME/.config/polybar/scripts/display_dunst_mute.sh
+
+interval = 1
+
+format = <label>
+
+;No need for truncating since only 1 character is being displayed
+label = %output%
+
+;tail = true
+
+; Clicking with left button toggles the notification mute state
+click-left = exec $HOME/.config/polybar/scripts/toggle_dunst_mute.sh
 
 [module/filesystem]
 type = internal/fs
