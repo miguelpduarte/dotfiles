@@ -4,7 +4,8 @@ The dotfiles I am currently using in Linux
 ## Currently using:
 - [`i3wm`](https://i3wm.org/)
 - [`pywal`](https://github.com/dylanaraps/pywal)
-- [`i3lock`](https://github.com/i3/i3lock) (thinking of trying i3lock-color for further customization)
+- ~~[`i3lock`](https://github.com/i3/i3lock) (thinking of trying i3lock-color for further customization)~~
+- [`i3lock-color`](https://github.com/Raymo111/i3lock-color) using `i3lock-color` now since it has more features, namely supporting `.png`s which I am using to set my current wallpaper as the lock screen image (along with some color stuff)
 - `vim` - :)
 - [`rofi`](https://github.com/davatorium/rofi) (because default dmenu launcher is not very cool :P)
 - `gnome-terminal` (works for me and I see no need to switch - Used terminator before but i3 gives me tiling anyway so it's ok like this)
@@ -16,8 +17,8 @@ The dotfiles I am currently using in Linux
 ## Plan to use/customize/do:
 - Cool custom screenshotting shortcuts
 - Volume change keybind modifier key to change 1% at a time
-- Notification muting in taskbar (similar to the current coffee mug/bed for locking)
-- `xrandr` keybind shortcuts (I keep using `arandr` like a n00b)
+- ~~Notification muting in taskbar (similar to the current coffee mug/bed for locking)~~ Done
+- `xrandr` keybind shortcuts (I keep using `arandr` like a n00b) - some scripts help for now but could setup i3 modes in the bar or keybinds to change them
 
 ## 'Random' Requirements:
 - `pavucontrol` (for audio display with i3blocks) (I think this was dropped in the switch to polybar but not yet sure)
