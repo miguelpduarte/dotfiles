@@ -6,8 +6,10 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# See https://github.com/polybar/polybar/wiki#dealing-with-xrandr-15-randomized-monitor-names
-export MONITOR=$(polybar -m|tail -1|sed -e 's/:.*$//g')
+# Update: See https://github.com/polybar/polybar/pull/1426
+# # See https://github.com/polybar/polybar/wiki#dealing-with-xrandr-15-randomized-monitor-names
+# # export MONITOR=$(polybar -m|tail -1|sed -e 's/:.*$//g')
+# export MONITOR=$(polybar -m|grep primary|sed -e 's/:.*$//g')
 
 # Launch example bar for the time being
 polybar main &
