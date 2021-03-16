@@ -93,3 +93,5 @@ plog() { (echo "consult('$1')."; cat) | sicstus ; }
 
 # Displays current spotify state if running
 alias whats_playing='/home/miguel/.config/polybar/scripts/spotify_polybar.sh'
+# Sometimes the wallpapers do not have the best color schemes for the terminal, sadly
+alias sane-wal='wal --theme ashes'
