@@ -7,6 +7,10 @@ stty -ixon
 #To make sure there are no apps trying to reinstall old versions of node
 alias nodejs='node'
 
+# Just in case something wants me to edit something, to avoid loading into nano or vi...
+export EDITOR=vim
+# As it should be <3
+
 # Sourcing other config files
 
 . "$HOME/.shell-rcs/installs.sh"
