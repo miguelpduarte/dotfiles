@@ -17,6 +17,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
+" Emmet for vim, trigger with <c-y>,
+Plug 'mattn/emmet-vim'
 " ii, ai, aI
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'elixir-editors/vim-elixir'
@@ -83,14 +85,18 @@ augroup enableSpellByDefault
     autocmd BufRead,BufNewFile *.md,*.tex,*.txt setlocal spell
 augroup END
 
-" Improving netrw
-" Start in tree list mode (not yet sure if this is best since the pointer does not
-" start in the current file/dir, but it's interesting
-" to look at the structure at least)
-" let g:netrw_liststyle=3
+"" Improving netrw
 " Toggleable with I, in case it's necessary
 let g:netrw_banner = 0
 let g:netrw_winsize = '30'
+" " Start in tree list mode (not yet sure if this is best since the pointer does not
+" " start in the current file/dir, but it's interesting
+" " to look at the structure at least)
+" let g:netrw_liststyle=3 " Disabled
+
+" map - to opening netrw in current file location (current dir)
+" Inspired by vim-vinegar
+map - :Explore<CR>
 
 " Tab configuration (test how this works with vim-sensible)
 set softtabstop=4
