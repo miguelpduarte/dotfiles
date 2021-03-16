@@ -32,7 +32,7 @@ function __my_prompt_command() {
 
     # Python virtualenv
     if [[ -n "$VIRTUAL_ENV" ]]; then
-	PS1+=" ${bold_cyan}py(${no_color}$(basename $VIRTUAL_ENV)${bold_cyan})$no_color"
+	PS1+=" ${bold_cyan}py(${no_color}$(basename ""$VIRTUAL_ENV"")${bold_cyan})$no_color"
     fi
 
     # Displaying the current branch if in a git repository
