@@ -23,7 +23,11 @@ alias i3-move-workspace-to-output='i3-msg move workspace to output'
 alias i3-focus-output='i3-msg focus output'
 
 ### Arch-stuff (btw I kinda use Arch)
+# yay -Yc seems easier and more useful (?)
 alias apt-autoremove='yay -Qdtq | yay -Rs -'
+
+### task (warrior)
+alias tn='task next'
 
 ### PDF and docs
 
