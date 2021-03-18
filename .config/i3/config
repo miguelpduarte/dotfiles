@@ -247,10 +247,10 @@ bindsym Shift+XF86MonBrightnessUp exec "notify-send 'Brightness at ' $(light -G)
 
 # Media player controls (Requires playerctl)
 # Have to use play-pause since play button is the same as the pause one for my pc
-bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
 #bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
 
 ## Lock Screen
 # i3 config file does not support using environment variables so scripts/configs.sh cannot be used, sadly

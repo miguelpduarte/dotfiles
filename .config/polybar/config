@@ -220,9 +220,9 @@ label = %output:0:70...%
 ; Clicking with left button toggles the state between play and paused
 ; Clicking with the right button skips the song and with the middle goes back to the previous one
 ; Probably will see little use except play pause but it sounds interesting
-click-left = playerctl play-pause
-click-right = playerctl next
-click-middle = playerctl previous
+click-left = playerctl -p spotify play-pause
+click-right = playerctl -p spotify next
+click-middle = playerctl -p spotify previous
 
 
 [module/xbacklight]
