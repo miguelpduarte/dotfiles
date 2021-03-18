@@ -27,7 +27,8 @@ alias i3-focus-output='i3-msg focus output'
 alias apt-autoremove='yay -Qdtq | yay -Rs -'
 
 ### task (warrior)
-alias tn='task next'
+# task ready to hide blocked or waiting stuff. Cannot use tr since that's a linux util
+alias tt='task ready'
 
 ### PDF and docs
 
