@@ -144,6 +144,7 @@ for_window [class="Spotify"] move to workspace $workspace4
 assign [class="Geary"] $workspace6
 assign [class="Thunderbird"] $workspace6
 assign [class="Slack"] $workspace1
+assign [class="TelegramDesktop"] $workspace1
 
 
 # reload the configuration file
