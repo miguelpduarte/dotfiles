@@ -27,8 +27,14 @@ alias i3-focus-output='i3-msg focus output'
 alias apt-autoremove='yay -Qdtq | yay -Rs -'
 
 ### task (warrior)
-# task ready to hide blocked or waiting stuff. Cannot use tr since that's a linux util
+# Task ready to hide blocked or waiting stuff. Cannot use tr since that's a linux util
 alias tt='task ready'
+# Tasks done today https://www.reddit.com/r/taskwarrior/comments/n7nlpi/how_do_i_list_the_tasks_i_completed_today/
+alias tdt='task end.after:yesterday completed'
+# Tasks done yesterday, same idea as above
+alias tdy='task end.after:yesterday-1d end.before:yesterday completed'
+# Tasks done in the week, since the previous sunday (maybe change to start "counting" on monday?) (also maybe breaks on sunday, not sure)
+alias tdw='task end.after:sun-1w completed'
 
 ### PDF and docs
 
