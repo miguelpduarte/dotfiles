@@ -13,6 +13,7 @@ The dotfiles I am currently using in Linux
 - [`yadm`](https://thelocehiliosan.github.io/yadm/) for dotfile management (simple and uses git directly so no overhead to learn new commands, highly recommend it!)
 - [`fusuma`](https://github.com/iberianpig/fusuma) for mapping commands to touchpad gestures - very simple to use and configure, recommend it a lot!
 - [`Dunst`](https://github.com/dunst-project/dunst)
+- [`redshift`](https://github.com/jonls/redshift/) for reducing the eye sore of hacking late at night :^)
 
 ## Plan to use/customize/do:
 - Cool custom screenshotting shortcuts
