@@ -48,19 +48,10 @@ function __my_prompt_command() {
     PS1+="\n${debian_chroot:+($debian_chroot)}$bold_red\u@\h$no_color\$ "
 }
 
-# Applying my prompt
-PROMPT_COMMAND=__my_prompt_command
-
-# Show only the last 3 directory names (requires Bash 4)
-PROMPT_DIRTRIM=3
-
-# Keeping defaults for safety
-DEFAULT_COLOR_PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
 ## Stolen stuff from ubuntu .bashrc (some slight changes)
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|alacritty) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -79,14 +70,23 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Keeping ubuntu defaults just cos
+DEFAULT_COLOR_PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
 if [ "$color_prompt" = yes ]; then
+    # Just a base PS1 - Used to use MY_PS1 before, but I'm using PROMPT_COMMAND now.
     PS1="${MY_PS1:-$DEFAULT_COLOR_PS1}"
+
+    # Applying my prompt
+    PROMPT_COMMAND=__my_prompt_command
+
+    # Show only the last 3 directory names (requires Bash 4+)
+    PROMPT_DIRTRIM=3
 else
-    # Ensuring  that when color is not supported no changes to PS1 are done
+    # Ensuring that when color is not supported no changes to PS1 are done
     # Should probably provide colorless version, but too lazy atm and do not enter colorless shells too often :^)
     unset __my_prompt_command
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
-## End stolen stuff
 
+unset color_prompt force_color_prompt
