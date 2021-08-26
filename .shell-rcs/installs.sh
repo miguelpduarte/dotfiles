@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
-## Adding standalone executables and libraries to path
-# export PATH="/usr/local/sicstus4.4.1/bin/:$PATH"
-# export PATH="/home/miguel/Software/postman/Postman/:$PATH"
-# Performance API (PAPI)
-# export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-
 ## https://asdf-vm.com
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# yadm completions
+source /usr/share/bash-completion/completions/yadm
 
 # exporting the utils directory for some useful scripts
 export PATH="/home/miguel/utils/:$PATH"
@@ -25,7 +22,7 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
-
+## My stuff (custom made / configurations)
 # Getting python virtualenv manager aliases and functions
 . "$HOME/.shell-rcs/python-venv-manager.sh"
 # Sourcing fzf and ripgrep setup (check https://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before-2/)
