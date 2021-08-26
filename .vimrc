@@ -13,17 +13,27 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'itchyny/vim-gitbranch'
-Plug 'itchyny/lightline.vim'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-" Emmet for vim, trigger with <c-y>,
-Plug 'mattn/emmet-vim'
 " ii, ai, aI
 Plug 'michaeljsmith/vim-indent-object'
+" Emmet for vim, trigger with <c-y>,
+Plug 'mattn/emmet-vim'
+
+" status bar and helpers
+Plug 'itchyny/vim-gitbranch'
+Plug 'itchyny/lightline.vim'
+
+" 'IDE' stuff
+Plug 'dense-analysis/ale'
+
+""" Language-specific stuff
+"" Elixir
 Plug 'elixir-editors/vim-elixir'
 " Elixir IDE-like stuff
 Plug 'slashmili/alchemist.vim'
+"" Rust
+Plug 'rust-lang/rust.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -46,6 +56,21 @@ augroup elixirFormatOnSave
     autocmd BufWritePost *.exs silent :!mix format %
     autocmd BufWritePost *.ex silent :!mix format %
 augroup END
+
+" Autoformat Rust files on save (See https://github.com/rust-lang/rust.vim#formatting-with-rustfmt)
+let g:rustfmt_autosave = 1
+
+"" ALE stuff
+" Using ALE for completion
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+" ^ this seems to be working for now.
+" For more details on errors use `:ALEDetail` (TODO: bind this to some keys to
+" toggle the preview easier)
+" From https://www.reddit.com/r/vim/comments/e87nn1/whats_your_setup_for_rust_development/faa55ts/
+let g:ale_linters = {
+	    \ 'rust': ['cargo', 'rls', 'rustc', 'clippy', 'rustfmt']
+	    \ }
 
 " From https://github.com/changemewtf/no_plugins aka the
 " youtube talk "How to Do 90% of What Plugins Do (With Just Vim)"
