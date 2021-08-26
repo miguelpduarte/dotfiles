@@ -55,13 +55,13 @@ merge_pdf_prepress() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/
 # Using awk to get a specific column of a CSV (or similar) file
 # Usage: get_csv_col <file> <colnr>
 # Outputs to stdout by default, can be piped of course
-get_csv_col() { awk -F, "{print \$$2}" $1 ; }
+get_csv_col() { awk -F, "{print \$$2}" "$1" ; }
 
 # Using paste to join output by newlines
 # So, for an input of lines of emails, this will result in a comma-separated list of emails
 # Usage: join_lines_by <separator>
 # Ex: cat emails.txt | join_lines_by ,
-join_lines_by() { paste -sd $1 ; }
+join_lines_by() { paste -sd "$1" ; }
 
 ### Funny
 
@@ -70,7 +70,7 @@ weather() { curl "wttr.in${1:+/$1}" ; }
 ### Productivity/Speed-ups
 
 # Creates a directory and instantly switches to it. Only works for one directory (as it only makes sense for one :upside_down:)
-mkcd() { mkdir "$1"; cd "$1"; }
+mkcd() { mkdir "$1"; cd "$1" || exit; }
 
 # Opening a file directly in vim using fasd
 alias v='f -e vim'
@@ -78,7 +78,8 @@ alias v='f -e vim'
 _fasd_bash_hook_cmd_complete v
 
 # Opens a new terminal window with the same env (as such will be in the same directory, same py venv, etc)
-alias split_term='(gnome-terminal &)'
+# alias split_term='(gnome-terminal &)'
+alias split_term='(xfce4-terminal &)'
 
 # Cleaning up docker (volumes, dangling images and containers, etc)
 # Might need sudo if not in docker group
@@ -94,13 +95,6 @@ alias calc='bc -lq'
 
 # Opening files in sicstus (Sadly causes loss of shell prefix printing)
 plog() { (echo "consult('$1')."; cat) | sicstus ; }
-
-
-# "format": "{state_symbol} {artist} - {title} ({total})",
-# "play": "",
-# "pause": "",
-# "stop": "",
-# "fallback": ""
 
 # Displays current spotify state if running
 alias whats_playing='/home/miguel/.config/polybar/scripts/spotify_polybar.sh'
