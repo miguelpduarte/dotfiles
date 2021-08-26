@@ -28,3 +28,5 @@ unset fasd_cache
 
 # Getting python virtualenv manager aliases and functions
 . "$HOME/.shell-rcs/python-venv-manager.sh"
+# Sourcing fzf and ripgrep setup (check https://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before-2/)
+. "$HOME/.shell-rcs/fzf-rg-combomeal.sh"

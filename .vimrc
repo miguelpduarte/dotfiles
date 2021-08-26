@@ -9,11 +9,11 @@ endif
 " (Plugins will be downloaded under the specified directory.)
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins.
+" General plugins
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 " ii, ai, aI
 Plug 'michaeljsmith/vim-indent-object'
@@ -23,6 +23,11 @@ Plug 'mattn/emmet-vim'
 " status bar and helpers
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
+
+" Check out https://github.com/junegunn/fzf.vim to be blown away by all the
+" features
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " 'IDE' stuff
 Plug 'dense-analysis/ale'
@@ -71,6 +76,15 @@ set omnifunc=ale#completion#OmniFunc
 let g:ale_linters = {
 	    \ 'rust': ['cargo', 'rls', 'rustc', 'clippy', 'rustfmt']
 	    \ }
+
+"" FZF stuff
+" See https://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before-2/
+" Not sure about this one, seems like a lot of options and I might not be
+" "fine" with all of them, especially in regards to file formats.
+" let g:rg_command = '
+"   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+"   \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+"   \ -g "!{.git,node_modules,vendor}/*" '
 
 " From https://github.com/changemewtf/no_plugins aka the
 " youtube talk "How to Do 90% of What Plugins Do (With Just Vim)"
