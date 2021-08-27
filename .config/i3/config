@@ -100,10 +100,11 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
 ## Workspaces
+### Get icons from https://fontawesome.com/v5/cheatsheet?from=io
 set $workspace0 "0: External"
 set $workspace1 "1: General"
-set $workspace2 "2: FEUP-Lab "
-set $workspace3 "3: FEUP-Other "
+set $workspace2 "2: Hacklab "
+set $workspace3 "3: Study "
 set $workspace4 "4: Fun "
 set $workspace5 "5: Loonix"
 set $workspace6 "6: Mail "
