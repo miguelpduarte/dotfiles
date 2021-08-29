@@ -90,8 +90,8 @@ let g:ale_linters = {
 " youtube talk "How to Do 90% of What Plugins Do (With Just Vim)"
 " Finding files
 " Search down into subfolders
-" (provides tab completion for all file related tasks)
 set path+=**
+" (provides tab completion for all file related tasks)
 set wildmenu
 
 " Easier split navigation
@@ -102,6 +102,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 set splitbelow
 set splitright
+
+" Maintain visual mode after shifting indentation (from https://vim-bootstap.com)
+vmap < <gv
+vmap > >gv
 
 " Folding!
 " From https://youtube.com/watch?v=oqYQ7IeDs0E
