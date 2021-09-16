@@ -1,0 +1,23 @@
+configuration {
+    eh: 2;
+}
+
+window {
+    fullscreen: true;
+    /* transparency: "real"; */
+    font: "System San Francisco Display 16";
+    lines: 7; /* idk what this does tbh */
+}
+
+/* Pywal themes imports */
+/* Dark theme. */
+@import "~/.cache/wal/colors-rofi-dark"
+/* Light theme.*/
+/* @import "~/.cache/wal/colors-rofi-light.rasi" */
+
+/* Old stuff */
+/* -padding 300 */
+/* exec "rofi -modi drun,window,keys -show drun -lines 7 -eh 2 -opacity '85' -font 'System San Francisco Display 16'" */
+/* The above flags are no longer necessary, now the command can simply be: */
+/* exec "rofi -modi drun,window,keys -show drun" */
+/* Only with the caveat that neither lines nor opacity were working anyway */
