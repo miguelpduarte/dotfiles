@@ -74,7 +74,7 @@ set omnifunc=ale#completion#OmniFunc
 " toggle the preview easier)
 " From https://www.reddit.com/r/vim/comments/e87nn1/whats_your_setup_for_rust_development/faa55ts/
 let g:ale_linters = {
-	    \ 'rust': ['cargo', 'rls', 'rustc', 'clippy', 'rustfmt']
+	    \ 'rust': ['cargo', 'rls', 'clippy', 'rustfmt']
 	    \ }
 
 "" FZF stuff
