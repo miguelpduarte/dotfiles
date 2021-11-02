@@ -63,6 +63,10 @@ get_csv_col() { awk -F, "{print \$$2}" "$1" ; }
 # Ex: cat emails.txt | join_lines_by ,
 join_lines_by() { paste -sd "$1" ; }
 
+# See https://unix.stackexchange.com/questions/159253/decoding-url-encoding-percent-encoding
+alias urlencode='python3 -c "import sys, urllib.parse as ul; [sys.stdout.write(ul.quote_plus(l)) for l in sys.stdin]"'
+alias urldecode='python3 -c "import sys, urllib.parse as ul; [sys.stdout.write(ul.unquote_plus(l)) for l in sys.stdin]"'
+
 ### Funny
 
 weather() { curl "wttr.in${1:+/$1}" ; }
