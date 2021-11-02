@@ -84,6 +84,8 @@ _fasd_bash_hook_cmd_complete v
 # Opens a new terminal window with the same env (as such will be in the same directory, same py venv, etc)
 # alias split_term='(gnome-terminal &)'
 alias split_term='(xfce4-terminal &)'
+# Bind to <Alt-s>
+bind -x '"\es": split_term;'
 
 # Cleaning up docker (volumes, dangling images and containers, etc)
 # Might need sudo if not in docker group
