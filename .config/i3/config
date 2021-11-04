@@ -243,6 +243,13 @@ bindsym XF86MonBrightnessDown exec light -U 10
 # get current screen brightness
 bindsym Shift+XF86MonBrightnessUp exec "notify-send 'Brightness at ' $(light -G)"
 
+# Notification (dunst) controls
+# From 1.7.0 onwards, dunst has removed support for shortcuts, which should now be managed by the WM/DE's shortcut manager + dunstctl
+bindsym ctrl+space exec "dunstctl close"
+bindsym ctrl+shift+space exec "dunstctl close-all"
+bindsym ctrl+backslash exec "dunstctl history-pop"
+# bindsym ctrl+shift+period exec "dunstctl context" # I don't know what this does
+
 # Touchpad controls
 #toggle touchpad
 ##Does not work for me
