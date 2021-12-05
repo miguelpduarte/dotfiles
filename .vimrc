@@ -73,9 +73,14 @@ set omnifunc=ale#completion#OmniFunc
 " For more details on errors use `:ALEDetail` (TODO: bind this to some keys to
 " toggle the preview easier)
 " From https://www.reddit.com/r/vim/comments/e87nn1/whats_your_setup_for_rust_development/faa55ts/
-let g:ale_linters = {
-	    \ 'rust': ['cargo', 'rls', 'clippy', 'rustfmt']
-	    \ }
+" let g:ale_linters = {
+" 	    \ 'rust': ['cargo', 'rls', 'clippy', 'rustfmt']
+" 	    \ }
+let g:ale_linters = {}
+let g:ale_fixers = {}
+let g:ale_linters['rust'] = ['analyzer', 'cargo']
+let g:ale_fixers['rust'] = ['rustfmt', 'remove_trailing_lines', 'trim_whitespace']
+let g:ale_rust_cargo_use_clippy = 1
 
 "" FZF stuff
 " See https://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before-2/
