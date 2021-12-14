@@ -60,7 +60,7 @@ font-3 = "FontAwesome:pixelsize=10;0"
 ; Removed memory and cpu from right because I did not use them
 modules-left = i3
 modules-center =
-modules-right = volume spotify-song screen_autolock dunst_mute xkeyboard battery date
+modules-right = volume spotify-song screen_autolock dunst_mute battery date
 
 tray-detached = false
 tray-position = right
