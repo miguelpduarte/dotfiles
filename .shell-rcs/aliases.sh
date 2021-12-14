@@ -106,3 +106,6 @@ plog() { (echo "consult('$1')."; cat) | sicstus ; }
 alias whats_playing='/home/miguel/.config/polybar/scripts/spotify_polybar.sh'
 # Sometimes the wallpapers do not have the best color schemes for the terminal, sadly
 alias sane-wal='wal --theme ashes'
+
+# Add autocompletion to pwntools' checksec for files
+complete -f checksec
