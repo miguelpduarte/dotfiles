@@ -43,7 +43,7 @@ convert "$wallpaper" -sample "$resolution" -background "$background" -gravity ce
 # start i3lock with the overlayed + wallpaper picture at "$tmpimg"
 # not forking in order to pause dunst notifications before locking and unpausing after locking
 # Idea from https://faq.i3wm.org/question/5654/how-can-i-disable-notifications-when-the-screen-locks-and-enable-them-again-when-unlocking/index.html
-i3lock -ei "$tmpimg" \
+i3lock -eCi "$tmpimg" \
     --inside-color='ffffff00' --ring-color='ffffffff' --line-uses-inside \
     --insidever-color='0000ff00' --insidewrong-color='ff000000' \
     --keyhl-color="${color1/#/}ff" \
