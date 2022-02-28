@@ -23,6 +23,8 @@ Plug 'mattn/emmet-vim'
 " status bar and helpers
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
+" pywal colorscheme
+Plug 'dylanaraps/wal.vim'
 
 " Check out https://github.com/junegunn/fzf.vim to be blown away by all the
 " features
@@ -53,6 +55,10 @@ set relativenumber
 set nocp
 syntax enable
 filetype plugin on
+
+" Change the colorscheme to use the one provided by pywal's plugin.
+" See https://github.com/dylanaraps/pywal/wiki/Customization#vim
+colorscheme wal
 
 """ Language-specific settings
 " Auto format elixir files on save
