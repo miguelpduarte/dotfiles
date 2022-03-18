@@ -48,6 +48,8 @@ bindsym --release $mod+d exec "rofi -modi drun,window,keys -show drun"
 # old rofi run suggestion
 # bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
+# Enable quick window jumping using wmfocus
+bindsym --release $mod+g exec "wmfocus -f 'Ubuntu':50 --bgcolor 'rgba(30, 30, 30, 0.8)'"
 
 # change focus
 bindsym $mod+h focus left
@@ -291,10 +293,8 @@ bindsym $mod+Ctrl+l exec $lockerscript
 ## Shortcuts
 # Shortcut no longer present in new laptop
 # bindsym XF86Calculator exec gnome-calculator
-# Switched to xfce
-# bindsym Print exec --no-startup-id gnome-screenshot -i
+
 bindsym Print exec --no-startup-id flameshot gui
-# bindsym Alt+Print exec --no-startup-id xfce4-screenshooter -cr
 
 # Shutdown options menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
