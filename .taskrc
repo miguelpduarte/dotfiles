@@ -13,13 +13,18 @@
 # Files
 data.location=~/.task
 
+# rc.recurrence.limit=0
+# taskserver issue 46
+# TODO: Consider migrating off of inthe.am to an actual taskd instance so that this problem no longer happens
+recurrence=off
+
 # Inthe.AM task sync
 taskd.certificate=~/taskwarrior-intheam/private.certificate.pem
 taskd.key=~/taskwarrior-intheam/private.key.pem
 taskd.ca=~/taskwarrior-intheam/ca.cert.pem
 taskd.server=inthe.am:53589
 taskd.credentials=REDACTED
-taskd.trust=ignore hostname
+taskd.trust=strict
 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
@@ -45,6 +50,23 @@ report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
 
+# Config
+list.all.tags=1
+list.all.projects=1
+# # Default project should be review so that the tag is reviewed and assigned. This is for mobile
+# default.project=review
+
 # Custom urgency coefficients
-urgency.user.project.feup.tese.coefficient=2.0
-urgency.user.project.personal.meta-org.coefficient=1.0
+# urgency.user.project.feup.tese.coefficient=2.0 # Deprecated
+# Value personal stuff
+urgency.user.project.personal.coefficient=1.0
+# Especially organization
+urgency.user.project.personal.meta-org.coefficient=2.0
+# Start with easy things to get going
+urgency.user.tag.ezpz.coefficient=2.5
+# Review first
+urgency.user.tag.review.coefficient=99.0
+urgency.user.project.review.coefficient=99.0
+# Taskwarrior is nice, and setting up stuff might be boring but is important
+urgency.user.tag.tw.coefficient=1.0
+news.version=2.6.0
