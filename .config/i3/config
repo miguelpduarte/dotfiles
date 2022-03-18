@@ -151,6 +151,23 @@ assign [class="Thunderbird"] $workspace6
 assign [class="Slack"] $workspace1
 assign [class="TelegramDesktop"] $workspace1
 
+## Monitors
+# Define monitors
+set $main_monitor eDP1
+set $second_monitor DP1
+# Assign workspaces to monitors
+workspace $workspace0 output $second_monitor $main_monitor
+workspace $workspace1 output $main_monitor
+workspace $workspace2 output $main_monitor
+workspace $workspace3 output $main_monitor
+workspace $workspace4 output $main_monitor
+workspace $workspace5 output $main_monitor
+workspace $workspace6 output $main_monitor
+workspace $workspace7 output $main_monitor
+workspace $workspace8 output $main_monitor
+workspace $workspace9 output $main_monitor
+workspace $workspace10 output $main_monitor
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
