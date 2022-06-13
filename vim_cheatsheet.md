@@ -15,8 +15,8 @@ Scrolls the file by ensuring that the line that the cursor is at is moved to the
 ## Motions
 
 * `it` - in tag, extremely helpful for messing with HTML (for example `cit`)
-* `ii`/`ai` - inner indentation/around indentation. Useful for visually selecting code, messing with indentation, etc. (From 'michaeljsmith/vim-indent-object')
-* `aI` - (also from vim-indent-object) 
+* `ii`/`ai` - inner indentation/around indentation. Useful for visually selecting code, messing with indentation, etc. (From `michaeljsmith/vim-indent-object`)
+* `aI` - (also from `vim-indent-object`) 
 
 ## Cursor placement
 
@@ -84,6 +84,17 @@ Requires `set foldmethod=indent` in `.vimrc`. See https://youtube.com/watch?v=oq
 * Toggle fold at current position: `za` (I have bound it to <s-tab> as per the video's recommendations and it works pretty well)
 * View cursor line ("open just enough folds to make cursor line visible"): `zv`
 * Toggle `'foldenable'`: `zi`
+
+## Netrw / File navigation
+
+* Cycle through view types (thin, long, wide and tree): `i`
+* Toggle help banner: `I`
+* Create new folder/directory: `d`
+* Create new file: `%`
+
+## Vim help
+
+* Jump to link under cursor: `^]` (Also see https://vi.stackexchange.com/questions/5299/problem-following-links-of-vims-doc-help-on-the-terminal if this ever stops working due to keyboard layout issues)
 
 ## Other / To sort
 
