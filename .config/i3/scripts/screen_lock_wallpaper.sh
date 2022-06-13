@@ -48,7 +48,7 @@ i3lock -eCi "$tmpimg" \
     --insidever-color='0000ff00' --insidewrong-color='ff000000' \
     --keyhl-color="${color1/#/}ff" \
     --radius=125 --verif-text='' --wrong-text='' \
-    --clock --time-color='ffffffff' --date-color='ffffffff' \
+    --clock --date-str='%A, %d/%m/%y' --time-color='ffffffff' --date-color='ffffffff' \
     --nofork
 
     #--indpos="x+w/10:y+h-h/10" \
