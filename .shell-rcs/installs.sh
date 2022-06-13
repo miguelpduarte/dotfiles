@@ -10,6 +10,9 @@ source /usr/share/bash-completion/completions/yadm
 # exporting the utils directory for some useful scripts
 export PATH="/home/miguel/utils/:$PATH"
 
+# Add cargo installed packages to PATH
+export PATH="~/.cargo/bin:$PATH"
+
 # https://github.com/nvbn/thefuck
 eval "$(thefuck --alias)"
 

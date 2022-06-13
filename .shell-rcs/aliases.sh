@@ -96,6 +96,9 @@ alias docker-cleanup='docker system prune -a --volumes'
 # So I don't have to remember which clipboard cli tool I'm using now!
 alias clipboard='xsel -b'
 
+# I like to start weeks on sunday
+alias cal='cal -s'
+
 # Cli calculator!
 alias calc='bc -lq'
 
