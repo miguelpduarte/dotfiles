@@ -294,7 +294,11 @@ bindsym $mod+Ctrl+l exec $lockerscript
 # Shortcut no longer present in new laptop
 # bindsym XF86Calculator exec gnome-calculator
 
+# Screenshots
 bindsym Print exec --no-startup-id flameshot gui
+
+# Switching screen layout based on xrandr / ARandR scripts (--release because it uses Rofi internally)
+bindsym --release $mod+Home exec "~/.config/i3/scripts/screenlayout_switcher.sh"
 
 # Shutdown options menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
@@ -318,9 +322,9 @@ bindsym $mod+End mode "$mode_system"
 # exec_always --no-startup-id xcompmgr -c -C
 exec_always --no-startup-id picom -bf
 
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id ~/.config/polybar/launch.sh
 # autolocking screen after timeout with a script (for modularity and toggling with polybar button)
-exec_always --no-startup-id ~/.config/i3/scripts/screen_timeout_lock.sh
+exec --no-startup-id ~/.config/i3/scripts/screen_timeout_lock.sh
 
 # TODO: Move to autostart
 # To ensure that no multiple instances of fusuma are started, was previously an issue
@@ -335,3 +339,7 @@ exec dex -a -e i3
 # Moved from gnome to xfce
 # exec --no-startup-id xfce4-session
 # Moved to no DE <3 (XDG Autostart via dex was very helpful)
+
+
+# Specific settings for specific windows
+for_window [class="Galculator"] floating enable
