@@ -13,7 +13,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 " ii, ai, aI
 Plug 'michaeljsmith/vim-indent-object'
@@ -55,6 +54,11 @@ set relativenumber
 set nocp
 syntax enable
 filetype plugin on
+
+" Makes leader key actually usable
+let mapleader = " "
+" Because copying to system clipboard is always a pain
+noremap <leader>y "+y
 
 " Change the colorscheme to use the one provided by pywal's plugin.
 " See https://github.com/dylanaraps/pywal/wiki/Customization#vim
