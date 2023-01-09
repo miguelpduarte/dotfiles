@@ -59,6 +59,12 @@ filetype plugin on
 let mapleader = " "
 " Because copying to system clipboard is always a pain
 noremap <leader>y "+y
+" Just makes a simple subst call easier
+" Stolen from https://github.com/ThePrimeagen/init.lua/blob/a184d58880787512c21429e1ab8bea74546dff75/lua/theprimeagen/remap.lua#L42
+noremap <leader>s :%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>
+" Stolen from https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text that
+" came also from ThePrimeagen vim confs
+xnoremap <leader>p "_dP
 
 " Change the colorscheme to use the one provided by pywal's plugin.
 " See https://github.com/dylanaraps/pywal/wiki/Customization#vim
