@@ -206,8 +206,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## Wallpaper setting with wal
-exec --no-startup-id ~/.config/i3/scripts/walscript.sh
-bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/walscript.sh
+exec --no-startup-id "~/.config/i3/scripts/walscript.sh"
+bindsym $mod+c exec --no-startup-id "~/.config/i3/scripts/walscript.sh"
 
 #Custom colors!
 
