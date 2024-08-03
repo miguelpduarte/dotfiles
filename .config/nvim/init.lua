@@ -401,7 +401,15 @@ require('lazy').setup({
 			'nvim-lua/plenary.nvim',
 		},
 		config = function()
-			require('telescope').setup({})
+			require('telescope').setup({
+				defaults = {
+					mappings = {
+						n = {
+							["<C-s>"] = "select_horizontal"
+						}
+					}
+				}
+			})
 
 			local builtin = require('telescope.builtin')
 			vim.keymap.set('n', '<C-p>', builtin.git_files)
