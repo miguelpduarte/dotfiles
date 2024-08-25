@@ -56,15 +56,27 @@ borg prune -v --list --stats --prefix "$TAG-" --show-rc \
 
 prune_exit=$?
 
+# Actually free repo disk space by compacting segments
+
+info "Compacting repository"
+
+borg compact -v --progress \
+	--cleanup-commits \
+	"$BORG_REPOSITORY"
+
+compact_exit=$?
+
+
 # use highest exit code as global exit code
 global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+global_exit=$(( compact_exit > global_exit ? compact_exit : global_exit ))
 
 if [ ${global_exit} -eq 0 ]; then
-    info "Backup and Prune finished successfully"
+    info "Backup, Prune, Compact finished successfully"
 elif [ ${global_exit} -eq 1 ]; then
-    info "Backup and/or Prune finished with warnings"
+    info "Backup, Prune and/or Compact finished with warnings"
 else
-    info "Backup and/or Prune finished with errors"
+    info "Backup, Prune and/or Compact finished with errors"
 fi
 
 exit ${global_exit}
