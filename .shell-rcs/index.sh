@@ -8,7 +8,7 @@ stty -ixon
 alias nodejs='node'
 
 # Just in case something wants me to edit something, to avoid loading into nano or vi...
-export EDITOR=vim
+export EDITOR=nvim
 # As it should be <3
 
 # Sourcing other config files

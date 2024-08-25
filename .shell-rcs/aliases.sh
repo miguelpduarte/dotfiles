@@ -11,6 +11,7 @@ alias game='git commit --amend'
 alias gamer='game --reuse-message=HEAD'
 # Git log short version
 alias glog-s='git log --oneline --decorate'
+alias glog-ga='git log --graph --all'
 # For tracking merged or not merged branches. Aliases kinda unnecessary, but just good reminders to use these useful commands
 # NOTE: Does not play well with GitHub's squash-and-merge, try to squash with interactive rebase first and then merge (without squashing!) using GitHub (or not!)
 alias branches-merged='git branch --merged'
@@ -92,6 +93,9 @@ bind -x '"\es": split_term;'
 alias docker-cleanup='docker system prune -a --volumes'
 
 ### Other/Random utils
+
+# Reloading my bash configs made easy
+alias re_shrc='source ~/.bashrc'
 
 # So I don't have to remember which clipboard cli tool I'm using now!
 alias clipboard='xsel -b'

@@ -37,6 +37,7 @@ venv_destroy() {
     rm -rf "${VIRTUAL_ENV_DIR:?}/$name"
 }
 
+# TODO: Fix some of this, possibly at least using -o files for `complete`
 _venv_names() {
     if [ "${#COMP_WORDS[@]}" != "2" ]; then
 	return
