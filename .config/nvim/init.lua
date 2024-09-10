@@ -474,6 +474,8 @@ require('lazy').setup({
 								-- default is true
 								enable = false,
 							},
+						rustfmt = {
+							extraArgs = { '+nightly' },
 						},
 					},
 				},
