@@ -481,6 +481,18 @@ require('lazy').setup({
 				},
 			})
 
+			-- JS/TS
+			lspconfig.eslint.setup({
+				--- ESLint fix all on save - from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+				on_attach = function(client, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						command = "EslintFixAll",
+					})
+				end,
+			})
+
+
 			-- jsonnet and libsonnet
 			-- (needs manually installed grafana LSP binary in path)
 			require('lspconfig').jsonnet_ls.setup({})
