@@ -559,6 +559,13 @@ require('lazy').setup({
 						vim.lsp.buf.format({ async = true })
 					end, opts)
 
+					-- Toggle LSP inlay hints with <leader>ih if available
+					if vim.lsp.inlay_hint then
+						vim.keymap.set('n', '<leader>ih', function()
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
+						end, opts)
+					end
+
 					-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
 					-- if client.server_capabilities.inlayHintProvider then
