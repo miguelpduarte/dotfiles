@@ -491,6 +491,7 @@ require('lazy').setup({
 					})
 				end,
 			})
+			lspconfig.tsserver.setup({})
 
 
 			-- jsonnet and libsonnet
