@@ -36,7 +36,7 @@
 
 	  # node-related for LSP
 	  vscode-langservers-extracted # for vscode-eslint-language-server
-	  # nodePackages.typescript-language-server # for tsserver
+          nodePackages_latest.typescript-language-server # typescript-language-server
 	  typescript # tsserver is actually here?
         ];
 	
@@ -59,6 +59,8 @@
 	"alt-tab"
 	# TODO: Try out spotifyd instead
 	"spotify"
+	"tableplus"
+	"raycast"
       ];
 
       system.defaults = {
