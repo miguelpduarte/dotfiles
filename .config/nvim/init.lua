@@ -561,10 +561,12 @@ require('lazy').setup({
 					end, opts)
 
 					-- Toggle LSP inlay hints with <leader>ih if available
+					-- Additionally, enable it on attach, so it's enabled by default but also toggleable
 					if vim.lsp.inlay_hint then
 						vim.keymap.set('n', '<leader>ih', function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
 						end, opts)
+						vim.lsp.inlay_hint.enable(true, { bufnr })
 					end
 
 					-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
