@@ -408,6 +408,15 @@ require('lazy').setup({
 							["<C-s>"] = "select_horizontal"
 						}
 					}
+				},
+				pickers = {
+					buffers = {
+						mappings = {
+							n = {
+								["<leader>bd"] = require('telescope.actions').delete_buffer
+							}
+						}
+					}
 				}
 			})
 
