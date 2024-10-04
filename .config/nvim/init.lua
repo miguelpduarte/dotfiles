@@ -390,6 +390,7 @@ require('lazy').setup({
 	{ 'tpope/vim-repeat' },
 	{ 'tpope/vim-surround' },
 	{ 'tpope/vim-commentary' },
+	{ 'tpope/vim-sleuth' },
 	-- ii, ai, aI
 	{ 'michaeljsmith/vim-indent-object' },
 
