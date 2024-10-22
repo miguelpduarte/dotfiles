@@ -33,6 +33,7 @@
 	  # Also rustup target add x86_64-pc-windows-gnu
 	  # clippy # collision, I think rustup brings it along already
 	  # rust-analyzer
+	  cargo-nextest # trying it out, might be useful for running tests
 
 	  # node-related for LSP
 	  vscode-langservers-extracted # for vscode-eslint-language-server
@@ -76,6 +77,10 @@
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
       # nix.package = pkgs.nix;
+      # Make old commands work, references:
+      # https://discourse.nixos.org/t/how-to-resolve-nixpkgs-was-not-found-error-without-channels/47258
+      # https://github.com/NixOS/nix/issues/2982
+      nix.settings.nix-path = "nixpkgs=flake:nixpkgs";
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";

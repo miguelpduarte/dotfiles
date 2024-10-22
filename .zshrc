@@ -104,4 +104,7 @@ alias cal='cal -s'
 
 # Cli calculator!
 alias calc='bc -lq'
+
+alias ls='ls -F --color'
+alias ll='ls -la'
 ###### END Alias spam
