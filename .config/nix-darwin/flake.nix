@@ -15,6 +15,8 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         with pkgs; [
+	  # essentials
+	  git # apple provided is older
 	  # personal productivity
 	  neovim
 	  ripgrep
@@ -33,7 +35,7 @@
 	  # Also rustup target add x86_64-pc-windows-gnu
 	  # clippy # collision, I think rustup brings it along already
 	  # rust-analyzer
-	  cargo-nextest # trying it out, might be useful for running tests
+	  cargo-nextest # trying it out, useful for running tests quickly
 
 	  # node-related for LSP
 	  vscode-langservers-extracted # for vscode-eslint-language-server
@@ -62,11 +64,16 @@
 	"spotify"
 	"tableplus"
 	"raycast"
+	"slack" # previously directly downloaded from website, check for conflicts
       ];
 
       system.defaults = {
-        dock.autohide = true;
-	dock.mru-spaces = false;
+	dock = {
+	  autohide = true;
+	  show-recents = false;
+	  mru-spaces = false;
+	  orientation = "bottom";
+	};
         finder.AppleShowAllExtensions = true;
       };
       system.keyboard = {
