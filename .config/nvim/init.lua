@@ -433,7 +433,6 @@ require('lazy').setup({
 		end,
 	},
 	-- TODO: leap? Ver se preciso depois de me habituar um pouco
-	-- TODO: algum tipo de telescope ou fuzzy finder generico
 	-- undotree
 	{
 		'mbbill/undotree',
@@ -479,11 +478,12 @@ require('lazy').setup({
 							features = 'all',
 						},
 						-- TODO: figure out if I want this
-						imports = {
-							group = {
-								-- default is true
-								enable = false,
-							},
+						-- imports = {
+						-- 	group = {
+						-- 		-- default is true
+						-- 		enable = false,
+						-- 	},
+						-- },
 						rustfmt = {
 							extraArgs = { '+nightly' },
 						},
@@ -707,7 +707,6 @@ require('lazy').setup({
 	},
 	-- jsonnet and libsonnet
 	'google/vim-jsonnet',
-	-- TODO: asciidoc
 })
 
 --[[
