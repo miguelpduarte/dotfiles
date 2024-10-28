@@ -44,6 +44,9 @@
 	  # rust-analyzer
 	  cargo-nextest # trying it out, useful for running tests quickly
 
+	  # Nix LSP
+	  nil
+
 	  # node-related for LSP
 	  vscode-langservers-extracted # for vscode-eslint-language-server
           nodePackages_latest.typescript-language-server # typescript-language-server

@@ -503,6 +503,8 @@ require('lazy').setup({
 			})
 			lspconfig.tsserver.setup({})
 
+			-- Nix
+			lspconfig.nil_ls.setup({})
 
 			-- jsonnet and libsonnet
 			-- (needs manually installed grafana LSP binary in path)
