@@ -10,7 +10,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs,  ... }: {
-      # nixpkgs.config.allowUnfree = true; # spotify only so far, pretty good
+      nixpkgs.config.allowUnfree = true; # Sadly eventually had to
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
@@ -23,10 +23,17 @@
 	  fd
 	  jq
 
+	  # other
+	  obsidian
+	  # terminal emulator
+	  wezterm
+	  tmux
+
 	  # company tools
 	  wireguard-tools
 	  awscli2
 
+	  # Programming deps/LSPs/etc
 	  ## for Rust
 	  rustup # accidentally installed from the script, but should use the nix one instead...
 	  # cargo etc, installed via rustup directly for now
