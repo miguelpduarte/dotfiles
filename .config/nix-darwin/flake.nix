@@ -43,6 +43,7 @@
 	  # clippy # collision, I think rustup brings it along already
 	  # rust-analyzer
 	  cargo-nextest # trying it out, useful for running tests quickly
+	  slint-lsp # TODO: Probably move to shell.nix?
 
 	  # Nix LSP
 	  nil

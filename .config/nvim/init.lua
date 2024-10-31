@@ -503,8 +503,20 @@ require('lazy').setup({
 			})
 			lspconfig.tsserver.setup({})
 
-			-- Nix
+			-- Nix (using nil)
 			lspconfig.nil_ls.setup({})
+
+			-- Slint (using slint_lsp)
+			lspconfig.slint_lsp.setup({})
+			-- Help  nvim detect slint files
+			-- Reference from https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#slint_lsp
+			-- vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
+			vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+				pattern = {'*.slint'},
+				command = 'set filetype=slint',
+			})
+
+			-- TODO: Lua LSP
 
 			-- jsonnet and libsonnet
 			-- (needs manually installed grafana LSP binary in path)
