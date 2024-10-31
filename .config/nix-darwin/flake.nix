@@ -54,7 +54,15 @@
 	  typescript # tsserver is actually here?
         ];
 	
-	# TODO: git config here
+      # Currently does not work due to using nix-darwin which does not expose nixpkgs options directly due to compatibility issues.
+      # programs.git.enable = true;
+      # programs.git.config = {
+	# diff.algorithm = "histogram";
+	# init.defaultBranch = "main";
+	# user.name = "Miguel Duarte";
+	# user.email = "miguel.duarte@nelly-solutions.com";
+	# pull.ff = "only";
+      # };
 
       programs.direnv.enable = true;
 
