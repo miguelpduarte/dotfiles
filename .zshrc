@@ -7,6 +7,10 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats 'on %F{yellow}%b%f %a'
 precmd() {
     vcs_info
+    # Ref from: https://codeberg.org/dnkl/foot/pulls/1088
+    # Emits OSC-133 sequence before printing the prompt, so the terminal knows
+    # where the prompts are. This enables jumping to them directly.
+    print -Pn "\e]133;A\e\\"
 }
 
 PROMPT='
