@@ -84,6 +84,7 @@
 	"tableplus"
 	"raycast"
 	"slack" # previously directly downloaded from website, check for conflicts
+	"parallels"
       ];
 
       system.defaults = {
@@ -99,6 +100,7 @@
 	enableKeyMapping = true;
         remapCapsLockToControl = true;
       };
+      security.pam.enableSudoTouchIdAuth = true;
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
