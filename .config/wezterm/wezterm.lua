@@ -20,6 +20,87 @@ config.keys = {
     mods = 'OPT',
     action = act.SendKey { key = 'f', mods = 'ALT' },
   },
+  -- Please only close the current pane and not the whole tab, like really
+  {
+    key = 'w',
+    mods = 'SUPER',
+    -- TODO: Decide if we want confirm?
+    action = act.CloseCurrentPane { confirm = false },
+  },
+  -- If we really want to kill the whole tab, let's still leave an option to do it
+  {
+    key = 'w',
+    mods = 'SUPER|SHIFT',
+    -- TODO: Decide if we want confirm?
+    action = act.CloseCurrentTab { confirm = true },
+  },
+  -- -- Multiplexing, trying iTerm style shortcuts for now to keep muscle memory
+  -- Pane spawning
+  {
+    key = 'd',
+    mods = 'SUPER',
+    action = act.SplitHorizontal,
+  },
+  {
+    key = 'd',
+    mods = 'SUPER|SHIFT',
+    action = act.SplitVertical,
+  },
+  -- Pane zoom
+  {
+    key = 'Enter',
+    mods = 'SUPER|SHIFT',
+    action = act.TogglePaneZoomState,
+  },
+  -- Navigate between panes
+  {
+    key = 'LeftArrow',
+    mods = 'SUPER|ALT',
+    action = act.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'RightArrow',
+    mods = 'SUPER|ALT',
+    action = act.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'UpArrow',
+    mods = 'SUPER|ALT',
+    action = act.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'DownArrow',
+    mods = 'SUPER|ALT',
+    action = act.ActivatePaneDirection 'Down',
+  },
+  -- Test for Nicklas
+  {
+    key = '[',
+    mods = 'SUPER',
+    action = act.ActivatePaneDirection 'Prev',
+  },
+  {
+    key = ']',
+    mods = 'SUPER',
+    action = act.ActivatePaneDirection 'Next',
+  },
+  -- Trying out also this PaneSelect, reminds me of a similar thing I used for i3wm
+  {
+    key = 'j',
+    mods = 'SUPER',
+    action = act.PaneSelect,
+  },
+  -- Trying out ScrollToPrompt
+  {
+    key = 'p',
+    mods = 'SUPER',
+    action = act.ScrollToPrompt(-1),
+  },
+  {
+    key = 'p',
+    mods = 'SUPER|SHIFT',
+    action = act.ScrollToPrompt(1),
+  }
 }
 
 return config
