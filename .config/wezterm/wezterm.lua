@@ -24,14 +24,12 @@ config.keys = {
   {
     key = 'w',
     mods = 'SUPER',
-    -- TODO: Decide if we want confirm?
-    action = act.CloseCurrentPane { confirm = false },
+    action = act.CloseCurrentPane { confirm = true },
   },
   -- If we really want to kill the whole tab, let's still leave an option to do it
   {
     key = 'w',
     mods = 'SUPER|SHIFT',
-    -- TODO: Decide if we want confirm?
     action = act.CloseCurrentTab { confirm = true },
   },
   -- -- Multiplexing, trying iTerm style shortcuts for now to keep muscle memory
