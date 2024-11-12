@@ -7,6 +7,10 @@ config.color_scheme = 'Tokyo Night'
 config.front_end = "WebGpu"
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
+-- Disable ligatures on most fonts (sorry, but I don't like them)
+-- Source: https://wezfurlong.org/wezterm/config/font-shaping.html
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
 config.keys = {
   -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
   {
