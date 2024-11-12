@@ -2,8 +2,10 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = wezterm.config_builder()
 
+config.scrollback_lines = 25000
 config.color_scheme = 'Tokyo Night'
 config.front_end = "WebGpu"
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 config.keys = {
   -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
