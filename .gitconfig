@@ -1,0 +1,15 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Miguel Duarte
+	email = <email>
+[pull]
+	ff = only
+[diff]
+	algorithm = histogram
+[alias]
+	s = status
+	st = status
+	last = log -1 HEAD
+	sl = stash list
+	ira = rebase -i --autosquash
