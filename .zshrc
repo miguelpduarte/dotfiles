@@ -13,8 +13,11 @@ precmd() {
     print -Pn "\e]133;A\e\\"
 }
 
+# Prompt documentation
+# %4~:directory up to 4, otherwise truncated $vcs_stuff:git, shelllevel
+# conditionally printed exitcode, $/# prompt, <space>
 PROMPT='
-%B%4~%b ${vcs_info_msg_0_}
+%B%4~%b ${vcs_info_msg_0_} %F{magenta}%B%(2L.{%L}.)%b%f
 %F{red}%B%(?..!%? )%b%f%B%(!.#.$)%b '
 
 ## To fix vim and less, etc to not freeze with ctrl-s ctrl-q in terminals
