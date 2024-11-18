@@ -104,6 +104,34 @@ config.keys = {
     key = 'p',
     mods = 'SUPER|SHIFT',
     action = act.ScrollToPrompt(1),
+  },
+  -- Tab back and forth between recent tabs
+  -- Toggle current and previous
+  {
+    key = 'Tab',
+    mods = 'CTRL',
+    action = act.ActivateLastTab,
+  },
+  -- TODO: Go further back into history.
+  -- For now the alternative is cmd+[] or cmd+number
+  -- {},
+  -- Rename tab interactively
+  -- TODO: Find better keybind...
+  {
+    key = 'E',
+    mods = 'CTRL|SHIFT',
+    action = act.PromptInputLine {
+      description = 'Enter new name for tab',
+      -- initial_value = 'My Tab Name', -- nightly only
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
   }
 }
 
