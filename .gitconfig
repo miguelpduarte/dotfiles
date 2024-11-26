@@ -13,3 +13,10 @@
 	last = log -1 HEAD
 	sl = stash list
 	ira = rebase -i --autosquash
+	fp = push --force-with-lease
+	# TODO: Use the default remote, or actually all?
+	tidy = remote prune origin
+	# TODO: Abstract to use the default origin? Might want to not be origin
+	# but instead the default, not sure if git even has that as a concept
+	# new-remote-branch
+	nrb = "!f() { git push -u origin $(git branch --show-current); }; f"
