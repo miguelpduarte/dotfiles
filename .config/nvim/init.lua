@@ -503,8 +503,20 @@ require('lazy').setup({
 			})
 			lspconfig.tsserver.setup({})
 
+			-- CSS and HTML
+			lspconfig.cssls.setup({})
+			lspconfig.html.setup({})
+
 			-- Nix (using nil)
-			lspconfig.nil_ls.setup({})
+			lspconfig.nil_ls.setup({
+				settings = {
+					['nil'] = {
+						formatting = {
+							command = { 'nix fmt' }
+						}
+					}
+				}
+			})
 
 			-- Slint (using slint_lsp)
 			lspconfig.slint_lsp.setup({})
