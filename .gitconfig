@@ -20,3 +20,8 @@
 	# but instead the default, not sure if git even has that as a concept
 	# new-remote-branch
 	nrb = "!f() { git push -u origin $(git branch --show-current); }; f"
+[init]
+	defaultBranch = main
+[rerere]
+	# REuse REcorded REsolution: https://youtu.be/aolI_Rz0ZqY?t=947
+	enabled = true
