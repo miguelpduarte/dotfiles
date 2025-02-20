@@ -25,3 +25,6 @@
 [rerere]
 	# REuse REcorded REsolution: https://youtu.be/aolI_Rz0ZqY?t=947
 	enabled = true
+[branch]
+	# Sort branches by reverse commit date (so latest first)
+	sort = -committerdate
