@@ -97,10 +97,8 @@
 	enableKeyMapping = true;
         remapCapsLockToControl = true;
       };
-      security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
 
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
       # nix.package = pkgs.nix;
       # Make old commands work, references:
       # https://discourse.nixos.org/t/how-to-resolve-nixpkgs-was-not-found-error-without-channels/47258
