@@ -37,32 +37,17 @@
 	  ## for Rust
 	  rustup # accidentally installed from the script, but should use the nix one instead...
 	  # cargo etc, installed via rustup directly for now
-	  # Actually, I think I have to enable these otherwise it will be weird
-	  # TODO: Figure out if there's a way to install rust stable and nightly declaratively
-	  # Also rustup target add x86_64-pc-windows-gnu
-	  # clippy # collision, I think rustup brings it along already
-	  # rust-analyzer
 	  cargo-nextest # trying it out, useful for running tests quickly
-	  slint-lsp # TODO: Probably move to shell.nix?
 
 	  # Nix LSP
 	  nil
 
 	  # node-related for LSP
-	  vscode-langservers-extracted # for vscode-eslint-language-server
+	  # for vscode-eslint-language-server, vscode-json-language-server
+	  vscode-langservers-extracted
           nodePackages_latest.typescript-language-server # typescript-language-server
 	  typescript # tsserver is actually here?
         ];
-	
-      # Currently does not work due to using nix-darwin which does not expose nixpkgs options directly due to compatibility issues.
-      # programs.git.enable = true;
-      # programs.git.config = {
-	# diff.algorithm = "histogram";
-	# init.defaultBranch = "main";
-	# user.name = "Miguel Duarte";
-	# user.email = "miguel.duarte@nelly-solutions.com";
-	# pull.ff = "only";
-      # };
 
       programs.direnv.enable = true;
 
@@ -86,6 +71,18 @@
 	"slack" # previously directly downloaded from website, check for conflicts
 	"parallels"
       ];
+      homebrew.taps = [
+	"tunneltodev/tap"
+      ];
+      homebrew.brews = [
+	"mingw-w64" # For rust cross compilation to windows...
+	"nsis" # Broken on darwin nixpkgs :(
+	"llvm" # Kept just in case, was used for trying experimental tauri cross compilation to windows (also nsis above)
+	"tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
+      ];
+      # Uninstall formulae not in this conf. This is the source of truth.
+      # TODO: Consider using 'zap' instead.
+      homebrew.onActivation.cleanup = "uninstall";
 
       system.defaults = {
 	dock = {
