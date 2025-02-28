@@ -2,7 +2,10 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = wezterm.config_builder()
 
-config.scrollback_lines = 25000
+-- Annoying that this is only fetched from compositor on wayland for now
+config.max_fps = 144
+
+config.scrollback_lines = 42000
 config.color_scheme = 'Tokyo Night'
 config.front_end = "WebGpu"
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
