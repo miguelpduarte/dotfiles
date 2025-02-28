@@ -36,11 +36,12 @@ unsetopt share_history
 
 ###### Install spam
 # Add cargo installed packages to PATH
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH" # IF something breaks check here
 ###### END Install spam
 
 ###### Alias spam
 ### Git
+alias g='git' # should've done this one a while ago
 alias rui='git pull --ff-only'
 alias rui-rb='git pull --rebase'
 alias miguel='git push'
