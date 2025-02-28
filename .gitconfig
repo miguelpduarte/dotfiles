@@ -2,6 +2,8 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Miguel Duarte
+	# Managed with "scoped" included files now. See the `includeIf`
+	# directives below
 	email = <email>
 [pull]
 	ff = only
@@ -10,6 +12,7 @@
 [alias]
 	s = status
 	st = status
+	b = branch
 	last = log -1 HEAD
 	sl = stash list
 	ira = rebase -i --autosquash
@@ -28,3 +31,7 @@
 [branch]
 	# Sort branches by reverse commit date (so latest first)
 	sort = -committerdate
+[includeIf "gitdir:~/coding/"]
+	path = ~/coding/.gitconfig
+[includeIf "gitdir:~/my-coding/"]
+	path = ~/my-coding/.gitconfig
