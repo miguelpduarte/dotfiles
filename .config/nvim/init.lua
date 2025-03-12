@@ -444,6 +444,7 @@ require('lazy').setup({
 	},
 	-- auto-cd to root of git project
 	{
+		-- TODO: Maybe disable this. Feel like it would be a good idea.
 		'notjedi/nvim-rooter.lua',
 		config = function()
 			require('nvim-rooter').setup()
@@ -501,7 +502,7 @@ require('lazy').setup({
 					})
 				end,
 			})
-			lspconfig.tsserver.setup({})
+			lspconfig.ts_ls.setup({})
 
 			-- CSS and HTML
 			lspconfig.cssls.setup({})
@@ -631,7 +632,7 @@ require('lazy').setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			-- Plug 'hrsh7th/cmp-cmdline' ?
+			-- Plug 'hrsh7th/cmp-cmdline' ? -- TODO: Actually this is probably useful, sounds like completion in the commandline
 		},
 		config = function()
 			local cmp = require('cmp')
