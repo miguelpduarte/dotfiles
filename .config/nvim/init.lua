@@ -518,8 +518,12 @@ require('lazy').setup({
 				}
 			})
 
+			-- Terraform
+			lspconfig.terraformls.setup({})
+
 			-- TODO: Lua LSP
 
+			-- TODO: Fix or remove...
 			-- jsonnet and libsonnet
 			-- (needs manually installed grafana LSP binary in path)
 			require('lspconfig').jsonnet_ls.setup({})

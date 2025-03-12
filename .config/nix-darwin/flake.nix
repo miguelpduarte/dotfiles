@@ -41,6 +41,8 @@
 
 	  # Nix LSP
 	  nil
+	  # Terraform LSP
+	  terraform-ls
 
 	  # node-related for LSP
 	  # for vscode-eslint-language-server, vscode-json-language-server
