@@ -43,12 +43,16 @@
 	  nil
 	  # Terraform LSP
 	  terraform-ls
+	  # jsonnet LSP from grafana
+	  jsonnet-language-server
 
 	  # node-related for LSP
 	  # for vscode-eslint-language-server, vscode-json-language-server
 	  vscode-langservers-extracted
           nodePackages_latest.typescript-language-server # typescript-language-server
 	  typescript # tsserver is actually here?
+	  svelte-language-server
+	  emmet-language-server
         ];
 
       programs.direnv.enable = true;

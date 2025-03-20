@@ -503,10 +503,17 @@ require('lazy').setup({
 				end,
 			})
 			lspconfig.ts_ls.setup({})
+			-- Svelte has its own LSP apparently, alongside ts_ls
+			lspconfig.svelte.setup({})
 
 			-- CSS and HTML
 			lspconfig.cssls.setup({})
 			lspconfig.html.setup({})
+			-- Emmet LSP to write HTML more easily
+			-- Chose this LSP over aca/emmet-ls as it seemed more active
+			lspconfig.emmet_language_server.setup({
+				filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte", "vue" },
+			})
 
 			-- Nix (using nil)
 			lspconfig.nil_ls.setup({
@@ -524,10 +531,9 @@ require('lazy').setup({
 
 			-- TODO: Lua LSP
 
-			-- TODO: Fix or remove...
 			-- jsonnet and libsonnet
 			-- (needs manually installed grafana LSP binary in path)
-			require('lspconfig').jsonnet_ls.setup({})
+			lspconfig.jsonnet_ls.setup({})
 
 			-- I think this probably doesn't work so TODO fix
 			-- also can probably just use shellcheck in the meantime
