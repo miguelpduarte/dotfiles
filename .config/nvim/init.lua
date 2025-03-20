@@ -21,6 +21,7 @@ vim.opt.signcolumn = 'yes'
 
 -- folding
 vim.opt.foldenable = true
+-- TODO: Might want a different method because of LSP/Treesitter, but it seems to override it for now (?)
 vim.opt.foldmethod = 'indent'
 -- This is especially annoying in telescope previews so just simplifying it for now.
 vim.opt.foldlevelstart = 99
@@ -645,8 +646,11 @@ require('lazy').setup({
 			cmp.setup({
 				snippet = {
 					-- REQUIRED by nvim-cmp. get rid of it once we can
+					-- TODO: Imp: Might be a thing to get rid of now actually, check in nvim-cmp docs.
+					-- Probably should replace with neovim native snippets since we have 0.10+
 					expand = function(args)
-						vim.fn["vsnip#anonymous"](args.body)
+						-- vim.fn["vsnip#anonymous"](args.body)
+						vim.snippet.expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -658,12 +662,14 @@ require('lazy').setup({
 					-- Set `select` to `false` to only confirm explicitly selected items.
 					['<CR>'] = cmp.mapping.confirm({ select = true }),
 				}),
+				-- TODO: More sources? Might be cool!
 				sources = cmp.config.sources({
 					{ name = 'nvim_lsp' },
 				}, {
 					{ name = 'path' },
 				}),
 				experimental = {
+					-- TODO: figure out what this is lol
 					ghost_text = true,
 				},
 			})
