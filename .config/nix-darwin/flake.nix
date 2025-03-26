@@ -22,6 +22,7 @@
 	  ripgrep
 	  fd
 	  jq
+	  gh # required by octo.nvim
 
 	  # other
 	  obsidian
@@ -76,15 +77,16 @@
 	"raycast"
 	"slack" # previously directly downloaded from website, check for conflicts
 	"parallels"
+	"fly" # Because we need to have r/w for the binary since it needs to match the version in our concourse instance
       ];
       homebrew.taps = [
-	"tunneltodev/tap"
+	# "tunneltodev/tap"
       ];
       homebrew.brews = [
 	"mingw-w64" # For rust cross compilation to windows...
 	"nsis" # Broken on darwin nixpkgs :(
 	"llvm" # Kept just in case, was used for trying experimental tauri cross compilation to windows (also nsis above)
-	"tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
+	# "tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
       ];
       # Uninstall formulae not in this conf. This is the source of truth.
       # TODO: Consider using 'zap' instead.
