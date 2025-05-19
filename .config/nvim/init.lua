@@ -486,15 +486,22 @@ require('lazy').setup({
 						-- 		enable = false,
 						-- 	},
 						-- },
-						rustfmt = {
-							extraArgs = { '+nightly' },
-						},
+						-- rustfmt = {
+						-- 	extraArgs = { '+nightly' },
+						-- },
 					},
 				},
 			})
 
 			-- JS/TS
 			lspconfig.eslint.setup({
+				-- settings = {
+				-- 	workingDirectory = {
+				-- 		-- default is "location"
+				-- 		-- The docs are not very helpful, from the description they seem like the same, but this is probably more magical so let's try it.
+				-- 		mode = "auto",
+				-- 	}
+				-- },
 				--- ESLint fix all on save - from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -503,6 +510,7 @@ require('lazy').setup({
 					})
 				end,
 			})
+			lspconfig.biome.setup({})
 			lspconfig.ts_ls.setup({})
 			-- Svelte has its own LSP apparently, alongside ts_ls
 			lspconfig.svelte.setup({})
@@ -535,6 +543,8 @@ require('lazy').setup({
 			-- jsonnet and libsonnet
 			-- (needs manually installed grafana LSP binary in path)
 			lspconfig.jsonnet_ls.setup({})
+
+			lspconfig.jsonls.setup({})
 
 			-- I think this probably doesn't work so TODO fix
 			-- also can probably just use shellcheck in the meantime
