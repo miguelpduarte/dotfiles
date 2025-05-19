@@ -112,10 +112,16 @@ config.keys = {
   },
   -- Tab back and forth between recent tabs
   -- Toggle current and previous
+  -- Disabled due to trying out tmux stuff
+  -- {
+  --   key = 'Tab',
+  --   mods = 'CTRL',
+  --   action = act.ActivateLastTab,
+  -- },
   {
     key = 'Tab',
     mods = 'CTRL',
-    action = act.ActivateLastTab,
+    action = act.DisableDefaultAssignment,
   },
   -- TODO: Go further back into history.
   -- For now the alternative is cmd+[] or cmd+number
