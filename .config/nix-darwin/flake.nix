@@ -21,6 +21,7 @@
 	  neovim
 	  ripgrep
 	  fd
+	  fzf
 	  jq
 	  gh # required by octo.nvim
 
