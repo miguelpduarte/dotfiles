@@ -41,6 +41,8 @@
 	  # cargo etc, installed via rustup directly for now
 	  cargo-nextest # trying it out, useful for running tests quickly
 
+	  # Lua LSP
+	  lua-language-server
 	  # Nix LSP
 	  nil
 	  # Terraform LSP
@@ -116,6 +118,10 @@
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
+
+      # As per the error instructions, specifying the primary user
+      # TODO: Move the relevant configurations to the user scope so that this is no longer an issue.
+      system.primaryUser = "migueld";
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
