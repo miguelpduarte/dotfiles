@@ -21,7 +21,8 @@ vim.opt.signcolumn = 'yes'
 
 -- folding
 vim.opt.foldenable = true
--- TODO: Might want a different method because of LSP/Treesitter, but it seems to override it for now (?)
+-- Default to indent
+-- Otherwise, will use LSP or Treesitter if available, in that order.
 vim.opt.foldmethod = 'indent'
 -- This is especially annoying in telescope previews so just simplifying it for now.
 vim.opt.foldlevelstart = 99
@@ -198,8 +199,12 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
 ---------------------------------------------------------
 -- Using lazy.nvim atm
 -- https://github.com/folke/lazy.nvim
+
+-- path ~= vim.fn.stdpath('config')
+-- and (vim.uv.fs_stat(path .. '/.luarc.json')
+-- or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -290,14 +295,16 @@ require('lazy').setup({
 				-- 	filename_inactive = 'LightlineTabFileInactive',
 				-- },
 			}
+			---@diagnostic disable-next-line: unused-local
 			function MoonLightlineReadonly(opts)
 				-- saving until the font is fixed
 				-- return &readonly && &filetype !=# 'help' ? '' : ''
-				return vim.api.nvim_buf_get_option(0, 'readonly') and 'RO' or ''
+				return vim.bo.readonly and 'RO' or ''
 			end
 
 			-- https://github.com/itchyny/lightline.vim/issues/657
 			-- previously vim.cmd
+			-- TODO: Move to vim.api.nvim_exec2 probably
 			vim.api.nvim_exec(
 			[[
 			" function! LightlineReadonly()
@@ -385,7 +392,6 @@ require('lazy').setup({
 			, true)
 		end,
 	},
-	
 
 	-- essentials
 	{ 'tpope/vim-repeat' },
@@ -464,12 +470,8 @@ require('lazy').setup({
 	{
 		'neovim/nvim-lspconfig',
 		config = function()
-			-- Setup language servers.
-			local lspconfig = require('lspconfig')
-
 			-- Rust
-			lspconfig.rust_analyzer.setup({
-				-- Server-specific settings. See `:help lspconfig-setup`
+			vim.lsp.config('rust_analyzer', {
 				settings = {
 					['rust-analyzer'] = {
 						-- clippy instead of just cargo check
@@ -479,30 +481,23 @@ require('lazy').setup({
 						cargo = {
 							features = 'all',
 						},
-						-- TODO: figure out if I want this
-						-- imports = {
-						-- 	group = {
-						-- 		-- default is true
-						-- 		enable = false,
-						-- 	},
-						-- },
-						-- rustfmt = {
-						-- 	extraArgs = { '+nightly' },
-						-- },
 					},
 				},
 			})
+			vim.lsp.enable('rust_analyzer')
 
 			-- JS/TS
-			lspconfig.eslint.setup({
+			vim.lsp.config('eslint', {
 				-- settings = {
 				-- 	workingDirectory = {
 				-- 		-- default is "location"
-				-- 		-- The docs are not very helpful, from the description they seem like the same, but this is probably more magical so let's try it.
+				-- 		-- The docs are not very helpful, from the description these seem like the same...
+				-- 		-- Ended up removing it because it was not working sometimes. Unsure why.
 				-- 		mode = "auto",
 				-- 	}
 				-- },
 				--- ESLint fix all on save - from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+				---@diagnostic disable-next-line: unused-local
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = bufnr,
@@ -510,22 +505,41 @@ require('lazy').setup({
 					})
 				end,
 			})
-			lspconfig.biome.setup({})
-			lspconfig.ts_ls.setup({})
+			vim.lsp.enable('eslint')
+			vim.lsp.enable('biome')
+			vim.lsp.enable('ts_ls')
 			-- Svelte has its own LSP apparently, alongside ts_ls
-			lspconfig.svelte.setup({})
+			-- Consider the note here too: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#svelte
+			vim.lsp.enable('svelte')
 
 			-- CSS and HTML
-			lspconfig.cssls.setup({})
-			lspconfig.html.setup({})
+			-- Enable (broadcasting) snippet capability for completion
+			-- (From https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#cssls)
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			vim.lsp.config('cssls', {
+			  capabilities = capabilities,
+			})
+			vim.lsp.enable('cssls')
+			-- Similarly for HTML
+			vim.lsp.config('html', {
+			  capabilities = capabilities,
+			})
+			vim.lsp.enable('html')
 			-- Emmet LSP to write HTML more easily
 			-- Chose this LSP over aca/emmet-ls as it seemed more active
-			lspconfig.emmet_language_server.setup({
-				filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte", "vue" },
+			vim.lsp.config('emmet_language_server', {
+				filetypes = { "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "htmlangular", "svelte", "vue" }
 			})
+			vim.lsp.enable('emmet_language_server')
+			-- JSON
+			vim.lsp.config('jsonls', {
+				capabilities = capabilities,
+			})
+			vim.lsp.enable('jsonls')
 
 			-- Nix (using nil)
-			lspconfig.nil_ls.setup({
+			vim.lsp.config('nil_ls', {
 				settings = {
 					['nil'] = {
 						formatting = {
@@ -534,39 +548,69 @@ require('lazy').setup({
 					}
 				}
 			})
+			vim.lsp.enable('nil_ls')
+
 
 			-- Terraform
-			lspconfig.terraformls.setup({})
+			vim.lsp.enable('terraformls')
 
-			-- TODO: Lua LSP
+			-- Lua
+			-- Making it nice for neovim
+			-- (From https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls)
+			vim.lsp.config('lua_ls', {
+			  on_init = function(client)
+			    if client.workspace_folders then
+			      local path = client.workspace_folders[1].name
+			      if
+				path ~= vim.fn.stdpath('config')
+				and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+			      then
+				return
+			      end
+			    end
+
+			    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+			      runtime = {
+				-- Tell the language server which version of Lua you're using (most
+				-- likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+				-- Tell the language server how to find Lua modules same way as Neovim
+				-- (see `:h lua-module-load`)
+				path = {
+				  'lua/?.lua',
+				  'lua/?/init.lua',
+				},
+			      },
+			      -- Make the server aware of Neovim runtime files
+			      workspace = {
+				checkThirdParty = false,
+				library = {
+				  vim.env.VIMRUNTIME
+				  -- Depending on the usage, you might want to add additional paths
+				  -- here.
+				  -- '${3rd}/luv/library'
+				  -- '${3rd}/busted/library'
+				}
+				-- Or pull in all of 'runtimepath'.
+				-- NOTE: this is a lot slower and will cause issues when working on
+				-- your own configuration.
+				-- See https://github.com/neovim/nvim-lspconfig/issues/3189
+				-- library = {
+				--   vim.api.nvim_get_runtime_file('', true),
+				-- }
+			      }
+			    })
+			  end,
+			  settings = {
+			    Lua = {}
+			  }
+			})
+			vim.lsp.enable('lua_ls')
 
 			-- jsonnet and libsonnet
-			-- (needs manually installed grafana LSP binary in path)
-			lspconfig.jsonnet_ls.setup({})
+			vim.lsp.enable('jsonnet_ls')
 
-			lspconfig.jsonls.setup({})
-
-			-- I think this probably doesn't work so TODO fix
-			-- also can probably just use shellcheck in the meantime
-			-- Bash LSP
-			local configs = require('lspconfig.configs')
-			if not configs.bash_lsp and vim.fn.executable('bash-language-server') == 1 then
-				configs.bash_lsp = {
-					default_config = {
-						cmd = { 'bash-language-server', 'start' },
-						filetypes = { 'sh' },
-						root_dir = require('lspconfig').util.find_git_ancestor,
-						init_options = {
-							settings = {
-								args = {}
-							}
-						}
-					}
-				}
-			end
-			if configs.bash_lsp then
-				lspconfig.bash_lsp.setup({})
-			end
+			-- TODO: Add bashls if desired again actually. But shellcheck tends to be good enough.
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -576,31 +620,46 @@ require('lazy').setup({
 			-- `open` defaults to true
 			vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
+			-- In theory we could probably call into this multiple times, but let's keep it simple for now to avoid breakage
+			-- (source: https://github.com/neovim/neovim/blob/2045e9700c7324cbd3772bc40b3b30b10cf65cc9/runtime/lua/vim/diagnostic.lua#L1164)
+			vim.diagnostic.config({
+				-- https://gpanders.com/blog/whats-new-in-neovim-0-11/#virtual-text-handler-changed-from-opt-out-to-opt-in
+				-- Unsure if I need/want this but I think I was using it before, so keeping the same behaviour
+				-- If it's too noisy, can change to use the new current_line mode.
+				virtual_text = true,
+				-- Also https://gpanders.com/blog/whats-new-in-neovim-0-11/#virtual-lines
+				virtual_lines = {
+					-- This one seems noisier so only showing for the current cursor line
+					current_line = true,
+				},
+			})
+
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
 			vim.api.nvim_create_autocmd('LspAttach', {
 				-- group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 				callback = function(ev)
-					-- Enable completion triggered by <c-x><c-o>
-					vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
+					-- TODO: many of the below might no longer be needed: https://gpanders.com/blog/whats-new-in-neovim-0-11/#more-default-mappings
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
 					local opts = { buffer = ev.buf }
+					-- GOTOs
 					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+					vim.keymap.set('n', 'gI', vim.lsp.buf.incoming_calls, opts)
+					-- > Jumps to the definition of the type of the symbol under the cursor.
+					-- Is probably more useful that I was giving it credit for.
+					vim.keymap.set('n', 'gk', vim.lsp.buf.type_definition, opts)
+					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 					-- I'm pretty sure this will call lsp_signature.nvim
 					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-					-- Not 100% sure about keybind practicality
-					vim.keymap.set('n', 'gI', vim.lsp.buf.incoming_calls, opts)
+					-- Don't really use these, maybe should remove:
 					vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
 					vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
 					vim.keymap.set('n', '<leader>wl', function()
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					end, opts)
-					--vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
 					vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
 					vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
 					vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -612,23 +671,37 @@ require('lazy').setup({
 					-- Additionally, enable it on attach, so it's enabled by default but also toggleable
 					if vim.lsp.inlay_hint then
 						vim.keymap.set('n', '<leader>ih', function()
-							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 						end, opts)
-						vim.lsp.inlay_hint.enable(true, { bufnr })
+						vim.lsp.inlay_hint.enable(true)
 					end
-
-					-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
 					-- if client.server_capabilities.inlayHintProvider then
 					--     -- vim.lsp.inlay_hint(ev.buf, true)
 					--     vim.lsp.inlay_hint.enable(ev.buf, true)
 					-- end
 
-					-- When https://neovim.io/doc/user/lsp.html#lsp-inlay_hint stabilizes
-					-- *and* there's some way to make it only apply to the current line.
-					-- if client.server_capabilities.inlayHintProvider then
-					--     vim.lsp.inlay_hint(ev.buf, true)
-					-- end
+					local client = vim.lsp.get_client_by_id(ev.data.client_id)
+					if not client then
+						return
+					end
+					-- https://gpanders.com/blog/whats-new-in-neovim-0-11/#builtin-auto-completion
+					if client:supports_method('textDocument/completion') then
+						-- TODO: Make this a bit less noisy... has a lot of "Text"
+						-- might be caused by a plugin though
+						vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+					end
+					-- Should no longer be necessary as per the above. TODO: test that
+					-- -- Enable completion triggered by <c-x><c-o>
+					-- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+					-- Prefer LSP folding if supported:
+					-- (From https://neovim.io/doc/user/lsp.html#vim.lsp.foldexpr() example)
+					if client:supports_method('textDocument/foldingRange') then
+						local win = vim.api.nvim_get_current_win()
+						vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+						-- sanity
+						vim.o.foldmethod = 'expr'
+					end
 
 					-- -- None of this semantics tokens business.
 					-- -- https://www.reddit.com/r/neovim/comments/143efmd/is_it_possible_to_disable_treesitter_completely/
@@ -697,6 +770,7 @@ require('lazy').setup({
 		'ray-x/lsp_signature.nvim',
 		event = 'VeryLazy',
 		opts = {},
+		---@diagnostic disable-next-line: unused-local
 		config = function(_, opts)
 			-- Get signatures (and _only_ signatures) when in argument lists.
 			require("lsp_signature").setup({
@@ -709,6 +783,33 @@ require('lazy').setup({
 	},
 
 	-- language support
+	-- Global via treesitter
+	{
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
+		config = function ()
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = {
+					"rust", "lua", "vim", "vimdoc",
+					"query", "javascript", "typescript",
+					"markdown", "markdown_inline",
+					"terraform"
+				},
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },
+				-- https://github.com/andymass/vim-matchup#tree-sitter-integration
+				matchup = { enable = true },
+			})
+
+			-- TODO: Make this only apply for fts that we support with TS
+			-- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding
+			vim.o.foldmethod = 'expr'
+			vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+		end
+	},
 	-- toml
 	'cespare/vim-toml',
 	-- yaml
