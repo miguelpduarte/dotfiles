@@ -543,7 +543,7 @@ require('lazy').setup({
 				settings = {
 					['nil'] = {
 						formatting = {
-							command = { 'nix fmt' }
+							command = { 'nix', 'fmt', '--' }
 						}
 					}
 				}
@@ -793,6 +793,7 @@ require('lazy').setup({
 			configs.setup({
 				ensure_installed = {
 					"rust", "lua", "vim", "vimdoc",
+					"nix",
 					"query", "javascript", "typescript",
 					"markdown", "markdown_inline",
 					"terraform"
