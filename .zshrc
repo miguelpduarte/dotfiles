@@ -34,6 +34,12 @@ export EDITOR=nvim
 setopt no_share_history
 unsetopt share_history
 
+# https://unix.stackexchange.com/questions/6620/how-to-edit-command-line-in-full-screen-editor-in-zsh
+# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#ZLE-Functions
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 ###### Install spam
 # Add cargo installed packages to PATH
 export PATH="$HOME/.cargo/bin:$PATH" # IF something breaks check here
