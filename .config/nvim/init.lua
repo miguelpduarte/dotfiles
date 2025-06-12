@@ -797,7 +797,7 @@ require('lazy').setup({
 			configs.setup({
 				ensure_installed = {
 					"rust", "lua", "vim", "vimdoc",
-					"nix",
+					"nix", "yaml",
 					"query", "javascript", "typescript",
 					"markdown", "markdown_inline",
 					"terraform"
