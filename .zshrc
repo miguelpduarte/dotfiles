@@ -121,4 +121,8 @@ alias calc='bc -lq'
 
 alias ls='ls -F --color'
 alias ll='ls -la'
+
+### OS Specific
+alias mac-cycle-wifi='networksetup -setairportpower en0 off; sleep 20; networksetup -setairportpower en0 on'
+
 ###### END Alias spam
