@@ -487,6 +487,7 @@ require('lazy').setup({
 			vim.lsp.enable('rust_analyzer')
 
 			-- JS/TS
+			local base_on_attach = vim.lsp.config.eslint.on_attach
 			vim.lsp.config('eslint', {
 				-- settings = {
 				-- 	workingDirectory = {
@@ -496,12 +497,15 @@ require('lazy').setup({
 				-- 		mode = "auto",
 				-- 	}
 				-- },
-				--- ESLint fix all on save - from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+				--- ESLint fix all on save - from https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#eslint
 				---@diagnostic disable-next-line: unused-local
 				on_attach = function(client, bufnr)
+					if not base_on_attach then return end
+
+					base_on_attach(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = bufnr,
-						command = "EslintFixAll",
+						command = "LspEslintFixAll",
 					})
 				end,
 			})
