@@ -24,6 +24,7 @@
 	  fzf
 	  jq
 	  gh # required by octo.nvim
+	  shellcheck
 
 	  # other
 	  obsidian
@@ -87,8 +88,8 @@
       ];
       homebrew.brews = [
 	"mingw-w64" # For rust cross compilation to windows...
-	"nsis" # Broken on darwin nixpkgs :(
-	"llvm" # Kept just in case, was used for trying experimental tauri cross compilation to windows (also nsis above)
+	# "nsis" # Broken on darwin nixpkgs :(
+	# "llvm" # Kept just in case, was used for trying experimental tauri cross compilation to windows (also nsis above)
 	# "tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
       ];
       # Uninstall formulae not in this conf. This is the source of truth.
