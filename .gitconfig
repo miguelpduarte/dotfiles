@@ -14,6 +14,9 @@
 	st = status
 	b = branch
 	last = log -1 HEAD
+	l = log --oneline --decorate
+	# TODO: Maybe also have a graph view that's shorter like in `g l` (can always add more args though)
+	lga = log --graph --all
 	sl = stash list
 	ira = rebase -i --autosquash
 	fp = push --force-with-lease
