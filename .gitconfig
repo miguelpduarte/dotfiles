@@ -19,6 +19,9 @@
 	lga = log --graph --all
 	sl = stash list
 	ira = rebase -i --autosquash
+	# No need for `graphite`! Ref: https://dev.to/onepoint/git-update-refs-in-a-nutshell-574c
+	# Afterwards, can quickly update branches on remote with just `g fp origin branch-1 branch-2`
+	irau = ira --update-refs
 	fp = push --force-with-lease
 	# TODO: Use the default remote, or actually all?
 	tidy = remote prune origin
