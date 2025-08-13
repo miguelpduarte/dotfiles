@@ -31,8 +31,17 @@ alias nodejs='node'
 export EDITOR=nvim
 # As it should be <3
 
-setopt no_share_history
+# Override default zsh options, see `man zshoptions`
 unsetopt share_history
+setopt inc_append_history
+setopt hist_save_by_copy # weird: this should be enabled by default but isn't?
+# setopt hist_no_store
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+# HIST_EXPIRE_DUPS_FIRST recommends that HISTSIZE should be larger than SAVEHIST, but we don't have it set.
+export SAVEHIST=6000
+export HISTSIZE=6000
 
 # https://unix.stackexchange.com/questions/6620/how-to-edit-command-line-in-full-screen-editor-in-zsh
 # https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#ZLE-Functions
