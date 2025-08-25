@@ -31,6 +31,12 @@
 	  # terminal emulator
 	  wezterm
 	  tmux
+	  # organization
+	  taskwarrior3
+	  tasksh # might not need it, but trying it
+	  # TODO: Make taskopen work in nnix-darwin :( using it via homebrew for now
+	  # taskopen # useful for extended notes. Let's see how it plays with the Obsidian plugin
+	  python312Packages.bugwarrior # trying it, would get tasks from e.g. JIRA, GitHub
 
 	  # company tools
 	  wireguard-tools
@@ -91,6 +97,12 @@
 	# "nsis" # Broken on darwin nixpkgs :(
 	# "llvm" # Kept just in case, was used for trying experimental tauri cross compilation to windows (also nsis above)
 	# "tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
+	# taskopen is currently not working on nixpkgs for nix-darwin, despite being available in homebrew.
+	{
+	  name = "taskopen";
+	  # For some silly reason, it lists "task" as a dependency, but it's actually a separate binary, so we skip that since we install "task" via nix
+	  args = [ "ignore-dependencies" ];
+	}
       ];
       # Uninstall formulae not in this conf. This is the source of truth.
       # TODO: Consider using 'zap' instead.
