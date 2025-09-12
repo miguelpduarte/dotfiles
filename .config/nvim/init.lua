@@ -464,6 +464,28 @@ require('lazy').setup({
 			vim.g.matchup_matchparen_offscreen = { method = 'popup' }
 		end
 	},
+	-- better GitHub PR reviews (and much more but PRs is the main point of this)
+	{
+		'pwntester/octo.nvim',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+			'nvim-tree/nvim-web-devicons',
+		},
+		config = function()
+			require('octo').setup({
+				-- using local files so we can actually get LSP, etc.
+				use_local_fs = true,
+				-- Reminds me of when I tried Oh My zsh and ended up turning everything off lol
+				mappings_disable_default = false,
+				-- I feel like these should probably take from GitHub settings but ok
+				-- (either that or I'll never actually perform these from nvim lol)
+				default_delete_branch = true,
+				default_merge_method = "rebase",
+
+			})
+		end
+	},
 
 	-- LSP-related
 	-- LSP
@@ -622,6 +644,7 @@ require('lazy').setup({
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 			-- `open` defaults to true
+			-- Maybe qflist instead?? TJ's vid
 			vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 			-- In theory we could probably call into this multiple times, but let's keep it simple for now to avoid breakage
