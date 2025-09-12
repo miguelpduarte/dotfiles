@@ -749,9 +749,13 @@ require('lazy').setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			-- Plug 'hrsh7th/cmp-cmdline' ? -- TODO: Actually this is probably useful, sounds like completion in the commandline
+			"hrsh7th/cmp-cmdline",
 		},
 		config = function()
+			-- TODO: If I end up writing a lot, especially due to obsidian.nvim, try out:
+			-- https://github.com/uga-rosa/cmp-dictionary
+			-- https://github.com/f3fora/cmp-spell
+			-- (But likely only enable if spell is set, otherwise it will spam everything everywhere)
 			local cmp = require('cmp')
 			cmp.setup({
 				snippet = {
@@ -784,10 +788,20 @@ require('lazy').setup({
 				},
 			})
 
-			-- Enable completing paths in :
+			-- TODO: Consider completion for '/': https://github.com/hrsh7th/cmp-cmdline?tab=readme-ov-file#setup
+
+			-- Enable completing paths and commands in :
 			cmp.setup.cmdline(':', {
+				mapping = cmp.mapping.preset.cmdline(),
 				sources = cmp.config.sources({
 					{ name = 'path' }
+				}, {
+					{
+						name = 'cmdline',
+						option = {
+							ignore_cmds = { 'Man', '!' }
+						}
+					}
 				})
 			})
 		end
