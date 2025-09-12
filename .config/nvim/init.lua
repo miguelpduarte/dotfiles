@@ -558,6 +558,9 @@ require('lazy').setup({
 				filetypes = { "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "htmlangular", "svelte", "vue" }
 			})
 			vim.lsp.enable('emmet_language_server')
+			-- Tailwind-specific functionality, e.g. linting and completion
+			vim.lsp.enable('tailwindcss')
+
 			-- JSON
 			vim.lsp.config('jsonls', {
 				capabilities = capabilities,
