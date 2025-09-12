@@ -108,7 +108,8 @@
 	  # for vscode-eslint-language-server, vscode-json-language-server
 	  vscode-langservers-extracted
           nodePackages_latest.typescript-language-server # typescript-language-server
-	  typescript # tsserver is actually here?
+	  # typescript # tsserver is actually here? # Nope, this simply provides a global TS which is useful but also misleading.
+	  tailwindcss-language-server
 	  svelte-language-server
 	  emmet-language-server
         ];
