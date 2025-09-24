@@ -12,13 +12,14 @@ precmd() {
     # Emits OSC-133 sequence before printing the prompt, so the terminal knows
     # where the prompts are. This enables jumping to them directly.
     print -Pn "\e]133;A\e\\"
+    TW_CURR_CTX="$(task _get rc.context)"
 }
 
 # Prompt documentation
-# %4~:directory up to 4, otherwise truncated $vcs_stuff:git, shelllevel
-# conditionally printed exitcode, $/# prompt, <space>
+# %4~:directory up to 4, otherwise truncated; $vcs_stuff:git;tw ctx; shelllevel;
+# conditionally printed exitcode; $/# prompt; <space>
 PROMPT='
-%B%4~%b ${vcs_info_msg_0_} %F{magenta}%B%(2L.{%L}.)%b%f
+%B%4~%b ${vcs_info_msg_0_}%F{magenta}%B%(2L.{%L}.)%b%f %F{blue}${TW_CURR_CTX:+T($TW_CURR_CTX)}%f
 %F{red}%B%(?..!%? )%b%f%B%(!.#.$)%b '
 
 ## To fix vim and less, etc to not freeze with ctrl-s ctrl-q in terminals
@@ -74,6 +75,9 @@ alias glog-ga='git log --graph --all'
 # NOTE: Does not play well with GitHub's squash-and-merge, try to squash with interactive rebase first and then merge (without squashing!) using GitHub (or not!)
 alias branches-merged='git branch --merged'
 alias branches-not-merged='git branch --no-merged'
+
+### Taskwarrior and friends
+alias t='task'
 
 ### PDF and docs
 
