@@ -4,7 +4,8 @@
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' enable git 
-zstyle ':vcs_info:git:*' formats 'on %F{yellow}%b%f %a'
+zstyle ':vcs_info:git:*' formats 'on %F{yellow}%b%f'
+zstyle ':vcs_info:git:*' actionformats 'on %F{yellow}%b%f%F{cyan}->%a%f'
 precmd() {
     vcs_info
     # Ref from: https://codeberg.org/dnkl/foot/pulls/1088
@@ -65,6 +66,7 @@ alias gst='git status'
 # You just lost the
 alias game='git commit --amend'
 alias gamer='game --reuse-message=HEAD'
+## TODO: Move the below aliases to git config/delete them from here
 # Git log short version
 alias glog-s='git log --oneline --decorate'
 alias glog-ga='git log --graph --all'
