@@ -162,6 +162,10 @@
 	  orientation = "bottom";
 	};
         finder.AppleShowAllExtensions = true;
+	# https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-system.defaults.WindowManager.AppWindowGroupingBehavior
+	# I think this fixes switching windows with 3-finger Mission Control - all windows are no longer focused when switching.
+	# false means "One at a time"
+	WindowManager.AppWindowGroupingBehavior = false;
       };
       system.keyboard = {
 	enableKeyMapping = true;
