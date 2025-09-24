@@ -24,6 +24,7 @@
 	rp = restore --patch
 	# No need for `graphite`! Ref: https://dev.to/onepoint/git-update-refs-in-a-nutshell-574c
 	# Afterwards, can quickly update branches on remote with just `g fp origin branch-1 branch-2`
+	# Also, actually nicer ref: https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
 	irau = ira --update-refs
 	fp = push --force-with-lease
 	# TODO: Use the default remote, or actually all?
