@@ -4,8 +4,8 @@
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' enable git 
-zstyle ':vcs_info:git:*' formats 'on %F{yellow}%b%f'
-zstyle ':vcs_info:git:*' actionformats 'on %F{yellow}%b%f%F{cyan}->%a%f'
+zstyle ':vcs_info:git:*' formats ' on %F{yellow}%b%f'
+zstyle ':vcs_info:git:*' actionformats ' on %F{yellow}%b%f%F{cyan}->%a%f'
 precmd() {
     vcs_info
     # Ref from: https://codeberg.org/dnkl/foot/pulls/1088
@@ -19,7 +19,7 @@ precmd() {
 # %4~:directory up to 4, otherwise truncated; $vcs_stuff:git;tw ctx; shelllevel;
 # conditionally printed exitcode; $/# prompt; <space>
 PROMPT='
-%B%4~%b ${vcs_info_msg_0_}%F{magenta}%B%(2L.{%L}.)%b%f%F{blue}${TW_CURR_CTX:+T($TW_CURR_CTX)}%f
+%B%4~%b${vcs_info_msg_0_}%F{magenta}%B%(2L. {%L}.)%b%f%F{blue}${TW_CURR_CTX:+ T($TW_CURR_CTX)}%f
 %F{red}%B%(?..!%? )%b%f%B%(!.#.$)%b '
 
 ## To fix vim and less, etc to not freeze with ctrl-s ctrl-q in terminals
