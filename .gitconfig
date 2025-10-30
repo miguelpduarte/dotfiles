@@ -22,10 +22,7 @@
 	# This is probably alias overkill lol. Saving all those keystrokes to be a 10x engineer :joy:
 	ap = add --patch
 	rp = restore --patch
-	# No need for `graphite`! Ref: https://dev.to/onepoint/git-update-refs-in-a-nutshell-574c
-	# Afterwards, can quickly update branches on remote with just `g fp origin branch-1 branch-2`
-	# Also, actually nicer ref: https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
-	irau = ira --update-refs
+
 	fp = push --force-with-lease
 	# TODO: Use the default remote, or actually all?
 	tidy = remote prune origin
@@ -41,6 +38,14 @@
 [branch]
 	# Sort branches by reverse commit date (so latest first)
 	sort = -committerdate
+[rebase]
+
+	# No need for `graphite`! Ref: https://dev.to/onepoint/git-update-refs-in-a-nutshell-574c
+	# Actually nicer ref: https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
+	# Afterwards, can quickly update branches on remote with just `g fp origin branch-1 branch-2` (optionally also `--atomic`)
+
+	# Update refs by default, as it's always useful, even if not always necessary.
+	updateRefs = true
 [includeIf "gitdir:~/coding/"]
 	path = ~/coding/.gitconfig
 [includeIf "gitdir:~/my-coding/"]
