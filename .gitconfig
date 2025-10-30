@@ -15,8 +15,7 @@
 	b = branch
 	last = log -1 HEAD
 	l = log --oneline --decorate
-	# TODO: Maybe also have a graph view that's shorter like in `g l` (can always add more args though)
-	lga = log --graph --all
+	lga = log --graph --all --oneline --decorate
 	sl = stash list
 	ira = rebase -i --autosquash
 	# This is probably alias overkill lol. Saving all those keystrokes to be a 10x engineer :joy:
