@@ -1,3 +1,4 @@
+# TODO: Maybe move this to nixos-configs repo? Single source of truth for all "infra" then :)
 {
   description = "My Darwin system flake";
 
@@ -131,7 +132,7 @@
 	"alt-tab"
 	# TODO: Try out spotifyd instead
 	"spotify"
-	"tableplus"
+	"tableplus" # Seems to also manage updates by itself, not sure how this works also because of licenses and stuff.
 	"raycast"
 	"slack" # previously directly downloaded from website, check for conflicts
 	"parallels"
@@ -178,9 +179,23 @@
       # https://discourse.nixos.org/t/how-to-resolve-nixpkgs-was-not-found-error-without-channels/47258
       # https://github.com/NixOS/nix/issues/2982
       nix.settings.nix-path = "nixpkgs=flake:nixpkgs";
+      nix.gc = {
+	automatic = true;
+	# interval = { Weekday = 0; Hour = 0; Minute = 0; };
+	# options = "--delete-older-than 30d"; # TODO: Decide
+      };
+      nix.optimise = {
+	automatic = true;
+	# interval = { Weekday = 0; Hour = 0; Minute = 0; };
+      };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
+
+      nix.settings.trusted-users = [
+	"root"
+	"migueld"
+      ];
 
       # As per the error instructions, specifying the primary user
       # TODO: Move the relevant configurations to the user scope so that this is no longer an issue.
