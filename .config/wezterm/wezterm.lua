@@ -14,7 +14,8 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 -- https://github.com/NixOS/nixpkgs/issues/384729#issuecomment-2678113283
 config.font = wezterm.font_with_fallback {
   -- Main font
-  "Hack Nerd Font",
+  "ComicShannsMono Nerd Font", -- :)
+  -- "Hack Nerd Font",
   -- Fallback fonts for Asian characters -> I don't think I have these though, but leaving it for now just to be safe
   "Noto Sans CJK HK",
   "Noto Sans CJK JP",

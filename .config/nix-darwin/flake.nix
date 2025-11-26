@@ -117,7 +117,10 @@
 
       programs.direnv.enable = true;
 
-      fonts.packages = [ pkgs.nerd-fonts.hack ];
+      fonts.packages = with pkgs; [
+	nerd-fonts.hack
+	nerd-fonts.comic-shanns-mono
+      ];
 
       environment.variables = {
 	EDITOR = "nvim";
