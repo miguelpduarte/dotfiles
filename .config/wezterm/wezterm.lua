@@ -10,6 +10,21 @@ config.color_scheme = 'Tokyo Night'
 config.front_end = "WebGpu"
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
+-- Fix crashing on macOS when installed via nixpkgs due to icon rendering breaking.
+-- https://github.com/NixOS/nixpkgs/issues/384729#issuecomment-2678113283
+config.font = wezterm.font_with_fallback {
+  -- Main font
+  "Hack Nerd Font",
+  -- Fallback fonts for Asian characters -> I don't think I have these though, but leaving it for now just to be safe
+  "Noto Sans CJK HK",
+  "Noto Sans CJK JP",
+  "Noto Sans CJK KR",
+  "Noto Sans CJK SC",
+  "Noto Sans CJK TC",
+  -- This is probably not needed, but it doesn't hurt either
+  "Noto Sans",
+}
+
 -- Disable ligatures on most fonts (sorry, but I don't like them)
 -- Source: https://wezfurlong.org/wezterm/config/font-shaping.html
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
