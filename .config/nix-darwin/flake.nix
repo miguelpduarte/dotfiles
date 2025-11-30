@@ -120,6 +120,7 @@
       fonts.packages = with pkgs; [
 	nerd-fonts.hack
 	nerd-fonts.comic-shanns-mono
+	nerd-fonts.commit-mono
       ];
 
       environment.variables = {

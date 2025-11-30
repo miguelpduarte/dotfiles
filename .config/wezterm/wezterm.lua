@@ -15,6 +15,7 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 config.font = wezterm.font_with_fallback {
   -- Main font
   "ComicShannsMono Nerd Font", -- :)
+  -- "CommitMono Nerd Font", -- escape hatch if life is being too funny!
   -- "Hack Nerd Font",
   -- Fallback fonts for Asian characters -> I don't think I have these though, but leaving it for now just to be safe
   "Noto Sans CJK HK",
