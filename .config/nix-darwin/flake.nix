@@ -34,6 +34,9 @@
 	  gh # required by octo.nvim
 	  shellcheck
 
+	  # window management? Taking a latest-er version for "config-version = 2"
+	  pkgs-unstable.aerospace
+
 	  # other
 	  obsidian
 	  # terminal emulator
