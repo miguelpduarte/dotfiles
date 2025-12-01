@@ -105,6 +105,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
+    ## TODO: --boundaries all-monitors-outer-frame
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left'
     alt-j = 'focus down'
@@ -121,6 +122,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
 
+    # TODO: Rename workspaces to something more intuitive
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
@@ -133,7 +135,6 @@ automatically-unhide-macos-hidden-apps = false
     alt-9 = 'workspace 9'
     alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
     alt-b = 'workspace B'
-    alt-c = 'workspace C'
     alt-d = 'workspace D'
     alt-e = 'workspace E'
     alt-f = 'workspace F'
@@ -148,11 +149,19 @@ automatically-unhide-macos-hidden-apps = false
     alt-s = 'workspace S'
     alt-t = 'workspace T'
     alt-u = 'workspace U'
-    alt-v = 'workspace V'
     alt-w = 'workspace W'
-    alt-x = 'workspace X'
     alt-y = 'workspace Y'
-    alt-z = 'workspace Z'
+    # Ensuring that I have at least some workspace via a bind for the first 4 monitors I connect (should be enough 😅)
+    # (It's the bottom row in querty)
+    alt-z = 'workspace Z:mon1'
+    alt-x = 'workspace X:mon2'
+    alt-c = 'workspace C:mon3'
+    alt-v = 'workspace V:mon4'
+
+    alt-shift-z = 'move-node-to-workspace Z:mon1'
+    alt-shift-x = 'move-node-to-workspace X:mon2'
+    alt-shift-c = 'move-node-to-workspace C:mon3'
+    alt-shift-v = 'move-node-to-workspace V:mon4'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -166,7 +175,6 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-a = 'move-node-to-workspace A'
     alt-shift-b = 'move-node-to-workspace B'
-    alt-shift-c = 'move-node-to-workspace C'
     alt-shift-d = 'move-node-to-workspace D'
     alt-shift-e = 'move-node-to-workspace E'
     alt-shift-f = 'move-node-to-workspace F'
@@ -181,11 +189,8 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-s = 'move-node-to-workspace S'
     alt-shift-t = 'move-node-to-workspace T'
     alt-shift-u = 'move-node-to-workspace U'
-    alt-shift-v = 'move-node-to-workspace V'
     alt-shift-w = 'move-node-to-workspace W'
-    alt-shift-x = 'move-node-to-workspace X'
     alt-shift-y = 'move-node-to-workspace Y'
-    alt-shift-z = 'move-node-to-workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -194,6 +199,13 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
+
+[workspace-to-monitor-force-assignment]
+# First 4 monitors in zxcv as a "sane default"
+    'Z:mon1' = 1
+    'X:mon2' = 2
+    'C:mon3' = 3
+    'V:mon4' = 4
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
