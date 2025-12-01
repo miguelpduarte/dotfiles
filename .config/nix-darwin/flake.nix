@@ -176,6 +176,10 @@
 	# I think this fixes switching windows with 3-finger Mission Control - all windows are no longer focused when switching.
 	# false means "One at a time"
 	WindowManager.AppWindowGroupingBehavior = false;
+
+	# Aka: "Displays have separate Spaces"
+	# Not recommended by Aerospace: https://nikitabobko.github.io/AeroSpace/guide#emulation-of-virtual-workspaces
+	spaces.spans-displays = true;
       };
       system.keyboard = {
 	enableKeyMapping = true;
