@@ -39,6 +39,8 @@
 
 	  # other
 	  obsidian
+	  # Trying this out for presentations instead of Remark, so far so good
+	  pkgs-unstable.presenterm
 	  # terminal emulator
 	  wezterm
 	  tmux
@@ -159,6 +161,8 @@
 	  # For some silly reason, it lists "task" as a dependency, but it's actually a separate binary, so we skip that since we install "task" via nix
 	  args = [ "ignore-dependencies" ];
 	}
+	# Needed for `presenterm` PDF exporting - sadly also broken on nixpkgs at the moment, and this is easier than python deps...
+	"weasyprint"
       ];
       # Uninstall formulae not in this conf. This is the source of truth.
       # TODO: Consider using 'zap' instead.
