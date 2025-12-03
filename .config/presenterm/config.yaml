@@ -1,0 +1,57 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mfontanini/presenterm/master/config-file-schema.json
+defaults:
+  # # override the terminal font size when in windows or when using sixel.
+  # # TODO: ??? But should make it huge yes!!
+  # terminal_font_size: 16
+
+  # the theme to use by default in every presentation unless overridden.
+  # Making it match the rest of my setup - maybe should use light variants instead for better viewing experience when presenting!
+  # theme:
+  #   light: catppuccin-latte
+  #   dark: tokyionight-storm
+  # Apparently, despite listed in the docs, the multi-theme spec does not work :(
+  theme: tokyonight-storm
+
+  validate_overflows: always
+
+  # Trying to keep things centered...
+  # ((With wezterm 14.0 font-size these seemed ok on a split, even on the bigger screen. Even after zooming a couple times, these values seem ok))
+  # Width
+  # (still adjusting this one a bit)
+  max_columns: 200
+  # Height
+  # I found that this value was quite okay, especially with a couple zoom-ins to get bigger font-size.
+  max_rows: 40
+  max_rows_alignment: center
+
+
+# These can be overriden in a presentation's frontmatter
+options:
+  # TODO: Test if this bothers me. Otherwise just feels quite useful... 😅
+  implicit_slide_ends: true
+
+  # Use incremental_lists by default since they're useful
+  # Can be overridden if needed with <!-- incremental_lists: false -->
+  incremental_lists: true
+
+  # Using "-------" ("thematic breaks" as per docs) to end slides as a shorthand.
+  end_slide_shorthand: true
+
+  # +render attribute can be omitted for these in their code snippets
+  auto_render_languages:
+    - mermaid
+
+  # Default is 1 but I found that too cramped - still adjusting tho
+  list_item_newlines: 2
+
+speaker_notes:
+  # The endpoint to listen for speaker note events.
+  listen_address: "127.0.0.1:59418"
+  # The endpoint to publish speaker note events.
+  publish_address: "127.0.0.1:59418"
+  # TODO: try this out
+  always_publish: false
+
+# Deliberately sticking to defaults - KISS!
+# bindings:
