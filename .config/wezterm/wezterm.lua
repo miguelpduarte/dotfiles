@@ -10,6 +10,8 @@ config.color_scheme = 'Tokyo Night'
 config.front_end = "WebGpu"
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
+-- I'm blind, maybe - but default size seems too small now (might also depend on the font below)
+config.font_size = 14.0
 -- Fix crashing on macOS when installed via nixpkgs due to icon rendering breaking.
 -- https://github.com/NixOS/nixpkgs/issues/384729#issuecomment-2678113283
 config.font = wezterm.font_with_fallback {

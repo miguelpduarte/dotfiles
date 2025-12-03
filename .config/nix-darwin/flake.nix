@@ -130,6 +130,7 @@
 
       environment.variables = {
 	EDITOR = "nvim";
+	PRESENTERM_CONFIG_FILE="~/.config/presenterm/config.yaml";
       };
 
       # Homebrew needs to be installed directly, sadly
@@ -197,6 +198,7 @@
       # https://github.com/NixOS/nix/issues/2982
       nix.settings.nix-path = "nixpkgs=flake:nixpkgs";
       nix.gc = {
+
 	automatic = true;
 	# interval = { Weekday = 0; Hour = 0; Minute = 0; };
 	# options = "--delete-older-than 30d"; # TODO: Decide

@@ -25,11 +25,19 @@ defaults:
   max_rows: 40
   max_rows_alignment: center
 
+export:
+  # Similarly, setting sizes for PDF exporting so we get the expected results when centering.
+  dimensions:
+    # width
+    columns: 100
+    # height
+    rows: 33
 
 # These can be overriden in a presentation's frontmatter
 options:
   # TODO: Test if this bothers me. Otherwise just feels quite useful... 😅
-  implicit_slide_ends: true
+  # implicit_slide_ends: true
+  # This was breaking with using the shorthand as well, I think. So disabling for now. The shorthand makes it ok anyway.
 
   # Use incremental_lists by default since they're useful
   # Can be overridden if needed with <!-- incremental_lists: false -->
