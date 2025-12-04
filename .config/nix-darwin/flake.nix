@@ -33,6 +33,9 @@
 	  jq
 	  gh # required by octo.nvim
 	  shellcheck
+	  # For dotfile management, finally went with an automated tool, even though it's not 100% because it kinda depends on the host as well...
+	  # But at least it's easy...
+	  stow
 
 	  # window management? Taking a latest-er version for "config-version = 2"
 	  pkgs-unstable.aerospace
