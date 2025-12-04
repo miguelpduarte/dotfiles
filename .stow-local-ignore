@@ -1,0 +1,37 @@
+# Ignore the random scripts I had here
+.*\.sh
+# Also the root markdown files
+.*\.md
+# Taskwarrior setup is not yet moved over to stow -> old one will cause conflicts/break stuff
+\.taskopenrc
+\.taskrc
+# random other folders
+outside_home_for_yadm
+backups-with-borg
+
+# Tbh a lot of the files under .config/ are no longer relevant but 🤷 - the whole idea is to KISS with stow...
+
+# --- Default ignore file below ---
+# Comments and blank lines are allowed.
+
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+\.gitmodules
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING
