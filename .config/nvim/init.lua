@@ -440,6 +440,14 @@ require('lazy').setup({
 		end,
 	},
 	-- TODO: leap? Ver se preciso depois de me habituar um pouco
+	-- leap for faster/better navigation
+	{
+		'ggandor/leap.nvim',
+		config = function()
+			vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+			vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+		end
+	},
 	-- undotree
 	{
 		'mbbill/undotree',
