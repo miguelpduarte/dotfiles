@@ -511,6 +511,16 @@ require('lazy').setup({
 						cargo = {
 							features = 'all',
 						},
+						-- Both from https://github.com/jonhoo/configs/blob/20232fbfb5fcadda00cacd030c0cfe20b731fa09/editor/.config/nvim/init.lua#L449
+						-- Let's see what it does.
+						checkOnSave = {
+							enable = true,
+						},
+						completion = {
+							postfix = {
+								enable = false,
+							},
+						},
 					},
 				},
 			})
