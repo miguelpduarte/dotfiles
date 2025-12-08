@@ -9,6 +9,9 @@ session_name="$(basename "$dir")"
 
 wish_to_rename="$(echo -e "No (nN)\nYes (yY)" | fzf --tmux --header="Rename session? (current name: $session_name)")"
 if [ "$wish_to_rename" = "Yes (yY)" ]; then
+	# TODO: Instead of the shenanigans below, we can just run the script in a tmux popup directly.
+	# I don't think there's even a use-case to running it outside of tmux, but in any case that would make it work :)
+	# (check out that tmux popups video to confirm as well :)
 	if [ -n "$TMUX" ]; then
 		# TODO: Can't get input, need to pipe it somewhere, fzf seems to use a fifo:
 		# https://github.com/junegunn/fzf/blob/master/src/proxy.go#L36
