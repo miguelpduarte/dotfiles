@@ -16,6 +16,9 @@
 	last = log -1 HEAD
 	l = log --oneline --decorate
 	lga = log --graph --all --oneline --decorate
+	# Use to create a bullet item list for e.g. GitHub squash merge commit descriptions
+	# Usage e.g.: git bulleted-log origin/main..HEAD
+	bulleted-log = log --reverse --pretty=format:'- %h: %s%n%b'
 	sl = stash list
 	ira = rebase -i --autosquash
 	# This is probably alias overkill lol. Saving all those keystrokes to be a 10x engineer :joy:
