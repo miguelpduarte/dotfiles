@@ -188,10 +188,17 @@
 	# Aka: "Displays have separate Spaces"
 	# Not recommended by Aerospace: https://nikitabobko.github.io/AeroSpace/guide#emulation-of-virtual-workspaces
 	spaces.spans-displays = true;
+
+	# Trying to make Control Center/Menu Bar less terrible (also idk why but this kept getting reset when set in UI)
+	# Hide Bluetooth, Now Playing & WiFi in menubar - they're in control center...
+	controlcenter.Bluetooth = false;
+	controlcenter.NowPlaying = false;
+	# TODO: WiFi... not yet in nix-darwin opts...
       };
       system.keyboard = {
 	enableKeyMapping = true;
         remapCapsLockToControl = true;
+	nonUS.remapTilde = true;
       };
       security.pam.services.sudo_local.touchIdAuth = true;
 
@@ -246,7 +253,13 @@
       specialArgs = { inherit nixpkgs-unstable; };
     };
 
+    # New mbp has a different hostname and nix-darwin gets confused lol
+    darwinConfigurations."MBP-migueld" = nix-darwin.lib.darwinSystem {
+      modules = [ configuration ];
+      specialArgs = { inherit nixpkgs-unstable; };
+    };
+
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Miguels-MacBook-Pro".pkgs;
+    darwinPackages = self.darwinConfigurations."MBP-migueld".pkgs;
   };
 }
