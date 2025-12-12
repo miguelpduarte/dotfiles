@@ -194,6 +194,10 @@
 	controlcenter.Bluetooth = false;
 	controlcenter.NowPlaying = false;
 	# TODO: WiFi... not yet in nix-darwin opts...
+
+	NSGlobalDomain.NSWindowShouldDragOnGesture = true;
+	# "Make it fast"
+	NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
       };
       system.keyboard = {
 	enableKeyMapping = true;
