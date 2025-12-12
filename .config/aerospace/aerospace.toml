@@ -207,6 +207,10 @@ automatically-unhide-macos-hidden-apps = false
     'X:mon2' = 2
     'C:mon3' = 3
     'V:mon4' = 4
+# These go to secondary because it's actually the big external ones I connect most of the time
+    'T_erm' = ['secondary', 'main']
+    1 = ['secondary', 'main']
+    'I_term-vpn' = ['secondary', 'main']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
