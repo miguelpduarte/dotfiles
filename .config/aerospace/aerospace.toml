@@ -201,6 +201,15 @@ automatically-unhide-macos-hidden-apps = false
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
+# App->workspace assignment
+# (Note: Only really works on app startup, not on "window spawn", it seems)
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace S_lack'
+[[on-window-detected]]
+    if.app-id = 'com.spotify.client'
+    run = 'move-node-to-workspace E_ntertainment'
+
 [workspace-to-monitor-force-assignment]
 # First 4 monitors in zxcv as a "sane default"
     'Z:mon1' = 1
@@ -208,9 +217,10 @@ automatically-unhide-macos-hidden-apps = false
     'C:mon3' = 3
     'V:mon4' = 4
 # These go to secondary because it's actually the big external ones I connect most of the time
-    'T_erm' = ['secondary', 'main']
-    1 = ['secondary', 'main']
-    'I_term-vpn' = ['secondary', 'main']
+# In order: secondary (any non-main when 2 monitors total), index 2 (in case it's more than 2, it's probably what I want), and finally just the main otherwise :)
+    'T_erm' = ['secondary', 2, 'main']
+    1 = ['secondary', 2, 'main']
+    'I_term-vpn' = ['secondary', 2, 'main']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
