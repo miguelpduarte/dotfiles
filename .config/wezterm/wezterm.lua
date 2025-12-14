@@ -29,6 +29,9 @@ config.font = wezterm.font_with_fallback {
   "Noto Sans",
 }
 
+-- cleaner! self-explanatory :)
+config.hide_tab_bar_if_only_one_tab = true
+
 -- Disable ligatures on most fonts (sorry, but I don't like them)
 -- Source: https://wezfurlong.org/wezterm/config/font-shaping.html
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
