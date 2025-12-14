@@ -3,7 +3,10 @@
 # https://sipb.mit.edu/doc/safe-shell/
 set -euf -o pipefail
 
-dir="$(fd . -t d ~/coding ~/my-coding --max-depth 1 | fzf --tmux)"
+# These are just sent to `fzf` directly without the `fd` search.
+DIRECT_DIRS=(~/dotfiles)
+dir="$( (fd . -t d ~/coding ~/my-coding --max-depth 1 ; printf '%s\n' "${DIRECT_DIRS[@]}") \
+	| fzf --tmux)"
 
 session_name="$(basename "$dir")"
 
