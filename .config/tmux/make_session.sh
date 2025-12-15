@@ -12,7 +12,6 @@ session_name="$(basename "$dir")"
 
 wish_to_rename="$(echo -e "No (nN)\nYes (yY)" | fzf --header="Rename session? (current name: $session_name)")"
 if [ "$wish_to_rename" = "Yes (yY)" ]; then
-	# TODO: For some reason prompt does not show up but input works... (feels like it's lagging so should probably fix lol)
 	read -r -p "New session name (current name: $session_name): " session_name
 fi
 
