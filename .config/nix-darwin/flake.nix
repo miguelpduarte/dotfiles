@@ -208,6 +208,10 @@
 	nonUS.remapTilde = true;
       };
       security.pam.services.sudo_local.touchIdAuth = true;
+      # Make touchId sudo work inside tmux, surviving "re-logins" :)
+      # https://github.com/nix-darwin/nix-darwin/issues/985
+      # Note: Might cause some issues with SSH? (https://github.com/nix-darwin/nix-darwin/pull/1344#issuecomment-2738164190)
+      security.pam.services.sudo_local.reattach = true;
 
       # nix.package = pkgs.nix;
       # Make old commands work, references:
