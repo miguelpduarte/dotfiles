@@ -12,22 +12,28 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- I'm blind, maybe - but default size seems too small now (might also depend on the font below)
 config.font_size = 14.0
+
 -- Fix crashing on macOS when installed via nixpkgs due to icon rendering breaking.
 -- https://github.com/NixOS/nixpkgs/issues/384729#issuecomment-2678113283
+-- Update: not *strictly* needed anymore on more recent nixpkgs-unstable version + `warn_about_missing_glyphs` fixes the underlying "issue" (see below).
+-- However, the extra fallbacks on Noto Sans are able to display more characters, so I'll keep at least some of those.
 config.font = wezterm.font_with_fallback {
   -- Main font
   "ComicShannsMono Nerd Font", -- :)
   -- "CommitMono Nerd Font", -- escape hatch if life is being too funny!
-  -- "Hack Nerd Font",
-  -- Fallback fonts for Asian characters -> Installed for maximum fallback as per the nixpkgs issue linked above...
+  -- "Hack Nerd Font", -- This one is a bit fugly :/
+  -- Fallback fonts for Asian characters (see comment above)
   "Noto Sans CJK HK",
   "Noto Sans CJK JP",
   "Noto Sans CJK KR",
   "Noto Sans CJK SC",
   "Noto Sans CJK TC",
-  -- > This is probably not needed, but it doesn't hurt either
-  "Noto Sans",
 }
+-- https://github.com/wezterm/wezterm/issues/6731 -> nixpkgs build is not code-signed and notifications don't work anyway.
+-- Remove if I move to brew-based installation.
+config.notification_handling = 'NeverShow'
+-- The above only controls notifications coming from escape-sequences, this should suppress the original source of the problem.
+config.warn_about_missing_glyphs = false
 
 -- cleaner! self-explanatory :)
 config.hide_tab_bar_if_only_one_tab = true

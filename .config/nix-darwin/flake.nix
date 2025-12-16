@@ -44,8 +44,9 @@
 	  obsidian
 	  # Trying this out for presentations instead of Remark, so far so good
 	  pkgs-unstable.presenterm
-	  # terminal emulator
-	  wezterm
+	  ## terminal
+	  # unstable wezterm reduced crashes and seems otherwise fine - so leaving it in unstable for now.
+	  pkgs-unstable.wezterm
 	  tmux
 	  # organization
 	  taskwarrior3
@@ -129,8 +130,7 @@
 	nerd-fonts.hack
 	nerd-fonts.comic-shanns-mono
 	nerd-fonts.commit-mono
-	# as per https://github.com/NixOS/nixpkgs/issues/384729#issuecomment-2678113283 - trying to fix wezterm crashing as it's becoming extremely annoying with random unicode characters crashing my terminal...
-	noto-fonts
+	# Extra characters via this font, just to display more characters. No longer needed to fix crashing, thankfully!
 	noto-fonts-cjk-sans
       ];
 
