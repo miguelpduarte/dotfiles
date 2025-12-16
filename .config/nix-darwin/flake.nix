@@ -129,6 +129,9 @@
 	nerd-fonts.hack
 	nerd-fonts.comic-shanns-mono
 	nerd-fonts.commit-mono
+	# as per https://github.com/NixOS/nixpkgs/issues/384729#issuecomment-2678113283 - trying to fix wezterm crashing as it's becoming extremely annoying with random unicode characters crashing my terminal...
+	noto-fonts
+	noto-fonts-cjk-sans
       ];
 
       environment.variables = {

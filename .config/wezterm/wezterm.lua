@@ -19,13 +19,13 @@ config.font = wezterm.font_with_fallback {
   "ComicShannsMono Nerd Font", -- :)
   -- "CommitMono Nerd Font", -- escape hatch if life is being too funny!
   -- "Hack Nerd Font",
-  -- Fallback fonts for Asian characters -> I don't think I have these though, but leaving it for now just to be safe
+  -- Fallback fonts for Asian characters -> Installed for maximum fallback as per the nixpkgs issue linked above...
   "Noto Sans CJK HK",
   "Noto Sans CJK JP",
   "Noto Sans CJK KR",
   "Noto Sans CJK SC",
   "Noto Sans CJK TC",
-  -- This is probably not needed, but it doesn't hurt either
+  -- > This is probably not needed, but it doesn't hurt either
   "Noto Sans",
 }
 
