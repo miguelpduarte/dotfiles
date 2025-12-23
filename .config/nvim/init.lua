@@ -686,6 +686,11 @@ require('lazy').setup({
 				},
 			})
 
+			-- Lower LSP semantic token priority to not overwrite treesitter color settings
+			-- https://old.reddit.com/r/neovim/comments/1d9gzud/lsp_and_semantic_tokens_yay_or_nay/l7e6akp/
+			-- https://github.com/hendrikmi/dotfiles/blob/3c073c05712677b0839c309d756260191670eb81/nvim/lua/core/snippets.lua#L5C1-L5C46
+			vim.highlight.priorities.semantic_tokens = 95
+
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
 			vim.api.nvim_create_autocmd('LspAttach', {
