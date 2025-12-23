@@ -660,10 +660,9 @@ require('lazy').setup({
 			-- TODO: Add bashls if desired again actually. But shellcheck tends to be good enough.
 
 			-- Global mappings.
-			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+			vim.keymap.set('n', '[d', function() vim.diagnostic.jump({count =  1}) end)
+			vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count = -1}) end)
 			-- `open` defaults to true
 			-- Maybe qflist instead?? TJ's vid
 			vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
@@ -679,6 +678,11 @@ require('lazy').setup({
 				virtual_lines = {
 					-- This one seems noisier so only showing for the current cursor line
 					current_line = true,
+				},
+				update_in_insert = true, -- Disable if it gets too distracting.
+				severity_sort = true, -- Would expect this to be the default, let's see if there's a good reason that it's not.
+				float = {
+					source = 'if_many',
 				},
 			})
 
