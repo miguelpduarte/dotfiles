@@ -848,6 +848,7 @@ require('lazy').setup({
 	-- Global via treesitter
 	{
 		'nvim-treesitter/nvim-treesitter',
+		lazy = false,
 		build = ':TSUpdate',
 		config = function ()
 			local configs = require("nvim-treesitter.configs")
@@ -858,7 +859,7 @@ require('lazy').setup({
 					"nix", "yaml",
 					"query", "javascript", "typescript",
 					"markdown", "markdown_inline",
-					"terraform"
+					"terraform", "comment"
 				},
 				sync_install = false,
 				highlight = { enable = true },
@@ -867,10 +868,17 @@ require('lazy').setup({
 				matchup = { enable = true },
 			})
 
+			-- Highlight todo comments via treesitter!
+			-- https://stackoverflow.com/a/74640468
+			-- Basically just uses the `@comment` TS grammar which tokyonight-night already highlights with a given color.
+			-- However, since that's a bit too plain, we just "bind" to the "regular" `Todo` highlight group which is more "in your face" :)
+			vim.api.nvim_set_hl(0, '@comment.todo', { link = 'Todo' })
+
 			-- TODO: Make this only apply for fts that we support with TS
 			-- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding
 			vim.o.foldmethod = 'expr'
 			vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+			-- TODO: Similarly to the above: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#indentation
 		end
 	},
 	-- toml
