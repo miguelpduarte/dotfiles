@@ -297,11 +297,12 @@ require('lazy').setup({
 			}
 			---@diagnostic disable-next-line: unused-local
 			function MoonLightlineReadonly(opts)
-				-- saving until the font is fixed
-				-- return &readonly && &filetype !=# 'help' ? '' : ''
-				return vim.bo.readonly and 'RO' or ''
+				-- Pick your poison based on fonts status :)
+				return (vim.bo.readonly and vim.bo.filetype ~= 'help') and '' or ''
+				-- return (vim.bo.readonly and vim.bo.filetype ~= 'help') and 'RO' or ''
 			end
 
+			-- TODO: Honestly probably just simplify this, I don't actually necessarily care about the git branch, and also maybe neither about the fancy icons and colors?
 			-- https://github.com/itchyny/lightline.vim/issues/657
 			-- previously vim.cmd
 			-- TODO: Move to vim.api.nvim_exec2 probably
@@ -439,8 +440,7 @@ require('lazy').setup({
 			vim.keymap.set('n', '<leader>th', builtin.help_tags)
 		end,
 	},
-	-- TODO: leap? Ver se preciso depois de me habituar um pouco
-	-- leap for faster/better navigation
+	-- leap for faster/better navigation -> zooooooom
 	{
 		'ggandor/leap.nvim',
 		config = function()
@@ -459,7 +459,7 @@ require('lazy').setup({
 	},
 	-- auto-cd to root of git project
 	{
-		-- TODO: Maybe disable this. Feel like it would be a good idea.
+		-- TODO: Maybe disable this
 		'notjedi/nvim-rooter.lua',
 		config = function()
 			require('nvim-rooter').setup()
@@ -723,10 +723,6 @@ require('lazy').setup({
 						end, opts)
 						vim.lsp.inlay_hint.enable(true)
 					end
-					-- if client.server_capabilities.inlayHintProvider then
-					--     -- vim.lsp.inlay_hint(ev.buf, true)
-					--     vim.lsp.inlay_hint.enable(ev.buf, true)
-					-- end
 
 					local client = vim.lsp.get_client_by_id(ev.data.client_id)
 					if not client then
