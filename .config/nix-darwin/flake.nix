@@ -244,30 +244,29 @@
 	# (seems harmless anyway, just adds the @admin group and "@admin means all users in the wheel group")
 	"@admin"
       ];
-      # NOTE: Apparently just does same arch... so only really linux ARM :/ (still good for RPis or whatever but doesn't help me with the current deployments...)
+      # NOTE: Only does same arch ootb, moved to `nix-rosetta-builder` below Apparently just does same arch... so only really linux ARM :/ (still good for RPis or whatever but doesn't help me with the current deployments...)
       nix.linux-builder = {
-	enable = true;
-	# ephemeral = true; # Enable just for the first couple of runs, then disable after it's working (as per blogpost recommendations). We want to cache the nix store stuff and I don't care about the runner getting full (especially if it can `gc` itself anyway (?))
-	config.virtualisation = {
-	  # Defaults are supposedly 1 core, 3GB RAM and 20GB disk. Let's beef it up!
-	  # See also: https://nixcademy.com/posts/macos-linux-builder/#%EF%B8%8F-improving-the-linux-builder-setup
-	  cores = 6;
-	  darwin-builder = {
-	    diskSize = 40 * 1024;
-	    memorySize = 8 * 1024;
-	  };
-	};
-	# Lower than the cores above to try and allow for jobs with more than 1 core (?) unsure but blogpost had that so 🤷
-	maxJobs = 4;
+	enable = false;
+	ephemeral = true; # Enable just for the first couple of runs, then disable after it's working (as per blogpost recommendations). We want to cache the nix store stuff and I don't care about the runner getting full (especially if it can `gc` itself anyway (?))
+	# INFO: No longer needed since we now get the `nix-rosetta-builder`. Just leaving the default stuff above for ref so we can uncomment/re-enable if needed for another fresh setup later.
+	# config.virtualisation = {
+	#   # Defaults are supposedly 1 core, 3GB RAM and 20GB disk. Let's beef it up!
+	#   # See also: https://nixcademy.com/posts/macos-linux-builder/#%EF%B8%8F-improving-the-linux-builder-setup
+	#   cores = 6;
+	#   darwin-builder = {
+	#     diskSize = 40 * 1024;
+	#     memorySize = 8 * 1024;
+	#   };
+	# };
       };
       # https://github.com/cpick/nix-rosetta-builder seems to be better. Just requires the above for bootstrapping initially
-      # nix-rosetta-builder = {
-	# enable = true;
+      nix-rosetta-builder = {
+	enable = true;
 	# diskSize = "40GiB";
 	# memory = "8GiB";
 	# onDemand = true;
 	# onDemandLingerMinutes = 60;
-      # };
+      };
 
       # As per the error instructions, specifying the primary user
       # TODO: Move the relevant configurations to the user scope so that this is no longer an issue.
