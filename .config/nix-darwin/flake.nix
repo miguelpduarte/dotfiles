@@ -262,8 +262,13 @@
       # https://github.com/cpick/nix-rosetta-builder seems to be better. Just requires the above for bootstrapping initially
       nix-rosetta-builder = {
 	enable = true;
-	diskSize = "40GiB";
+	# default: 8
+	cores = 10;
+	# default: 100GiB
+	diskSize = "110GiB";
+	# default: 6GiB
 	memory = "8GiB";
+	# Because of this, I'm comfortable beefing up the resources above >:)
 	onDemand = true;
 	onDemandLingerMinutes = 60;
       };
