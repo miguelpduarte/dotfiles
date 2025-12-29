@@ -262,10 +262,10 @@
       # https://github.com/cpick/nix-rosetta-builder seems to be better. Just requires the above for bootstrapping initially
       nix-rosetta-builder = {
 	enable = true;
-	# diskSize = "40GiB";
-	# memory = "8GiB";
-	# onDemand = true;
-	# onDemandLingerMinutes = 60;
+	diskSize = "40GiB";
+	memory = "8GiB";
+	onDemand = true;
+	onDemandLingerMinutes = 60;
       };
 
       # As per the error instructions, specifying the primary user
