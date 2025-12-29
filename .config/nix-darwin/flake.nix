@@ -235,7 +235,26 @@
       nix.settings.trusted-users = [
 	"root"
 	"migueld"
+	# Supposedly needed for linux-builder: https://nixcademy.com/posts/macos-linux-builder/#%EF%B8%8F-the-nix-darwin-option
+	# (seems harmless anyway, just adds the @admin group and "@admin means all users in the wheel group")
+	"@admin"
       ];
+      # NOTE: Apparently just does same arch... so only really linux ARM :/ (still good for RPis or whatever but doesn't help me with the current deployments...)
+      nix.linux-builder = {
+	enable = true;
+	# ephemeral = true; # Enable just for the first couple of runs, then disable after it's working (as per blogpost recommendations). We want to cache the nix store stuff and I don't care about the runner getting full (especially if it can `gc` itself anyway (?))
+	config.virtualisation = {
+	  # Defaults are supposedly 1 core, 3GB RAM and 20GB disk. Let's beef it up!
+	  # See also: https://nixcademy.com/posts/macos-linux-builder/#%EF%B8%8F-improving-the-linux-builder-setup
+	  cores = 6;
+	  darwin-builder = {
+	    diskSize = 40 * 1024;
+	    memorySize = 8 * 1024;
+	  };
+	};
+	# Lower than the cores above to try and allow for jobs with more than 1 core (?) unsure but blogpost had that so 🤷
+	maxJobs = 4;
+      };
 
       # As per the error instructions, specifying the primary user
       # TODO: Move the relevant configurations to the user scope so that this is no longer an issue.
@@ -253,6 +272,7 @@
       system.stateVersion = 5;
 
       # The platform the configuration will be used on.
+	  # THIS IS IMPORTANT -> don't forget about it!
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
   in
