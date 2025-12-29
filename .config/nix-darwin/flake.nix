@@ -4,14 +4,19 @@
 
   inputs = {
     # Using releases to try and be more stable, overriding only if necessary.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     # Used sparingly for newer versions of packages.
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    nix-rosetta-builder = {
+      url = "github:cpick/nix-rosetta-builder";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nix-rosetta-builder }:
   let
     configuration = { pkgs, nixpkgs-unstable, lib,  ... }:
       let
@@ -255,6 +260,14 @@
 	# Lower than the cores above to try and allow for jobs with more than 1 core (?) unsure but blogpost had that so 🤷
 	maxJobs = 4;
       };
+      # https://github.com/cpick/nix-rosetta-builder seems to be better. Just requires the above for bootstrapping initially
+      # nix-rosetta-builder = {
+	# enable = true;
+	# diskSize = "40GiB";
+	# memory = "8GiB";
+	# onDemand = true;
+	# onDemandLingerMinutes = 60;
+      # };
 
       # As per the error instructions, specifying the primary user
       # TODO: Move the relevant configurations to the user scope so that this is no longer an issue.
@@ -275,18 +288,22 @@
 	  # THIS IS IMPORTANT -> don't forget about it!
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
+    config-modules = [
+      nix-rosetta-builder.darwinModules.default
+      configuration
+    ];
   in
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Miguels-MacBook-Pro
     darwinConfigurations."Miguels-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = config-modules;
       specialArgs = { inherit nixpkgs-unstable; };
     };
 
     # New mbp has a different hostname and nix-darwin gets confused lol
     darwinConfigurations."MBP-migueld" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = config-modules;
       specialArgs = { inherit nixpkgs-unstable; };
     };
 
