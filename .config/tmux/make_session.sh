@@ -4,7 +4,7 @@
 set -euf -o pipefail
 
 # These are just sent to `fzf` directly without the `fd` search.
-DIRECT_DIRS=(~/dotfiles)
+DIRECT_DIRS=(~/dotfiles ~/nixos-configs)
 dir="$( (fd . -t d ~/coding ~/my-coding --max-depth 1 ; printf '%s\n' "${DIRECT_DIRS[@]}") \
 	| fzf)"
 
