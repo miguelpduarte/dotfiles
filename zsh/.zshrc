@@ -134,8 +134,9 @@ alias cal='cal -s'
 # Cli calculator!
 alias calc='bc -lq'
 
-alias ls='ls -F --color'
-alias ll='ls -la'
+alias ls='ls -F=auto --color=auto'
+alias l='ls -lah' # I only really use this, so might as well just have it directly.
+alias ll='l' # Fighting muscle memory
 
 ### OS Specific
 alias mac-cycle-wifi='networksetup -setairportpower en0 off; sleep 45; networksetup -setairportpower en0 on'
