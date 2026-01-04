@@ -1,5 +1,18 @@
 # dotfiles
-The dotfiles I am currently using in Linux
+The dotfiles I am currently using in Linux / macOS.
+
+These have been (recently) reimagined (with inspiration from [these configs](https://github.com/jonhoo/configs/tree/master)) to be [GNU stow](https://www.gnu.org/software/stow/) "packages".
+
+Each of the top-level directories are a "group" of configs which may be "installed" via `stow` by doing `stow -Sv <dir>`.
+The `-n` flag for `stow` does a dry-run, showing what it will do without affecting the filesystem.
+
+**Important:** If you've used these configs before with `stow`, you likely will have to `stow -D .` before using the "new format", lest there be dangling items that `stow` no longer thinks it manages.
+
+## "Deprecation" note
+
+Everything below this line is probably outdated. I'll likely remove it at some point, but for now I'll leave it be in case it's a useful reference.
+
+-----
 
 ## Currently using:
 - [`i3wm`](https://i3wm.org/)
