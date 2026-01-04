@@ -51,7 +51,7 @@ output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_19
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-    input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
+    input "type:touchpad" {
         tap enabled
         # "Disable While Typing"
         dwt enabled
