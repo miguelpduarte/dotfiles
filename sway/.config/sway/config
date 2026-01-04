@@ -59,6 +59,18 @@ output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_19
         middle_emulation enabled
     }
 
+    input "type:keyboard" {
+        # Have multiple layouts available so we can switch between them
+        xkb_layout us,pt
+
+        # Important note from docs:
+        # Note that to trigger several options, you need to list them separated
+        # with a comma, e.g. xkb_options caps:escape,altwin:swap_lalt_lwin; if
+        # you instead write several xkb_options-lines, only the last one will
+        # take effect.
+        xkb_options caps:ctrl_modifier
+    }
+
 ### Key bindings
 #
 # Basics:
@@ -71,6 +83,8 @@ output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_19
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # TODO: alt-tab to toggle between last workspaces, it's useful!
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
