@@ -5,8 +5,17 @@ set -euf -o pipefail
 
 # These are just sent to `fzf` directly without the `fd` search.
 DIRECT_DIRS=(~/dotfiles ~/nixos-configs)
+# TODO: Suppress `fd` stderr for not finding the dirs we pass into it.
 dir="$( (fd . -t d ~/coding ~/my-coding --max-depth 1 ; printf '%s\n' "${DIRECT_DIRS[@]}") \
 	| fzf)"
+
+# Check if dir exists, just to be able to abort the script if not
+# (only possible because of the hardcoded "direct dirs" above 😅)
+if ! [ -d "$dir" ]; then
+	echo "ERROR: Chosen dir does not exist: $dir"
+	sleep 2
+	exit 1
+fi
 
 session_name="$(basename "$dir")"
 
