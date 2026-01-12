@@ -141,7 +141,6 @@
 
       environment.variables = {
 	EDITOR = "nvim";
-	PRESENTERM_CONFIG_FILE="~/.config/presenterm/config.yaml";
       };
 
       # Homebrew needs to be installed directly, sadly
