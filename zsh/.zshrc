@@ -134,7 +134,7 @@ alias cal='cal -s'
 # Cli calculator!
 alias calc='bc -lq'
 
-alias ls='ls -F=auto --color=auto'
+alias ls='ls -Fauto --color=auto'
 alias l='ls -lah' # I only really use this, so might as well just have it directly.
 alias ll='l' # Fighting muscle memory
 
