@@ -49,6 +49,8 @@
 	  obsidian
 	  # Trying this out for presentations instead of Remark, so far so good
 	  pkgs-unstable.presenterm
+	  # Needed for mermaid diagrams in presenterm (also needs Chromium but nixpkgs doesn't have it for Darwin so using homebrew below sadly...)
+	  mermaid-cli
 	  ## terminal
 	  # unstable wezterm reduced crashes and seems otherwise fine - so leaving it in unstable for now.
 	  pkgs-unstable.wezterm
@@ -159,6 +161,7 @@
 	"slack" # previously directly downloaded from website, check for conflicts
 	"parallels"
 	"fly" # Because we need to have r/w for the binary since it needs to match the version in our concourse instance
+	"chromium" # Sadly needed for mermaid-cli and it isn't in Darwin nixpkgs...
       ];
       homebrew.taps = [
 	"tunneltodev/tap"
