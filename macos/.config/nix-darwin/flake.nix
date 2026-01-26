@@ -56,6 +56,7 @@
 	  pkgs-unstable.wezterm
 	  tmux
 	  # organization
+	  timewarrior # Need to think of a way to sync this (maybe? maybe not? mostly relevant for work probably tbh)
 	  taskwarrior3
 	  tasksh # might not need it, but trying it
 	  # TODO: Make taskopen work in nix-darwin :( using it via homebrew for now
