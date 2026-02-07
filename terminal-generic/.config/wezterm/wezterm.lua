@@ -2,6 +2,13 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = wezterm.config_builder()
 
+-- NixOS installs the wezterm `terminfo` files automatically already! (and sets the correct envvars etc)
+-- https://wezterm.org/config/lua/config/term.html?h=terminfo#term-xterm-256color
+-- So, let's take advantage of that!
+config.term = 'wezterm'
+-- For the above see also this bug if relevant again: https://github.com/NixOS/nixpkgs/issues/19785#issuecomment-259639330
+-- for the time being, fixed with the `~/.terminfo` symlink as a workaround
+
 -- Annoying that this is only fetched from compositor on wayland for now
 config.max_fps = 144
 
