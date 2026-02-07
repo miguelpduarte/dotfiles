@@ -78,6 +78,7 @@ alias branches-not-merged='git branch --no-merged'
 
 ### Taskwarrior and friends
 alias t='task'
+alias ti='timew'
 
 ### PDF and docs
 
