@@ -4,7 +4,7 @@
 	name = Miguel Duarte
 	# Managed with "scoped" included files now. See the `includeIf`
 	# directives below
-	email = <email>
+	# email = <email>
 [pull]
 	ff = only
 [diff]
@@ -41,7 +41,6 @@
 	# Sort branches by reverse commit date (so latest first)
 	sort = -committerdate
 [rebase]
-
 	# No need for `graphite`! Ref: https://dev.to/onepoint/git-update-refs-in-a-nutshell-574c
 	# Actually nicer ref: https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
 	# Afterwards, can quickly update branches on remote with just `g fp origin branch-1 branch-2` (optionally also `--atomic`)
@@ -52,3 +51,48 @@
 	path = ~/coding/.gitconfig
 [includeIf "gitdir:~/my-coding/"]
 	path = ~/my-coding/.gitconfig
+
+# Trying out `delta`, config changes below come from there:
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	# I really don't like Monokai, idk why.
+	syntax-theme = ansi
+	# dark = true      # or light = true, or omit for auto-detection
+	hyperlinks = true # This might actually be a killer feature 😅
+	; side-by-side = true # Too verbose, enable as needed only.
+	features = tokyonight-night-theme simpler-diffs
+	line-numbers = true
+
+[delta "simpler-diffs"]
+	width = variable
+	# TODO: Decide whether I like it more with or without the `ul`
+	# (But definitely not default as I really dislike the `box`!!!)
+	hunk-header-decoration-style = blue ul
+	# commit-style = omit # Leave it as default: raw
+	# file-style = bold auto
+	file-decoration-style = blue box
+
+[delta "tokyonight-night-theme"]
+	# tokyonight_night from the official repo!
+	# https://github.com/folke/tokyonight.nvim/blob/main/extras/delta/tokyonight_night.gitconfig
+	minus-style                   = syntax "#4a272f"
+	minus-non-emph-style          = syntax "#4a272f"
+	minus-emph-style              = syntax "#713137"
+	minus-empty-line-marker-style = syntax "#4a272f"
+	line-numbers-minus-style      = "#914c54"
+	plus-style                    = syntax "#243e4a"
+	plus-non-emph-style           = syntax "#243e4a"
+	plus-emph-style               = syntax "#2c5a66"
+	plus-empty-line-marker-style  = syntax "#243e4a"
+	line-numbers-plus-style       = "#449dab"
+	line-numbers-zero-style       = "#3b4261"
+
+[merge]
+	conflictStyle = zdiff3
+# https://dandavison.github.io/delta/color-moved-support.html
+[diff]
+	colorMoved = default
