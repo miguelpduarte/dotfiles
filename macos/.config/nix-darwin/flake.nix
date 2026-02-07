@@ -38,6 +38,7 @@
 	  jq
 	  gh # required by octo.nvim
 	  shellcheck
+	  delta # trying it out for git diffs
 	  # For dotfile management, finally went with an automated tool, even though it's not 100% because it kinda depends on the host as well...
 	  # But at least it's easy...
 	  stow
