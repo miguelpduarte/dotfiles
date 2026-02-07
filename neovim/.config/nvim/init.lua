@@ -491,24 +491,44 @@ require('lazy').setup({
 	-- better GitHub PR reviews (and much more but PRs is the main point of this)
 	{
 		'pwntester/octo.nvim',
+		cmd = "Octo",
+		-- Only enable this if `gh` is installed to prevent spamming errors on editor start if not.
+		cond = vim.fn.executable('gh') == 1,
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope.nvim',
 			'nvim-tree/nvim-web-devicons',
 		},
-		config = function()
-			require('octo').setup({
-				-- using local files so we can actually get LSP, etc.
-				use_local_fs = true,
-				-- Reminds me of when I tried Oh My zsh and ended up turning everything off lol
-				mappings_disable_default = false,
-				-- I feel like these should probably take from GitHub settings but ok
-				-- (either that or I'll never actually perform these from nvim lol)
-				default_delete_branch = true,
-				default_merge_method = "rebase",
+		opts = {
+			picker = "telescope",
+			-- from docs: bare Octo command opens picker of commands
+			enable_builtin = true,
+			-- using local files so we can actually get LSP, etc. 😎 (the killer feature tbh)
+			use_local_fs = true,
+			-- mappings_disable_default = false, -- Let's see if I can learn some of them, the defaults actually seem useful...
+			-- I feel like these should probably take from GitHub settings but ok
+			-- (either that or I'll never actually perform these from nvim lol)
+			default_delete_branch = true,
+			default_merge_method = "rebase", -- I wish GH allowed merge with ff-only...
 
-			})
-		end
+			notifications = {
+				-- If I want more, I have the web UI...
+				current_repo_only = true,
+			},
+		},
+		keys = {
+			-- TODO: Make these 2 about the current repo if not ootb...
+			{
+				"<leader>op",
+				"<CMD>Octo pr list<CR>",
+				desc = "List GitHub Pull Requests",
+			},
+			{
+				"<leader>on",
+				"<CMD>Octo notification list<CR>",
+				desc = "List GitHub Notifications",
+			}
+		},
 	},
 
 	-- LSP-related
