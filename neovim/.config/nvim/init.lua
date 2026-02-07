@@ -446,6 +446,22 @@ require('lazy').setup({
 		config = function()
 			vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
 			vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+			-- Treesitter node selection (when coming from visual selection or "mid-operator")
+			-- -> actually pretty nifty to grab whole semantic groups e.g. function/loop/match body
+			vim.keymap.set({'x', 'o'}, 'R',  function ()
+				require('leap.treesitter').select {
+					opts = require('leap.user').with_traversal_keys('R', 'r')
+				}
+			end)
+			-- Remote operations -> Leap somewhere else and come back (e.g. to yank some text). Can be merged with the `R` above 😎
+			vim.keymap.set({'n', 'o'}, 'gs', function ()
+				require('leap.remote').action {
+					-- Automatically enter Visual mode when coming from Normal.
+					input = vim.fn.mode(true):match('o') and '' or 'v'
+				}
+			end)
+
+			-- TODO: Consider setting more equivalent classes as per the docs suggestion (brackets and quotes)
 		end
 	},
 	-- undotree
