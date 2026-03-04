@@ -164,6 +164,7 @@
 	"parallels"
 	"fly" # Because we need to have r/w for the binary since it needs to match the version in our concourse instance
 	"chromium" # Sadly needed for mermaid-cli and it isn't in Darwin nixpkgs...
+	"krita" # Easiest "known good" software for the drawing shenanigans with the tablet :D
       ];
       homebrew.taps = [
 	"tunneltodev/tap"
