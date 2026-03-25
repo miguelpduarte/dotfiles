@@ -433,11 +433,15 @@ require('lazy').setup({
 			vim.keymap.set('n', '<C-p>', builtin.git_files)
 			vim.keymap.set('n', '<leader>tf', builtin.find_files)
 			vim.keymap.set('n', '<leader>tg', builtin.live_grep)
+			vim.keymap.set('n', '<leader>t<leader>', builtin.resume)
 
 			vim.keymap.set('n', '<leader>tb', builtin.buffers)
 			vim.keymap.set('n', '<leader>tj', builtin.jumplist)
 			vim.keymap.set('n', '<leader>tm', builtin.marks)
 			vim.keymap.set('n', '<leader>th', builtin.help_tags)
+
+			vim.keymap.set('n', '<leader>tq', builtin.quickfix)
+			vim.keymap.set('n', '<leader>tQ', builtin.quickfixhistory)
 		end,
 	},
 	-- leap for faster/better navigation -> zooooooom
