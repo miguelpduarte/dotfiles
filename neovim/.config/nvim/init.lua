@@ -405,7 +405,7 @@ require('lazy').setup({
 	-- utilities
 	-- telescope for easy ootb fuzzy finder
 	{
-		'nvim-telescope/telescope.nvim', branch = '0.1.x',
+		'nvim-telescope/telescope.nvim', version = '^0.2',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		},
@@ -442,7 +442,7 @@ require('lazy').setup({
 	},
 	-- leap for faster/better navigation -> zooooooom
 	{
-		'ggandor/leap.nvim',
+		url = 'https://codeberg.org/andyg/leap.nvim',
 		config = function()
 			vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
 			vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
