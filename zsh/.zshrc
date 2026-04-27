@@ -139,6 +139,9 @@ alias ls='ls -Fauto --color=auto'
 alias l='ls -lah' # I only really use this, so might as well just have it directly.
 alias ll='l' # Fighting muscle memory
 
+# https://old.reddit.com/r/linuxadmin/comments/13fjqg2/psa_stop_using_mount_to_list_mounts/jjyi1mh/
+alias lsblk=' lsblk -fe 1,7'
+
 ### OS Specific
 alias mac-cycle-wifi='networksetup -setairportpower en0 off; sleep 45; networksetup -setairportpower en0 on'
 
