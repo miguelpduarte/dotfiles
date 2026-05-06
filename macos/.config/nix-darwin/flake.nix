@@ -46,6 +46,8 @@
 	  # window management? Taking a latest-er version for "config-version = 2"
 	  pkgs-unstable.aerospace
 
+	  qemu # In general useful for a bunch of emulation things!
+
 	  # other
 	  obsidian
 	  # Trying this out for presentations instead of Remark, so far so good
