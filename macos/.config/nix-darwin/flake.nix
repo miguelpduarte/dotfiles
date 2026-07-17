@@ -4,8 +4,8 @@
 
   inputs = {
     # Using releases to try and be more stable, overriding only if necessary.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     # Used sparingly for newer versions of packages.
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -128,7 +128,7 @@
 	  # node-related for LSP
 	  # for vscode-eslint-language-server, vscode-json-language-server
 	  vscode-langservers-extracted
-          nodePackages_latest.typescript-language-server # typescript-language-server
+          typescript-language-server
 	  # typescript # tsserver is actually here? # Nope, this simply provides a global TS which is useful but also misleading.
 	  tailwindcss-language-server
 	  svelte-language-server
@@ -169,11 +169,11 @@
 	"krita" # Easiest "known good" software for the drawing shenanigans with the tablet :D
       ];
       homebrew.taps = [
-	"tunneltodev/tap"
+	# "tunneltodev/tap" # Seems to be "unstrusted" now - just removing whatever, I don't think I'm using it often anyway...
       ];
       homebrew.brews = [
 	"mingw-w64" # For rust cross compilation to windows...
-	"tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
+	# "tunneltodev/tap/tunnelto" # ngrok-like, broken on nixpkgs at the moment
 	# taskopen is currently not working on nixpkgs for nix-darwin, despite being available in homebrew.
 	{
 	  name = "taskopen";
@@ -279,6 +279,8 @@
 	onDemand = true;
 	onDemandLingerMinutes = 60;
       };
+
+	  # TODO: Add some activation script to re-symlink stuff (?)
 
       # As per the error instructions, specifying the primary user
       # TODO: Move the relevant configurations to the user scope so that this is no longer an issue.
