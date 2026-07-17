@@ -67,43 +67,65 @@
 
 	  # python312Packages.bugwarrior # trying it, would get tasks from e.g. JIRA, GitHub
 
-	  # 1.8.0 is OOOOLLLLDD and breaks with python >3.12. See:
-	  # See:
-	  # - https://github.com/GothenburgBitFactory/bugwarrior/issues/1050#issuecomment-2130661470
-	  # - https://github.com/GothenburgBitFactory/bugwarrior/issues/1030#issuecomment-2086146053
-	  # ref for fix:
-	  # https://git.ingolf-wagner.de/palo/nixos-config/commit/07d807c4db3a6240ae15761c4ff7e9f2f024c06d?files=nixos/components#diff-3a3879a63e88b4537fbe5b4699d6bc38ce4cf0a7
-	  # (but had to adapt. overrideAttrs for example doesn't really work for what we want here)
-	  (with pkgs-unstable.python311Packages; bugwarrior.overridePythonAttrs (old: {
-	    # Waiting for 2.0 release: https://github.com/GothenburgBitFactory/bugwarrior/issues/1030
-	    version = "develop";
-	    format = "pyproject";
-	    src = pkgs.fetchFromGitHub {
-	      owner = "GothenburgBitFactory";
-	      repo = "bugwarrior";
-	      rev = "d166c3fe63bd541f72436d1d266bfdd43b76b87a";
-	      sha256 = "sha256-xpodsk4iAcZUgFsi1s1C9w3xshQtn2Vao4ZqowVst78=";
-	    };
-	    propagatedBuildInputs = old.propagatedBuildInputs ++ [
-	      pydantic
-	      tomli
-	      # We need a more recent version of the jira python package because of the search endpoint being deprecated:
-	      # https://github.com/pycontribs/jira/pull/2326
-	      # (stable nixpkgs has 3.9.4, we need >3.10.0 ; unstable has 3.10.5 (latest))
-	      pkgs-unstable.python311Packages.jira
+	  (with pkgs.python314Packages; bugwarrior.override {
+		taskw = (pkgs.python314Packages.taskw.overridePythonAttrs {
+		  postPatch = ''
+		    substituteInPlace taskw/warrior.py \
+		      --replace '@@taskwarrior@@' '${pkgs.taskwarrior3}'
+		  '';
+		  buildInputs = [ pkgs.taskwarrior3 ];
+		  ## Claude (unverified but seems likely)
+		  # The test suite (taskw/test/test_datas.py) creates empty
+		  # *.data files and invokes task against them, and
+		  # test_warrior.py asserts on fields like parent for recurring
+		  # tasks — all of which are taskwarrior 2 assumptions that
+		  # break under taskwarrior 3's taskchampion.sqlite3 storage
+		  # model.
+		  doCheck = false;
+		});
+	  })
+	  # (with pkgs-unstable.python311Packages; bugwarrior.overridePythonAttrs (final: prev: {
+	  #   taskw = pkgs-unstable.python311Packages.taskw.override {
+	      # taskwarrior2 = pkgs.taskwarrior3;
+	  #   };
+	  # }))
+	  # # 1.8.0 is OOOOLLLLDD and breaks with python >3.12. See:
+	  # # See:
+	  # # - https://github.com/GothenburgBitFactory/bugwarrior/issues/1050#issuecomment-2130661470
+	  # # - https://github.com/GothenburgBitFactory/bugwarrior/issues/1030#issuecomment-2086146053
+	  # # ref for fix:
+	  # # https://git.ingolf-wagner.de/palo/nixos-config/commit/07d807c4db3a6240ae15761c4ff7e9f2f024c06d?files=nixos/components#diff-3a3879a63e88b4537fbe5b4699d6bc38ce4cf0a7
+	  # # (but had to adapt. overrideAttrs for example doesn't really work for what we want here)
+	  # (with pkgs-unstable.python311Packages; bugwarrior.overridePythonAttrs (old: {
+	  #   # Waiting for 2.0 release: https://github.com/GothenburgBitFactory/bugwarrior/issues/1030
+	  #   version = "develop";
+	  #   format = "pyproject";
+	  #   src = pkgs.fetchFromGitHub {
+	  #     owner = "GothenburgBitFactory";
+	  #     repo = "bugwarrior";
+	  #     rev = "d166c3fe63bd541f72436d1d266bfdd43b76b87a";
+	  #     sha256 = "sha256-xpodsk4iAcZUgFsi1s1C9w3xshQtn2Vao4ZqowVst78=";
+	  #   };
+	  #   propagatedBuildInputs = old.propagatedBuildInputs ++ [
+	  #     pydantic
+	  #     tomli
+	  #     # We need a more recent version of the jira python package because of the search endpoint being deprecated:
+	  #     # https://github.com/pycontribs/jira/pull/2326
+	  #     # (stable nixpkgs has 3.9.4, we need >3.10.0 ; unstable has 3.10.5 (latest))
+	  #     pkgs-unstable.python311Packages.jira
 
-	      # ini2toml is not in nixpkgs apparently
-	      # TODO: try and bundle it, tbh just for the learning experience.
-	      # buildPythonPackage {
-		# pname = "ini2toml";
-		# version = "0.15";
-		# src = fetchPypi {
-		  # inherit pname version;
-		  # hash = lib.fakeHash;
-		# };
-	      # }
-	    ];
-	  }))
+	  #     # ini2toml is not in nixpkgs apparently
+	  #     # TODO: try and bundle it, tbh just for the learning experience.
+	  #     # buildPythonPackage {
+		# # pname = "ini2toml";
+		# # version = "0.15";
+		# # src = fetchPypi {
+		  # # inherit pname version;
+		  # # hash = lib.fakeHash;
+		# # };
+	  #     # }
+	  #   ];
+	  # }))
 
 	  # company tools
 	  wireguard-tools
