@@ -65,8 +65,7 @@
 	  # TODO: Make taskopen work in nix-darwin :( using it via homebrew for now
 	  # taskopen # useful for extended notes. Let's see how it plays with the Obsidian plugin
 
-	  # python312Packages.bugwarrior # trying it, would get tasks from e.g. JIRA, GitHub
-
+	  # Gets tasks into Taskwarrior from e.g. Linear, GitHub
 	  (with pkgs.python314Packages; bugwarrior.override {
 		taskw = (pkgs.python314Packages.taskw.overridePythonAttrs {
 		  postPatch = ''
@@ -84,50 +83,8 @@
 		  doCheck = false;
 		});
 	  })
-	  # (with pkgs-unstable.python311Packages; bugwarrior.overridePythonAttrs (final: prev: {
-	  #   taskw = pkgs-unstable.python311Packages.taskw.override {
-	      # taskwarrior2 = pkgs.taskwarrior3;
-	  #   };
-	  # }))
-	  # # 1.8.0 is OOOOLLLLDD and breaks with python >3.12. See:
-	  # # See:
-	  # # - https://github.com/GothenburgBitFactory/bugwarrior/issues/1050#issuecomment-2130661470
-	  # # - https://github.com/GothenburgBitFactory/bugwarrior/issues/1030#issuecomment-2086146053
-	  # # ref for fix:
-	  # # https://git.ingolf-wagner.de/palo/nixos-config/commit/07d807c4db3a6240ae15761c4ff7e9f2f024c06d?files=nixos/components#diff-3a3879a63e88b4537fbe5b4699d6bc38ce4cf0a7
-	  # # (but had to adapt. overrideAttrs for example doesn't really work for what we want here)
-	  # (with pkgs-unstable.python311Packages; bugwarrior.overridePythonAttrs (old: {
-	  #   # Waiting for 2.0 release: https://github.com/GothenburgBitFactory/bugwarrior/issues/1030
-	  #   version = "develop";
-	  #   format = "pyproject";
-	  #   src = pkgs.fetchFromGitHub {
-	  #     owner = "GothenburgBitFactory";
-	  #     repo = "bugwarrior";
-	  #     rev = "d166c3fe63bd541f72436d1d266bfdd43b76b87a";
-	  #     sha256 = "sha256-xpodsk4iAcZUgFsi1s1C9w3xshQtn2Vao4ZqowVst78=";
-	  #   };
-	  #   propagatedBuildInputs = old.propagatedBuildInputs ++ [
-	  #     pydantic
-	  #     tomli
-	  #     # We need a more recent version of the jira python package because of the search endpoint being deprecated:
-	  #     # https://github.com/pycontribs/jira/pull/2326
-	  #     # (stable nixpkgs has 3.9.4, we need >3.10.0 ; unstable has 3.10.5 (latest))
-	  #     pkgs-unstable.python311Packages.jira
 
-	  #     # ini2toml is not in nixpkgs apparently
-	  #     # TODO: try and bundle it, tbh just for the learning experience.
-	  #     # buildPythonPackage {
-		# # pname = "ini2toml";
-		# # version = "0.15";
-		# # src = fetchPypi {
-		  # # inherit pname version;
-		  # # hash = lib.fakeHash;
-		# # };
-	  #     # }
-	  #   ];
-	  # }))
-
-	  # company tools
+	  ## company tools
 	  wireguard-tools
 	  awscli2
 	  # tunnelto # Throws `Control error: WebSocketError(Io(Custom { kind: UnexpectedEof, error: "tls handshake eof" })).`
