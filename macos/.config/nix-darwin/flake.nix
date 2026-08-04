@@ -90,6 +90,8 @@
 	  # tunnelto # Throws `Control error: WebSocketError(Io(Custom { kind: UnexpectedEof, error: "tls handshake eof" })).`
 
 	  # Programming deps/LSPs/etc
+	  ## for neovim, nvim-treesitter now requires it after their new release for nvim 0.12+
+	  tree-sitter
 	  ## for Rust
 	  rustup # accidentally installed from the script, but should use the nix one instead...
 	  # cargo etc, installed via rustup directly for now
