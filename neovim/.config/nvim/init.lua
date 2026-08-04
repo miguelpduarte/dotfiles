@@ -77,7 +77,7 @@ vim.opt.diffopt:append('indent-heuristic')
 -- long lines guide
 vim.opt.colorcolumn = '80'
 -- in Rust the rule is 100 instead
-vim.api.nvim_create_autocmd('Filetype', { pattern = 'rust', command = 'set colorcolumn=100' })
+vim.api.nvim_create_autocmd('FileType', { pattern = 'rust', command = 'set colorcolumn=100' })
 
 -- use better colours
 vim.opt.termguicolors = true
@@ -183,7 +183,7 @@ vim.api.nvim_create_autocmd('InsertLeave', { pattern = '*', command = 'set nopas
 
 -- Enable spelling for certain file types
 local spellit = vim.api.nvim_create_augroup('spellit', { clear = true })
-vim.api.nvim_create_autocmd('Filetype', {
+vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'text', 'markdown', 'md', 'gitcommit', 'tex', 'latex' },
 	group = spellit,
 	command = 'setlocal spell',
@@ -468,6 +468,7 @@ require('lazy').setup({
 			-- TODO: Consider setting more equivalent classes as per the docs suggestion (brackets and quotes)
 		end
 	},
+	-- FIXME: Apparently this is now built-in??? :o
 	-- undotree
 	{
 		'mbbill/undotree',
@@ -729,7 +730,7 @@ require('lazy').setup({
 			-- Lower LSP semantic token priority to not overwrite treesitter color settings
 			-- https://old.reddit.com/r/neovim/comments/1d9gzud/lsp_and_semantic_tokens_yay_or_nay/l7e6akp/
 			-- https://github.com/hendrikmi/dotfiles/blob/3c073c05712677b0839c309d756260191670eb81/nvim/lua/core/snippets.lua#L5C1-L5C46
-			vim.highlight.priorities.semantic_tokens = 95
+			vim.highlight.priorities.semantic_tokens = 95 -- TODO: FIXME: no longer exists in 0.12+
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
@@ -895,23 +896,34 @@ require('lazy').setup({
 		'nvim-treesitter/nvim-treesitter',
 		lazy = false,
 		build = ':TSUpdate',
+		-- Needed after update to neovim 0.12.0+ - see https://old.reddit.com/r/neovim/comments/1s9y00d/for_anyone_experiencing_treesitter_issues_after/
+		branch = 'main',
 		config = function ()
-			local configs = require("nvim-treesitter.configs")
-
-			configs.setup({
-				ensure_installed = {
-					"rust", "lua", "vim", "vimdoc",
-					"nix", "yaml",
-					"query", "javascript", "typescript",
-					"markdown", "markdown_inline",
-					"terraform", "comment"
-				},
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
-				-- https://github.com/andymass/vim-matchup#tree-sitter-integration
-				matchup = { enable = true },
+			-- Ensure installed no longer exists in newer nvim-treesitter versions, this should be done instead:
+			require("nvim-treesitter").install({
+				"rust", "lua", "vim", "vimdoc",
+				"nix", "yaml",
+				"query", "javascript", "typescript",
+				"markdown", "markdown_inline",
+				"terraform", "comment"
 			})
+
+			-- Maybe need/want to use this? idk
+			-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+
+			-- Legacy, deprecated (?)
+			-- local configs = require("nvim-treesitter.configs")
+
+			-- configs.setup({
+			-- 	ensure_installed = {
+			-- 	},
+			-- 	sync_install = false,
+			-- 	highlight = { enable = true },
+			-- 	indent = { enable = true },
+			-- 	-- https://github.com/andymass/vim-matchup#tree-sitter-integration
+			-- 	matchup = { enable = true },
+			-- })
 
 			-- Highlight todo comments via treesitter!
 			-- https://stackoverflow.com/a/74640468
