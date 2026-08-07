@@ -66,7 +66,7 @@ alias miguel='git push'
 alias gst='git status'
 # You just lost the
 alias game='git commit --amend'
-alias gamer='game --reuse-message=HEAD'
+alias gamer='game --no-edit' # Previously --reuse-message=HEAD thus the name
 ## TODO: Move the below aliases to git config/delete them from here
 # Git log short version
 alias glog-s='git log --oneline --decorate'
