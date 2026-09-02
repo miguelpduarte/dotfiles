@@ -12,7 +12,7 @@ vim.g.mapleader = ' '
 vim.opt.relativenumber = true
 vim.opt.number = true
 
--- keep more context when scrolling (maybe 1 is enough? experiment)
+-- keep more context when scrolling
 vim.opt.scrolloff = 2
 -- don't wrap by default
 vim.opt.wrap = false
@@ -566,6 +566,26 @@ require('lazy').setup({
 				},
 			})
 			vim.lsp.enable('rust_analyzer')
+
+			vim.api.nvim_create_user_command("RustTarget", function(opts)
+				local target = opts.args ~= "" and opts.args or vim.NIL
+				local target_settings = {
+					['rust-analyzer'] = { cargo = { target = target } },
+				}
+				local clients = vim.lsp.get_clients({ name = "rust_analyzer" })
+				for _, client in ipairs(clients) do
+					client.settings = vim.tbl_deep_extend('force', client.settings or {}, target_settings)
+					client.notify(client, 'workspace/didChangeConfiguration', { settings = client.settings })
+				end
+				vim.notify("rust-analyzer target: " .. (target ~= vim.NIL and target or "host"))
+			end, {
+				nargs = "?",
+				complete = function()
+					return {
+						"x86_64-pc-windows-msvc", "x86_64-pc-windows-gnu",
+					}
+				end
+			})
 
 			-- JS/TS
 			local base_on_attach = vim.lsp.config.eslint.on_attach
