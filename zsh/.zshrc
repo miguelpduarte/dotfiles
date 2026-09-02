@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+#### zsh essentials
+# (normally are set in system-level /etc/zshrc / zshenv or so but apparently not always!)
+# Emacs keybinds (ctrl-a to start, ctrl-e to end, etc - it seems that it also allows alt+arrows to jump words ootb?)
+bindkey -e
+
+
 #### zsh prompt
 autoload -Uz vcs_info
 setopt prompt_subst
